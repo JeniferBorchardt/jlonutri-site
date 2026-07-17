@@ -1,0 +1,18 @@
+# Sistema operacional
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*~
+
+# Arquivos temporários
+*.log
+*.tmp
+
+# Backups de imagem gerados no processamento do logo
+assets/images/jlo-logo-web.png
