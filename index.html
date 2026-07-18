@@ -35,7 +35,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,600;6..12,700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="style.css?v=26" />
+  <link rel="stylesheet" href="style.css?v=27" />
 
   <!-- SEO estruturado: Nutricionista (Person + MedicalBusiness) -->
   <script type="application/ld+json">
@@ -157,8 +157,8 @@
           <p class="hero__micro">CRN-2 · 13894 · Mestre e doutoranda em Nutrição e Alimentos · Desde 2015</p>
         </div>
         <div class="hero__media">
-          <div class="hero__photo" role="img" aria-label="Foto da nutricionista Jenifer Lopes Borchardt (adicionar imagem)">
-            <span class="hero__photo-note">Foto da Jenifer<br>aqui</span>
+          <div class="hero__photo">
+            <img src="assets/images/jenifer-formatura.jpg?v=1" alt="Jenifer Lopes Borchardt na formatura em Nutrição" width="1024" height="1018" loading="eager" />
           </div>
         </div>
       </div>
@@ -168,8 +168,8 @@
     <section class="section about" id="sobre">
       <div class="container about__inner">
         <div class="about__media">
-          <div class="about__photo" role="img" aria-label="Foto profissional da Jenifer (adicionar imagem)">
-            <span class="about__photo-note">Foto profissional<br>da Jenifer</span>
+          <div class="about__photo">
+            <img src="assets/images/jenifer-formatura.jpg?v=1" alt="Jenifer Lopes Borchardt, nutricionista" width="1024" height="1018" loading="lazy" />
           </div>
         </div>
         <div class="about__copy">
@@ -292,7 +292,7 @@
           <li class="how-step">
             <span class="how-step__num">1</span>
             <h3>Escolha o formato</h3>
-            <p>Avulsa, mensal ou trimestral — o ideal para o momento em que você está.</p>
+            <p>Avulsa, trimestral ou anual — o ideal para o momento em que você está.</p>
           </li>
           <li class="how-step">
             <span class="how-step__num">2</span>
@@ -334,7 +334,7 @@
             <p class="plan-card__for">Ideal para conhecer o método</p>
             <h3 class="plan-card__name">Consulta Avulsa</h3>
             <p class="plan-card__desc">Avaliação completa e plano alimentar para o primeiro passo.</p>
-            <p class="plan-card__price" data-plan-price><span>R$</span> — <small>/ consulta</small></p>
+            <p class="plan-card__price" data-plan-price><span>R$</span> 400 <small>/ consulta</small></p>
             <ul class="plan-card__feats">
               <li>Anamnese detalhada e escuta ativa</li>
               <li>Avaliação nutricional completa</li>
@@ -346,37 +346,37 @@
               <a class="btn btn--ghost" data-cta="plano-avulsa" href="#" data-plan>Tirar dúvida no WhatsApp</a>
             </div>
           </li>
-          <li class="plan-card plan-card--featured" data-plan-id="mensal">
+          <li class="plan-card plan-card--featured" data-plan-id="trimestral">
             <span class="plan-card__tag">Mais escolhido</span>
-            <p class="plan-card__for">Ideal para quem quer resultado consistente</p>
-            <h3 class="plan-card__name">Acompanhamento Mensal</h3>
-            <p class="plan-card__desc">Evolução contínua com suporte entre as consultas.</p>
-            <p class="plan-card__price" data-plan-price><span>R$</span> — <small>/ mês</small></p>
-            <ul class="plan-card__feats">
-              <li>Tudo da consulta avulsa</li>
-              <li>Retornos mensais de acompanhamento</li>
-              <li>Ajustes no plano conforme evolução</li>
-              <li>Suporte por WhatsApp entre consultas</li>
-            </ul>
-            <div class="plan-card__actions">
-              <a class="btn btn--primary" data-cta="pagar-mensal" href="#" data-pay>Pagar e garantir vaga</a>
-              <a class="btn btn--ghost" data-cta="plano-mensal" href="#" data-plan>Tirar dúvida no WhatsApp</a>
-            </div>
-          </li>
-          <li class="plan-card" data-plan-id="trimestral">
             <p class="plan-card__for">Ideal para transformação em 90 dias</p>
             <h3 class="plan-card__name">Programa Trimestral</h3>
-            <p class="plan-card__desc">Percurso guiado com metas por etapa e prioridade na agenda.</p>
-            <p class="plan-card__price" data-plan-price><span>R$</span> — <small>/ trimestre</small></p>
+            <p class="plan-card__desc">Percurso guiado com metas por etapa e suporte contínuo.</p>
+            <p class="plan-card__price" data-plan-price><span>R$</span> 790 <small>/ trimestre</small></p>
             <ul class="plan-card__feats">
-              <li>Tudo do acompanhamento mensal</li>
+              <li>Tudo da consulta avulsa</li>
               <li>3 meses de evolução guiada</li>
               <li>Reavaliações e metas por etapa</li>
-              <li>Prioridade na agenda</li>
+              <li>Suporte por WhatsApp entre consultas</li>
             </ul>
             <div class="plan-card__actions">
               <a class="btn btn--primary" data-cta="pagar-trimestral" href="#" data-pay>Pagar e garantir vaga</a>
               <a class="btn btn--ghost" data-cta="plano-trimestral" href="#" data-plan>Tirar dúvida no WhatsApp</a>
+            </div>
+          </li>
+          <li class="plan-card" data-plan-id="anual">
+            <p class="plan-card__for">Ideal para resultado sustentável o ano todo</p>
+            <h3 class="plan-card__name">Programa Anual</h3>
+            <p class="plan-card__desc">Acompanhamento completo com prioridade na agenda e evolução contínua.</p>
+            <p class="plan-card__price" data-plan-price><span>R$</span> 3.000 <small>/ ano</small></p>
+            <ul class="plan-card__feats">
+              <li>Tudo do programa trimestral</li>
+              <li>12 meses de acompanhamento</li>
+              <li>Reavaliações ao longo do ano</li>
+              <li>Prioridade na agenda</li>
+            </ul>
+            <div class="plan-card__actions">
+              <a class="btn btn--primary" data-cta="pagar-anual" href="#" data-pay>Pagar e garantir vaga</a>
+              <a class="btn btn--ghost" data-cta="plano-anual" href="#" data-plan>Tirar dúvida no WhatsApp</a>
             </div>
           </li>
         </ul>
@@ -506,6 +506,6 @@
     <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 2C6.5 2 2 6.5 2 12.05c0 1.77.463 3.5 1.343 5.023L2 22l5.05-1.32A10 10 0 0 0 12.05 22c5.55 0 10.05-4.5 10.05-9.95C22.1 6.5 17.6 2 12.05 2"/></svg>
   </a>
 
-  <script src="script.js?v=5" defer></script>
+  <script src="script.js?v=6" defer></script>
 </body>
 </html>

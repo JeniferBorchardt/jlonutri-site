@@ -33,22 +33,22 @@ const PLANS = {
   avulsa: {
     id: "avulsa",
     name: "Consulta Avulsa",
-    price: null, // ex.: 250
+    price: 400,
     period: "/ consulta",
-    paymentUrl: "", // ex.: "https://mpago.la/xxxxx"
-  },
-  mensal: {
-    id: "mensal",
-    name: "Acompanhamento Mensal",
-    price: null, // ex.: 197
-    period: "/ mês",
-    paymentUrl: "",
+    paymentUrl: "", // cole o link Mercado Pago
   },
   trimestral: {
     id: "trimestral",
     name: "Programa Trimestral",
-    price: null, // ex.: 497
+    price: 790,
     period: "/ trimestre",
+    paymentUrl: "",
+  },
+  anual: {
+    id: "anual",
+    name: "Programa Anual",
+    price: 3000,
+    period: "/ ano",
     paymentUrl: "",
   },
 };
