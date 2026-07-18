@@ -14,5 +14,6 @@ Desktop.ini
 *.log
 *.tmp
 
-# Backups de imagem gerados no processamento do logo
+# Fontes brutas do logo (mantém só as versões finais transparentes)
+assets/images/*-src.png
 assets/images/jlo-logo-web.png

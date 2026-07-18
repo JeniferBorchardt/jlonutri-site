@@ -35,7 +35,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,600;6..12,700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="style.css?v=18" />
+  <link rel="stylesheet" href="style.css?v=21" />
 
   <!-- SEO estruturado: Nutricionista (Person + MedicalBusiness) -->
   <script type="application/ld+json">
@@ -88,6 +88,11 @@
       },
       {
         "@type": "Question",
+        "name": "Por que o foco em mulheres 35+?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Porque metabolismo, hormônios e rotina mudam nessa fase. Um plano genérico de emagrecimento costuma falhar — aqui a estratégia é construída para o corpo e a vida da mulher madura." }
+      },
+      {
+        "@type": "Question",
         "name": "Como faço para agendar?",
         "acceptedAnswer": { "@type": "Answer", "text": "Basta clicar em um dos botões de agendamento, escolher o formato ideal e falar diretamente com a nutricionista pelo WhatsApp para confirmar horário e pagamento." }
       }
@@ -100,13 +105,14 @@
 
   <!-- Barra de aviso -->
   <div class="announce" role="note">
-    Consultas 100% online · <strong>Vagas limitadas por mês</strong>
+    Atendimento 100% online para mulheres 35+ · <strong>Vagas limitadas este mês</strong>
   </div>
 
   <!-- Cabeçalho -->
   <header class="topbar" id="topbar">
     <a class="brand" href="#topo" aria-label="JLo Nutricionista — Jenifer Lopes Borchardt, página inicial">
-      <img class="brand__logo" src="assets/images/jlo-logo-transparent.png?v=15" alt="JLo Nutricionista — Jenifer Lopes Borchardt" width="627" height="373" />
+      <img class="brand__logo brand__logo--desktop" src="assets/images/jlo-logo-desktop.png?v=20" alt="JLo Nutricionista — Jenifer Lopes Borchardt" width="539" height="280" />
+      <img class="brand__logo brand__logo--mobile" src="assets/images/jlo-logo-mobile.png?v=20" alt="JLo Nutricionista" width="355" height="200" />
     </a>
     <nav class="desktop-nav" aria-label="Menu principal">
       <a href="#sobre">Sobre</a>
@@ -141,18 +147,14 @@
       <div class="hero__bg" aria-hidden="true"></div>
       <div class="container hero__inner">
         <div class="hero__copy">
-          <p class="eyebrow">Nutrição para mulheres 35+</p>
-          <h1 class="hero__title">Sua melhor fase começa pelo <em>equilíbrio</em> do seu corpo</h1>
-          <p class="hero__lead">Emagrecimento saudável, mais energia e equilíbrio hormonal com um acompanhamento nutricional individualizado, acolhedor e baseado em ciência — <strong>100% online</strong>, de onde você estiver.</p>
+          <p class="eyebrow">Consultas online · Mulheres 35+</p>
+          <h1 class="hero__title">Emagreça com saúde e recupere sua <em>energia</em> — com orientação feita para o seu corpo agora</h1>
+          <p class="hero__lead">Acompanhamento nutricional individualizado para a mulher 35+: equilíbrio hormonal, rotina realista e resultados que duram. <strong>100% online</strong>, com a nutricionista Jenifer Lopes Borchardt.</p>
           <div class="hero__actions">
             <a class="btn btn--primary btn--lg" data-cta="hero" href="#consultas">Quero agendar minha consulta</a>
-            <a class="btn btn--ghost btn--lg" href="#sobre">Conhecer a Jenifer</a>
+            <a class="btn btn--ghost btn--lg" href="#como-funciona">Como funciona</a>
           </div>
-          <ul class="hero__trust" aria-label="Credenciais">
-            <li><strong>Desde 2015</strong><span>na nutrição</span></li>
-            <li><strong>Mestre</strong><span>em Nutrição e Alimentos</span></li>
-            <li><strong>Doutoranda</strong><span>na área</span></li>
-          </ul>
+          <p class="hero__micro">CRN-2 · 13894 · Mestre e doutoranda em Nutrição e Alimentos · Desde 2015</p>
         </div>
         <div class="hero__media">
           <div class="hero__photo" role="img" aria-label="Foto da nutricionista Jenifer Lopes Borchardt (adicionar imagem)">
@@ -166,13 +168,37 @@
       </div>
     </section>
 
+    <!-- SOBRE (confiança cedo) -->
+    <section class="section about" id="sobre">
+      <div class="container about__inner">
+        <div class="about__media">
+          <div class="about__photo" role="img" aria-label="Foto profissional da Jenifer (adicionar imagem)">
+            <span class="about__photo-note">Foto profissional<br>da Jenifer</span>
+          </div>
+        </div>
+        <div class="about__copy">
+          <p class="eyebrow">Sua nutricionista</p>
+          <h2>Ciência e acolhimento para a mulher 35+</h2>
+          <p>Sou <strong>Jenifer Lopes Borchardt</strong>, nutricionista desde 2015, <strong>mestre e doutoranda em Nutrição e Alimentos</strong>. Meu atendimento é feito para mulheres que sentem o corpo mudar e querem um plano sério — sem dieta maluca, sem culpa e sem fórmulas genéricas.</p>
+          <p>Na consulta, olhamos sua rotina, exames, histórico e objetivos. Você sai com um caminho claro, prático e sustentável para emagrecer com saúde, ter mais energia e se sentir bem no corpo que tem hoje.</p>
+          <ul class="about__creds">
+            <li><span aria-hidden="true">✓</span> Graduação em Nutrição (2015)</li>
+            <li><span aria-hidden="true">✓</span> Mestrado e Doutorado em Nutrição e Alimentos</li>
+            <li><span aria-hidden="true">✓</span> Especialização clínica na saúde da mulher 35+</li>
+            <li><span aria-hidden="true">✓</span> Atendimento 100% online em todo o Brasil</li>
+          </ul>
+          <a class="text-link" data-cta="about" href="#consultas">Ver formatos de consulta →</a>
+        </div>
+      </div>
+    </section>
+
     <!-- DORES / IDENTIFICAÇÃO -->
     <section class="section pains" id="para-quem">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">Você se reconhece?</p>
-          <h2>A partir dos 35, o corpo muda — e a alimentação precisa acompanhar</h2>
-          <p class="section-sub">Metabolismo mais lento, oscilações hormonais e rotina cheia não precisam ser um obstáculo. Com a estratégia certa, essa fase pode ser a mais saudável da sua vida.</p>
+          <p class="eyebrow">Para quem é</p>
+          <h2>Se você se reconhece, este acompanhamento é para você</h2>
+          <p class="section-sub">Depois dos 35, o corpo responde diferente. O que falta não é força de vontade — é uma estratégia feita para essa fase da vida.</p>
         </div>
         <ul class="pains__grid">
           <li class="pain-card">
@@ -183,46 +209,51 @@
           <li class="pain-card">
             <span class="pain-card__icon" aria-hidden="true">✦</span>
             <h3>Cansaço e falta de energia</h3>
-            <p>Disposição em queda, sono irregular e aquela sensação de estar sempre no limite.</p>
+            <p>Disposição em queda, sono irregular e a sensação de estar sempre no limite.</p>
           </li>
           <li class="pain-card">
             <span class="pain-card__icon" aria-hidden="true">❋</span>
             <h3>Mudanças hormonais</h3>
-            <p>Pré-menopausa, climatério e sintomas que impactam humor, corpo e alimentação.</p>
+            <p>Pré-menopausa, climatério e sintomas que impactam humor, corpo e fome.</p>
           </li>
           <li class="pain-card">
             <span class="pain-card__icon" aria-hidden="true">♡</span>
-            <h3>Vontade de se cuidar de verdade</h3>
-            <p>Sem dietas malucas: um plano realista, gostoso e que cabe na sua rotina.</p>
+            <h3>Cansaço de dietas extremas</h3>
+            <p>Você quer se cuidar de verdade: plano realista, gostoso e que cabe na sua vida.</p>
           </li>
         </ul>
         <div class="pains__cta">
-          <a class="btn btn--primary" data-cta="pains" href="#consultas">Quero cuidar da minha saúde</a>
+          <a class="text-link" data-cta="pains" href="#consultas">Quero um plano feito para mim →</a>
         </div>
       </div>
     </section>
 
-    <!-- SOBRE -->
-    <section class="section about" id="sobre">
-      <div class="container about__inner">
-        <div class="about__media">
-          <div class="about__photo" role="img" aria-label="Foto profissional da Jenifer (adicionar imagem)">
-            <span class="about__photo-note">Foto profissional<br>da Jenifer</span>
-          </div>
+    <!-- BENEFÍCIOS / O QUE VOCÊ GANHA -->
+    <section class="section gains" id="resultados">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">O que você leva</p>
+          <h2>Mais do que uma lista de alimentos</h2>
+          <p class="section-sub">Cada consulta é um passo concreto para você se sentir no comando do seu corpo outra vez.</p>
         </div>
-        <div class="about__copy">
-          <p class="eyebrow">Sobre a nutricionista</p>
-          <h2>Prazer, sou a Jenifer</h2>
-          <p>Sou <strong>Jenifer Lopes Borchardt</strong>, nutricionista formada em 2015, <strong>mestre e doutoranda em Nutrição e Alimentos</strong>. Dedico minha carreira a unir ciência e acolhimento para ajudar mulheres a viverem a maturidade com mais saúde, energia e autoestima.</p>
-          <p>Meu trabalho é individualizado: nada de planos genéricos. Entendo a sua história, sua rotina e seus objetivos para construir uma estratégia que seja realista, prazerosa e sustentável a longo prazo.</p>
-          <ul class="about__creds">
-            <li><span aria-hidden="true">✓</span> Graduação em Nutrição (2015)</li>
-            <li><span aria-hidden="true">✓</span> Mestrado em Nutrição e Alimentos</li>
-            <li><span aria-hidden="true">✓</span> Doutoranda em Nutrição e Alimentos</li>
-            <li><span aria-hidden="true">✓</span> Foco em saúde da mulher 35+</li>
-          </ul>
-          <a class="btn btn--primary" data-cta="about" href="#consultas">Agendar com a Jenifer</a>
-        </div>
+        <ul class="gains__grid">
+          <li class="gain-card">
+            <h3>Plano alimentar individualizado</h3>
+            <p>Montado para a sua rotina, preferências e fase hormonal — sem restrição cega.</p>
+          </li>
+          <li class="gain-card">
+            <h3>Clareza sobre o que fazer</h3>
+            <p>Você entende o “porquê” de cada ajuste e para de viver no modo tentativa e erro.</p>
+          </li>
+          <li class="gain-card">
+            <h3>Mais energia no dia a dia</h3>
+            <p>Estratégia para disposição, saciedade e consistência — sem viver de café e culpa.</p>
+          </li>
+          <li class="gain-card">
+            <h3>Acompanhamento de perto</h3>
+            <p>Nos planos contínuos, ajustamos juntos conforme seu corpo e sua vida evoluem.</p>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -230,27 +261,59 @@
     <section class="section testi" id="depoimentos">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">Quem já foi atendida</p>
-          <h2>Histórias que inspiram</h2>
-          <p class="section-sub">Espaço para depoimentos reais das suas pacientes (com autorização). Adicione fotos e nomes para reforçar a confiança.</p>
+          <p class="eyebrow">Prova social</p>
+          <h2>Mulheres que já deram o primeiro passo</h2>
+          <p class="section-sub">Substitua pelos depoimentos reais das suas pacientes (com autorização). Histórias verdadeiras aumentam muito a confiança na hora de agendar.</p>
         </div>
         <ul class="testi__grid">
           <li class="testi-card">
             <p class="testi-card__stars" aria-label="5 estrelas">★★★★★</p>
-            <blockquote>"Depoimento da paciente aqui — como foi a experiência, o que mudou na saúde e na rotina."</blockquote>
-            <p class="testi-card__author">Nome da paciente · 42 anos</p>
+            <blockquote>"Depoimento real aqui — o que mudou no peso, na energia e na relação com a comida."</blockquote>
+            <p class="testi-card__author">Nome · 42 anos</p>
           </li>
           <li class="testi-card">
             <p class="testi-card__stars" aria-label="5 estrelas">★★★★★</p>
-            <blockquote>"Depoimento da paciente aqui — resultado, acolhimento e acompanhamento."</blockquote>
-            <p class="testi-card__author">Nome da paciente · 38 anos</p>
+            <blockquote>"Depoimento real aqui — acolhimento, clareza do plano e resultado sustentável."</blockquote>
+            <p class="testi-card__author">Nome · 38 anos</p>
           </li>
           <li class="testi-card">
             <p class="testi-card__stars" aria-label="5 estrelas">★★★★★</p>
-            <blockquote>"Depoimento da paciente aqui — energia, autoestima e qualidade de vida."</blockquote>
-            <p class="testi-card__author">Nome da paciente · 51 anos</p>
+            <blockquote>"Depoimento real aqui — como foi a experiência online e o acompanhamento."</blockquote>
+            <p class="testi-card__author">Nome · 51 anos</p>
           </li>
         </ul>
+      </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section class="section how" id="como-funciona">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Como funciona</p>
+          <h2>Do WhatsApp ao seu plano — em 4 passos</h2>
+        </div>
+        <ol class="how__steps">
+          <li class="how-step">
+            <span class="how-step__num">1</span>
+            <h3>Escolha o formato</h3>
+            <p>Avulsa, mensal ou trimestral — o ideal para o momento em que você está.</p>
+          </li>
+          <li class="how-step">
+            <span class="how-step__num">2</span>
+            <h3>Reserve seu horário</h3>
+            <p>Fale comigo no WhatsApp para confirmar data, pagamento e link da videochamada.</p>
+          </li>
+          <li class="how-step">
+            <span class="how-step__num">3</span>
+            <h3>Consulta online</h3>
+            <p>Conversamos com calma sobre sua história, exames, rotina e objetivos.</p>
+          </li>
+          <li class="how-step">
+            <span class="how-step__num">4</span>
+            <h3>Seu plano na prática</h3>
+            <p>Você recebe o plano alimentar e os materiais — e seguimos ajustando no acompanhamento.</p>
+          </li>
+        </ol>
       </div>
     </section>
 
@@ -258,31 +321,33 @@
     <section class="section plans" id="consultas">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">Consultas online</p>
-          <h2>Escolha o acompanhamento ideal para você</h2>
-          <p class="section-sub">Todos os formatos são 100% online, com plano alimentar individualizado e materiais de apoio. Escolha e fale comigo pelo WhatsApp para confirmar horário e pagamento.</p>
+          <p class="eyebrow">Investimento</p>
+          <h2>Escolha como quer começar</h2>
+          <p class="section-sub">Todos os formatos são 100% online, com plano individualizado. Prefere tirar dúvida antes? Use o WhatsApp. Pronta para garantir a vaga? Pague agora.</p>
         </div>
         <ul class="plans__grid">
           <li class="plan-card">
+            <p class="plan-card__for">Ideal para conhecer o método</p>
             <h3 class="plan-card__name">Consulta Avulsa</h3>
-            <p class="plan-card__desc">Ideal para o primeiro contato e avaliação completa.</p>
+            <p class="plan-card__desc">Avaliação completa e plano alimentar para o primeiro passo.</p>
             <!-- PREÇO: troque 000 pelo valor (ex.: 250) -->
             <p class="plan-card__price"><span>R$</span> 000 <small>/ consulta</small></p>
             <ul class="plan-card__feats">
-              <li>Anamnese detalhada</li>
-              <li>Avaliação e diagnóstico nutricional</li>
+              <li>Anamnese detalhada e escuta ativa</li>
+              <li>Avaliação nutricional completa</li>
               <li>Plano alimentar individualizado</li>
               <li>Materiais de apoio digitais</li>
             </ul>
             <div class="plan-card__actions">
-              <a class="btn btn--primary" data-cta="pagar-avulsa" href="#" data-pay="Consulta Avulsa">Pagar agora</a>
-              <a class="btn btn--ghost" data-cta="plano-avulsa" href="#" data-plan="Consulta Avulsa">Dúvidas no WhatsApp</a>
+              <a class="btn btn--primary" data-cta="pagar-avulsa" href="#" data-pay="Consulta Avulsa">Garantir minha vaga</a>
+              <a class="btn btn--ghost" data-cta="plano-avulsa" href="#" data-plan="Consulta Avulsa">Tirar dúvida no WhatsApp</a>
             </div>
           </li>
           <li class="plan-card plan-card--featured">
             <span class="plan-card__tag">Mais escolhido</span>
+            <p class="plan-card__for">Ideal para quem quer resultado consistente</p>
             <h3 class="plan-card__name">Acompanhamento Mensal</h3>
-            <p class="plan-card__desc">Para quem quer evolução constante e suporte de perto.</p>
+            <p class="plan-card__desc">Evolução contínua com suporte entre as consultas.</p>
             <!-- PREÇO: troque 000 pelo valor (ex.: 197) -->
             <p class="plan-card__price"><span>R$</span> 000 <small>/ mês</small></p>
             <ul class="plan-card__feats">
@@ -292,13 +357,14 @@
               <li>Suporte por WhatsApp entre consultas</li>
             </ul>
             <div class="plan-card__actions">
-              <a class="btn btn--primary" data-cta="pagar-mensal" href="#" data-pay="Acompanhamento Mensal">Pagar agora</a>
-              <a class="btn btn--ghost" data-cta="plano-mensal" href="#" data-plan="Acompanhamento Mensal">Dúvidas no WhatsApp</a>
+              <a class="btn btn--primary" data-cta="pagar-mensal" href="#" data-pay="Acompanhamento Mensal">Quero acompanhamento</a>
+              <a class="btn btn--ghost" data-cta="plano-mensal" href="#" data-plan="Acompanhamento Mensal">Tirar dúvida no WhatsApp</a>
             </div>
           </li>
           <li class="plan-card">
+            <p class="plan-card__for">Ideal para transformação em 90 dias</p>
             <h3 class="plan-card__name">Programa Trimestral</h3>
-            <p class="plan-card__desc">Transformação profunda com acompanhamento contínuo.</p>
+            <p class="plan-card__desc">Percurso guiado com metas por etapa e prioridade na agenda.</p>
             <!-- PREÇO: troque 000 pelo valor (ex.: 497) -->
             <p class="plan-card__price"><span>R$</span> 000 <small>/ trimestre</small></p>
             <ul class="plan-card__feats">
@@ -308,44 +374,12 @@
               <li>Prioridade na agenda</li>
             </ul>
             <div class="plan-card__actions">
-              <a class="btn btn--primary" data-cta="pagar-trimestral" href="#" data-pay="Programa Trimestral">Pagar agora</a>
-              <a class="btn btn--ghost" data-cta="plano-trimestral" href="#" data-plan="Programa Trimestral">Dúvidas no WhatsApp</a>
+              <a class="btn btn--primary" data-cta="pagar-trimestral" href="#" data-pay="Programa Trimestral">Começar o programa</a>
+              <a class="btn btn--ghost" data-cta="plano-trimestral" href="#" data-plan="Programa Trimestral">Tirar dúvida no WhatsApp</a>
             </div>
           </li>
         </ul>
-        <p class="plans__note">Valores e condições de pagamento são confirmados no atendimento. Parcelamento disponível.</p>
-      </div>
-    </section>
-
-    <!-- COMO FUNCIONA -->
-    <section class="section how" id="como-funciona">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Como funciona</p>
-          <h2>Simples do início ao fim</h2>
-        </div>
-        <ol class="how__steps">
-          <li class="how-step">
-            <span class="how-step__num">1</span>
-            <h3>Agendamento</h3>
-            <p>Você escolhe o formato e fala comigo pelo WhatsApp para reservar seu horário.</p>
-          </li>
-          <li class="how-step">
-            <span class="how-step__num">2</span>
-            <h3>Consulta por vídeo</h3>
-            <p>Conversamos com calma sobre sua história, rotina, exames e objetivos.</p>
-          </li>
-          <li class="how-step">
-            <span class="how-step__num">3</span>
-            <h3>Seu plano</h3>
-            <p>Você recebe um plano alimentar individualizado e materiais de apoio.</p>
-          </li>
-          <li class="how-step">
-            <span class="how-step__num">4</span>
-            <h3>Acompanhamento</h3>
-            <p>Ajustamos a estratégia ao longo do caminho para resultados que duram.</p>
-          </li>
-        </ol>
+        <p class="plans__note">Parcelamento disponível. Pix e cartão. Após o pagamento, confirmamos horário pelo WhatsApp.</p>
       </div>
     </section>
 
@@ -354,24 +388,28 @@
       <div class="container container--narrow">
         <div class="section-head">
           <p class="eyebrow">Dúvidas frequentes</p>
-          <h2>Tudo o que você precisa saber</h2>
+          <h2>Antes de agendar, tire suas dúvidas</h2>
         </div>
         <div class="faq__list">
           <details class="faq-item" open>
             <summary>As consultas são realmente 100% online?</summary>
-            <p>Sim. O atendimento é feito por videochamada, de onde você estiver, com a mesma qualidade de uma consulta presencial. Você recebe o plano alimentar e os materiais de forma digital.</p>
+            <p>Sim. O atendimento é por videochamada, de onde você estiver, com a mesma qualidade de uma consulta presencial. O plano alimentar e os materiais chegam de forma digital.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Por que o foco em mulheres 35+?</summary>
+            <p>Porque metabolismo, hormônios e rotina mudam nessa fase. Um plano genérico de “emagrecimento” costuma falhar — aqui a estratégia é construída para o corpo e a vida da mulher madura.</p>
           </details>
           <details class="faq-item">
             <summary>Preciso levar exames?</summary>
-            <p>Se você tiver exames recentes, eles ajudam muito na avaliação. Caso não tenha, seguimos com a anamnese e, se necessário, oriento quais exames podem complementar o acompanhamento.</p>
+            <p>Se tiver exames recentes, eles ajudam muito. Se não tiver, seguimos com a anamnese e, se necessário, oriento quais exames podem complementar o acompanhamento.</p>
           </details>
           <details class="faq-item">
             <summary>Em quanto tempo vejo resultados?</summary>
-            <p>Cada corpo é único. O foco é uma evolução saudável e sustentável — sem dietas radicais. Muitas pacientes relatam mais energia e disposição já nas primeiras semanas.</p>
+            <p>Cada corpo é único. O foco é evolução saudável e sustentável — sem dieta radical. Muitas pacientes relatam mais energia e disposição já nas primeiras semanas.</p>
           </details>
           <details class="faq-item">
-            <summary>Como funciona o pagamento?</summary>
-            <p>Após escolher o formato, confirmamos horário e forma de pagamento pelo WhatsApp. Há opções de parcelamento.</p>
+            <summary>Como funciona o pagamento e o agendamento?</summary>
+            <p>Você escolhe o formato, pode pagar pelo link ou falar no WhatsApp. Em seguida confirmamos horário e enviamos o link da videochamada. Há opções de parcelamento.</p>
           </details>
         </div>
       </div>
@@ -381,35 +419,41 @@
     <section class="section cta-final" id="contato">
       <div class="container cta-final__inner">
         <div class="cta-final__copy">
-          <p class="eyebrow">Vamos começar?</p>
-          <h2>Dê o primeiro passo para a sua melhor fase</h2>
-          <p>Preencha seus dados e eu entro em contato, ou fale comigo agora mesmo pelo WhatsApp.</p>
+          <p class="eyebrow">Pronta para começar?</p>
+          <h2>Sua melhor fase pode começar na próxima consulta</h2>
+          <p>Fale comigo agora no WhatsApp ou deixe seus dados — retorno em breve para alinharmos o melhor formato para você.</p>
           <a class="btn btn--whats btn--lg" data-cta="contato-whats" href="#" id="whatsMain" target="_blank" rel="noopener noreferrer">
-            Falar no WhatsApp
+            Quero falar no WhatsApp
           </a>
+          <ul class="cta-final__bullets">
+            <li>Atendimento 100% online</li>
+            <li>Foco em mulheres 35+</li>
+            <li>CRN-2 · 13894</li>
+          </ul>
           <p class="cta-final__contacts">
             <a href="mailto:contato@jlonutri.com.br">contato@jlonutri.com.br</a>
           </p>
         </div>
         <form class="lead-form" id="leadForm" novalidate>
-          <p class="lead-form__title">Quero ser contatada</p>
+          <p class="lead-form__title">Prefiro deixar meus dados</p>
+          <p class="lead-form__sub">Retorno pelo WhatsApp com os próximos passos.</p>
           <label class="lead-form__field">
             <span>Nome</span>
             <input type="text" name="nome" id="leadNome" autocomplete="name" placeholder="Seu nome" required />
           </label>
           <label class="lead-form__field">
-            <span>WhatsApp / Telefone</span>
+            <span>WhatsApp</span>
             <input type="tel" name="telefone" id="leadTel" autocomplete="tel" placeholder="(00) 00000-0000" required />
           </label>
           <label class="lead-form__field">
-            <span>E-mail</span>
+            <span>E-mail <em>(opcional)</em></span>
             <input type="email" name="email" id="leadEmail" autocomplete="email" placeholder="seu@email.com" />
           </label>
           <label class="lead-form__field">
-            <span>Como posso te ajudar?</span>
-            <textarea name="mensagem" id="leadMsg" rows="3" placeholder="Conte um pouco do seu objetivo"></textarea>
+            <span>Qual seu principal objetivo?</span>
+            <textarea name="mensagem" id="leadMsg" rows="3" placeholder="Ex.: emagrecer com saúde, mais energia, equilíbrio hormonal…"></textarea>
           </label>
-          <button class="btn btn--primary btn--block" type="submit">Enviar e falar no WhatsApp</button>
+          <button class="btn btn--primary btn--block" type="submit">Enviar e abrir WhatsApp</button>
           <p class="lead-form__note">Ao enviar, você concorda em ser contatada sobre o atendimento nutricional.</p>
         </form>
       </div>
@@ -420,7 +464,7 @@
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__brand">
-        <span class="footer__logo-chip"><img src="assets/images/jlo-logo-transparent.png?v=15" alt="JLo Nutricionista" width="627" height="373" /></span>
+        <span class="footer__logo-chip"><img src="assets/images/jlo-logo-desktop.png?v=20" alt="JLo Nutricionista" width="539" height="280" /></span>
         <p><strong>Jenifer Lopes Borchardt</strong><br>Nutricionista · Saúde da Mulher 35+</p>
         <p class="footer__crn">CRN-2 · 13894</p>
       </div>
@@ -451,6 +495,6 @@
     <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 2C6.5 2 2 6.5 2 12.05c0 1.77.463 3.5 1.343 5.023L2 22l5.05-1.32A10 10 0 0 0 12.05 22c5.55 0 10.05-4.5 10.05-9.95C22.1 6.5 17.6 2 12.05 2"/></svg>
   </a>
 
-  <script src="script.js?v=1" defer></script>
+  <script src="script.js?v=2" defer></script>
 </body>
 </html>

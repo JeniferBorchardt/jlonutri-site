@@ -139,7 +139,7 @@ function waLink(message) {
 /* Animação de entrada ao rolar */
 (function initReveal() {
   const els = document.querySelectorAll(
-    ".section-head, .pain-card, .plan-card, .how-step, .testi-card, .about__copy, .about__media, .hero__copy, .hero__media, .lead-form, .cta-final__copy"
+    ".section-head, .pain-card, .gain-card, .plan-card, .how-step, .testi-card, .about__copy, .about__media, .hero__copy, .hero__media, .lead-form, .cta-final__copy"
   );
   els.forEach((el) => el.classList.add("reveal"));
 
