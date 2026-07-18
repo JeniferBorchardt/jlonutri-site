@@ -94,7 +94,7 @@
       {
         "@type": "Question",
         "name": "Como faço para agendar?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Basta clicar em um dos botões de agendamento, escolher o formato ideal e falar diretamente com a nutricionista pelo WhatsApp para confirmar horário e pagamento." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Escolha o formato de consulta, realize o pagamento e agende o horário na agenda online. A confirmação e o link da videochamada chegam no seu e-mail automaticamente." }
       }
     ]
   }
@@ -152,7 +152,7 @@
           <p class="hero__lead">Acompanhamento nutricional individualizado para a mulher 35+: equilíbrio hormonal, rotina realista e resultados que duram. <strong>100% online</strong>, com a nutricionista Jenifer Lopes Borchardt.</p>
           <div class="hero__actions">
             <a class="btn btn--primary btn--lg" data-cta="hero" href="#consultas">Quero agendar minha consulta</a>
-            <a class="btn btn--ghost btn--lg" href="#como-funciona">Como funciona</a>
+            <a class="btn btn--ghost btn--lg" data-booking data-cta="hero-agenda" href="https://cal.eu/jlonutri/consulta-nutricional">Ver horários livres</a>
           </div>
           <p class="hero__micro">CRN-2 · 13894 · Mestre e doutoranda em Nutrição e Alimentos · Desde 2015</p>
         </div>
@@ -286,7 +286,7 @@
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">Como funciona</p>
-          <h2>Do WhatsApp ao seu plano — em 4 passos</h2>
+          <h2>Da escolha do plano à consulta — em 4 passos</h2>
         </div>
         <ol class="how__steps">
           <li class="how-step">
@@ -297,12 +297,12 @@
           <li class="how-step">
             <span class="how-step__num">2</span>
             <h3>Reserve seu horário</h3>
-            <p>Fale comigo no WhatsApp para confirmar data, pagamento e link da videochamada.</p>
+            <p>Na agenda online, escolha o horário livre. A confirmação chega no seu e-mail automaticamente.</p>
           </li>
           <li class="how-step">
             <span class="how-step__num">3</span>
-            <h3>Consulta online</h3>
-            <p>Conversamos com calma sobre sua história, exames, rotina e objetivos.</p>
+            <h3>Consulta por vídeo</h3>
+            <p>No dia marcado, você entra pelo link da videochamada (Cal Video) — simples, pelo celular ou computador.</p>
           </li>
           <li class="how-step">
             <span class="how-step__num">4</span>
@@ -319,7 +319,7 @@
         <div class="section-head">
           <p class="eyebrow">Investimento</p>
           <h2>Escolha como quer começar</h2>
-          <p class="section-sub">Pagamento seguro pelo site (Pix ou cartão). Depois do pagamento, confirmamos seu horário pelo WhatsApp.</p>
+          <p class="section-sub">Pagamento seguro pelo site (Pix ou cartão). Depois, você agenda o horário online e recebe o link da videochamada no e-mail.</p>
         </div>
 
         <ul class="pay-methods" aria-label="Formas de pagamento">
@@ -387,9 +387,9 @@
             <li><strong>1.</strong> Escolha o plano e clique em <em>Pagar e garantir vaga</em></li>
             <li><strong>2.</strong> Conclua no checkout seguro (Pix ou cartão)</li>
             <li><strong>3.</strong> Você é direcionada à página de confirmação</li>
-            <li><strong>4.</strong> Confirmamos horário e link da consulta pelo WhatsApp</li>
+            <li><strong>4.</strong> Escolhe o horário na agenda online (Cal.com) — sem esperar resposta no WhatsApp</li>
           </ol>
-          <p class="plans__note">Dúvidas antes de pagar? Use o WhatsApp em qualquer plano. Após o pagamento, o horário é confirmado pessoalmente.</p>
+          <p class="plans__note">Dúvidas antes de pagar? Use o WhatsApp em qualquer plano. Já pagou ou quer ver horários? <a class="text-link" data-booking data-cta="agenda-planos" href="https://cal.eu/jlonutri/consulta-nutricional">Abrir agenda online →</a></p>
         </div>
       </div>
     </section>
@@ -404,7 +404,7 @@
         <div class="faq__list">
           <details class="faq-item" open>
             <summary>As consultas são realmente 100% online?</summary>
-            <p>Sim. O atendimento é por videochamada, de onde você estiver, com a mesma qualidade de uma consulta presencial. O plano alimentar e os materiais chegam de forma digital.</p>
+            <p>Sim. O atendimento é por videochamada (Cal Video), de onde você estiver — pelo celular ou computador. O plano alimentar e os materiais chegam de forma digital.</p>
           </details>
           <details class="faq-item">
             <summary>Por que o foco em mulheres 35+?</summary>
@@ -420,7 +420,7 @@
           </details>
           <details class="faq-item">
             <summary>Como funciona o pagamento e o agendamento?</summary>
-            <p>Você escolhe o formato e clica em “Pagar e garantir vaga”. O checkout aceita Pix e cartão (com parcelamento, conforme o link). Depois do pagamento, você cai na página de confirmação e eu confirmo horário + link da videochamada pelo WhatsApp. Se preferir, pode tirar dúvidas no WhatsApp antes de pagar.</p>
+            <p>Você escolhe o formato e clica em “Pagar e garantir vaga”. Depois do pagamento, agenda o horário na agenda online. A confirmação e o link da videochamada (Cal Video) chegam no seu e-mail — sem precisar esperar resposta no WhatsApp. Dúvidas? Pode falar comigo pelo WhatsApp a qualquer momento.</p>
           </details>
         </div>
       </div>
@@ -506,6 +506,6 @@
     <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 2C6.5 2 2 6.5 2 12.05c0 1.77.463 3.5 1.343 5.023L2 22l5.05-1.32A10 10 0 0 0 12.05 22c5.55 0 10.05-4.5 10.05-9.95C22.1 6.5 17.6 2 12.05 2"/></svg>
   </a>
 
-  <script src="script.js?v=3" defer></script>
+  <script src="script.js?v=5" defer></script>
 </body>
 </html>

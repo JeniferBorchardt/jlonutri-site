@@ -11,6 +11,13 @@ const WHATSAPP_NUMBER = "5553981378527";
 const INSTAGRAM_URL = "https://www.instagram.com/";
 
 /**
+ * Agenda online (Cal.com — região Europa)
+ * Evento: Consulta nutricional
+ * https://cal.eu/jlonutri/consulta-nutricional
+ */
+const CAL_BOOKING_URL = "https://cal.eu/jlonutri/consulta-nutricional";
+
+/**
  * Catálogo de planos — ÚNICO lugar para preço e link de pagamento.
  *
  * Como ativar Mercado Pago:
@@ -108,6 +115,15 @@ function getPlan(planId) {
 
   const insta = document.querySelector('[data-cta="footer-instagram"]');
   if (insta) insta.href = INSTAGRAM_URL;
+})();
+
+/* Links de agendamento (Cal.com) */
+(function initBookingLinks() {
+  document.querySelectorAll("[data-booking]").forEach((el) => {
+    el.href = CAL_BOOKING_URL;
+    el.target = "_blank";
+    el.rel = "noopener noreferrer";
+  });
 })();
 
 /**
