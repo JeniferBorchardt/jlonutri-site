@@ -373,7 +373,9 @@ h1, h2, h3 {
   color: var(--ink-soft);
 }
 
-.hero__media { position: relative; }
+.hero__media {
+  position: relative;
+}
 .hero__photo {
   aspect-ratio: 4 / 5;
   border-radius: 28px;
@@ -390,32 +392,6 @@ h1, h2, h3 {
   text-align: center;
   opacity: 0.6;
 }
-.hero__badge {
-  position: absolute;
-  left: -14px;
-  bottom: 28px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: var(--white);
-  border-radius: var(--radius);
-  padding: 14px 18px;
-  box-shadow: var(--shadow);
-}
-.hero__badge-num {
-  display: inline-grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
-  background: var(--brand-soft);
-  color: var(--brand);
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 15px;
-}
-.hero__badge-txt { font-size: 12px; color: var(--ink-soft); line-height: 1.35; }
-.hero__badge-txt strong { color: var(--brand); }
 
 /* ---------- Dores ---------- */
 .pains { background: var(--white); }
@@ -907,7 +883,6 @@ h1, h2, h3 {
   .how__steps { grid-template-columns: 1fr; }
   .footer__inner { grid-template-columns: 1fr; gap: 30px; }
   .hero__actions .btn { width: 100%; }
-  .hero__badge { left: 8px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
