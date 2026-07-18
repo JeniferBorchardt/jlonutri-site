@@ -33,18 +33,37 @@ jlonutri/
 8. Contato (formulário + WhatsApp)
 9. Rodapé (CRN, redes sociais, LGPD)
 
-## ⚙️ O que você precisa preencher (placeholders)
+## Pagamentos pelo site
 
-Procure por estes itens e substitua pelos dados reais:
+Tudo fica no `script.js`, no objeto `PLANS`:
+
+```js
+avulsa: {
+  price: 250,              // número ou null (= "Sob consulta")
+  period: "/ consulta",
+  paymentUrl: "https://mpago.la/xxxxx",
+},
+```
+
+### Ativar Mercado Pago (recomendado)
+1. [Mercado Pago](https://www.mercadopago.com.br/) → **Seu negócio** → **Link de pagamento**
+2. Crie **1 link por plano** (valor, descrição, parcelamento)
+3. Cole a URL em `paymentUrl` de cada plano
+4. URL de retorno / sucesso: `https://www.jlonutri.com.br/obrigado.html` (ou o `.pages.dev` enquanto testa)
+
+Fluxo: **Pagar no site → checkout MP → página obrigado → WhatsApp para agendar horário**.
+
+Enquanto `paymentUrl` estiver vazio, o botão abre o WhatsApp pedindo o link.
+
+## ⚙️ O que você precisa preencher (placeholders)
 
 | Onde | O quê |
 |------|-------|
-| `script.js` → `WHATSAPP_NUMBER` | Número do WhatsApp (ex.: `5553999999999`) |
+| `script.js` → `WHATSAPP_NUMBER` | Número do WhatsApp |
+| `script.js` → `PLANS.*.price` | Valores das consultas |
+| `script.js` → `PLANS.*.paymentUrl` | Links Mercado Pago / PagBank |
 | `script.js` → `INSTAGRAM_URL` | Link do Instagram |
-| `index.html` → `CRN-_ • _____` | Número de registro no CRN (obrigatório por lei) |
-| `index.html` → `R$ ___` | Valores das consultas |
-| `index.html` → "Foto da Jenifer" | Fotos profissionais (hero e seção Sobre) |
-| `index.html` → seção Depoimentos | Depoimentos reais (com autorização) |
+| `index.html` | Fotos e depoimentos reais |
 | `assets/images/og-share.jpg` | Imagem de compartilhamento (1200×630) |
 
 ## Como visualizar localmente

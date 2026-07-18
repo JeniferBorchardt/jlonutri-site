@@ -2,27 +2,66 @@
    JLO Nutri — Interações do site
    ========================================================= */
 
-/* >>> CONFIGURE AQUI <<<
-   Troque pelo WhatsApp da Jenifer no formato internacional, só números.
-   Ex.: Brasil (53) 99999-9999  ->  "5553999999999"
-*/
-const WHATSAPP_NUMBER = "5553981378527";
-const INSTAGRAM_URL = "https://www.instagram.com/"; // troque pela conta da Jenifer
+/* >>> CONFIGURE AQUI <<< */
 
-/* >>> LINKS DE PAGAMENTO <<<
-   Cole aqui o link de pagamento de cada plano (ex.: Mercado Pago, PagBank, Stripe).
-   O nome (chave) precisa ser IGUAL ao data-pay do botão no index.html.
-   Enquanto o link estiver vazio (""), o botão "Pagar agora" abre o WhatsApp.
-*/
-const PAYMENT_LINKS = {
-  "Consulta Avulsa": "",
-  "Acompanhamento Mensal": "",
-  "Programa Trimestral": "",
+/** WhatsApp no formato internacional, só números. Ex.: (53) 98137-8527 → "5553981378527" */
+const WHATSAPP_NUMBER = "5553981378527";
+
+/** Instagram da Jenifer (quando tiver a conta) */
+const INSTAGRAM_URL = "https://www.instagram.com/";
+
+/**
+ * Catálogo de planos — ÚNICO lugar para preço e link de pagamento.
+ *
+ * Como ativar Mercado Pago:
+ * 1. Mercado Pago → Seu negócio → Link de pagamento
+ * 2. Crie 1 link por plano (valor + descrição + parcelamento)
+ * 3. Cole a URL em `paymentUrl`
+ * 4. Em "URL de retorno" do link, use: https://SEU-DOMINIO/obrigado.html
+ *
+ * Enquanto `paymentUrl` estiver vazio (""), o botão de pagar abre o WhatsApp.
+ * Coloque `price: null` para esconder o valor e mostrar "Sob consulta".
+ */
+const PLANS = {
+  avulsa: {
+    id: "avulsa",
+    name: "Consulta Avulsa",
+    price: null, // ex.: 250
+    period: "/ consulta",
+    paymentUrl: "", // ex.: "https://mpago.la/xxxxx"
+  },
+  mensal: {
+    id: "mensal",
+    name: "Acompanhamento Mensal",
+    price: null, // ex.: 197
+    period: "/ mês",
+    paymentUrl: "",
+  },
+  trimestral: {
+    id: "trimestral",
+    name: "Programa Trimestral",
+    price: null, // ex.: 497
+    period: "/ trimestre",
+    paymentUrl: "",
+  },
 };
 
-/* Monta um link do WhatsApp com mensagem pré-preenchida */
+/* ---------- Helpers ---------- */
+
 function waLink(message) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+
+function formatPrice(value) {
+  if (value == null || value === "" || Number.isNaN(Number(value))) return null;
+  return Number(value).toLocaleString("pt-BR", {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  });
+}
+
+function getPlan(planId) {
+  return PLANS[planId] || null;
 }
 
 /* Ano no rodapé */
@@ -71,34 +110,50 @@ function waLink(message) {
   if (insta) insta.href = INSTAGRAM_URL;
 })();
 
-/* Botões "Dúvidas no WhatsApp": mensagem específica por plano */
-(function initPlanButtons() {
-  document.querySelectorAll("[data-plan]").forEach((btn) => {
-    const plan = btn.getAttribute("data-plan");
-    btn.href = waLink(
-      `Olá, Jenifer! Tenho interesse no formato "${plan}". Pode me passar os valores e horários disponíveis?`
-    );
-    btn.target = "_blank";
-    btn.rel = "noopener noreferrer";
-  });
-})();
+/**
+ * Planos: preenche preços e liga botões de pagamento / WhatsApp
+ * a partir do catálogo PLANS.
+ */
+(function initPlansCatalog() {
+  document.querySelectorAll("[data-plan-id]").forEach((card) => {
+    const planId = card.getAttribute("data-plan-id");
+    const plan = getPlan(planId);
+    if (!plan) return;
 
-/* Botões "Pagar agora": usam o link de pagamento do plano.
-   Se o link ainda não foi configurado, cai no WhatsApp. */
-(function initPayButtons() {
-  document.querySelectorAll("[data-pay]").forEach((btn) => {
-    const plan = btn.getAttribute("data-pay");
-    const link = (PAYMENT_LINKS[plan] || "").trim();
-
-    if (link) {
-      btn.href = link;
-    } else {
-      btn.href = waLink(
-        `Olá, Jenifer! Quero fechar o formato "${plan}". Pode me enviar o link de pagamento?`
-      );
+    const priceEl = card.querySelector("[data-plan-price]");
+    if (priceEl) {
+      const formatted = formatPrice(plan.price);
+      if (formatted) {
+        priceEl.innerHTML = `<span>R$</span> ${formatted} <small>${plan.period}</small>`;
+      } else {
+        priceEl.innerHTML = `<span class="plan-card__price-soft">Sob consulta</span>`;
+      }
     }
-    btn.target = "_blank";
-    btn.rel = "noopener noreferrer";
+
+    const payBtn = card.querySelector("[data-pay]");
+    if (payBtn) {
+      const url = (plan.paymentUrl || "").trim();
+      if (url) {
+        payBtn.href = url;
+        payBtn.setAttribute("data-pay-ready", "true");
+      } else {
+        payBtn.href = waLink(
+          `Olá, Jenifer! Quero fechar o formato "${plan.name}". Pode me enviar o link de pagamento e os horários disponíveis?`
+        );
+        payBtn.setAttribute("data-pay-ready", "false");
+      }
+      payBtn.target = "_blank";
+      payBtn.rel = "noopener noreferrer";
+    }
+
+    const waBtn = card.querySelector("[data-plan]");
+    if (waBtn) {
+      waBtn.href = waLink(
+        `Olá, Jenifer! Tenho interesse no formato "${plan.name}". Pode me passar os valores e horários disponíveis?`
+      );
+      waBtn.target = "_blank";
+      waBtn.rel = "noopener noreferrer";
+    }
   });
 })();
 
