@@ -10,15 +10,19 @@ Site premium (estático, mobile-first) para apresentação profissional e **vend
 
 ```
 jlonutri/
-├── index.html          Página única com todas as seções
-├── style.css           Design system + responsivo
-├── script.js           Menu, WhatsApp, formulário, animações
-├── manifest.json       PWA / ícone
-├── robots.txt          SEO
-├── sitemap.xml         SEO
-└── assets/
-    └── images/
-        └── favicon.svg  (placeholder do ícone JLO)
+├── index.html              Página principal
+├── obrigado.html           Página pós-envio do formulário
+├── style.css               Design system + responsivo
+├── script.js               Menu, WhatsApp, formulário, animações
+├── manifest.json           PWA / ícone
+├── robots.txt / sitemap.xml
+├── _headers                Cache (Cloudflare Pages)
+└── assets/images/
+    ├── jlo-mark.png        Logo do site
+    ├── favicon.png
+    ├── jenifer-formatura.jpg
+    ├── og-share.png        Preview de compartilhamento
+    └── social-logo-*.png   Versões para redes sociais
 ```
 
 ## Seções do site
