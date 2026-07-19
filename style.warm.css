@@ -3,34 +3,30 @@
    Marrom #3D2B1F ? Bege #B8AEA3 ? Texto claro #E0D8D1
    ========================================================= */
 :root {
-  /* Marrom caf? / chocolate amargo */
   --brown: #3D2B1F;
-  --brown-2: #4A3426;
-
-  --beige: #C9B8A8;
-  --beige-2: #D8C9BB;
-
-  --offwhite: #E8DDD4;
-  --offwhite-warm: #EDE4DB;
-  --offwhite-2: #E2D4C8;
-
-  --cream: var(--offwhite);
-  --cream-2: var(--offwhite-warm);
-  --sand: var(--beige-2);
-  --ink: var(--brown);
-  --ink-soft: var(--brown-2);
-  --muted: var(--beige);
-  --brand: var(--brown);
-  --brand-2: var(--brown-2);
-  --brand-soft: #E0D2C6;
-  --gold: var(--beige);
-  --gold-soft: var(--brown-2);
-  --rose: var(--brown-2);
-  --white: #F2EAE2;
-  --on-brand: var(--offwhite-warm);
-  --line: rgba(61, 43, 31, 0.12);
+  --brown-2: #5C4030;
+  --beige: #D4B896;
+  --beige-2: #E0C9A8;
+  --offwhite: #F3E6D8;
+  --offwhite-warm: #F7EDE3;
+  --offwhite-2: #EBD9C8;
+  --cream: #F3E6D8;
+  --cream-2: #F7EDE3;
+  --sand: #E0C9A8;
+  --ink: #3D2B1F;
+  --ink-soft: #5C4030;
+  --muted: #D4B896;
+  --brand: #3D2B1F;
+  --brand-2: #5C4030;
+  --brand-soft: #EBD9C8;
+  --gold: #D4B896;
+  --gold-soft: #5C4030;
+  --rose: #5C4030;
+  --white: #FAF3EB;
+  --on-brand: #F7EDE3;
+  --line: rgba(92, 64, 48, 0.14);
   --whats: #25d366;
-
+  
   --font-body: "Nunito Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
 
@@ -56,8 +52,8 @@ body {
   font-family: var(--font-body);
   font-size: 17px;
   line-height: 1.7;
-  color: var(--ink);
-  background: var(--cream);
+  color: #3D2B1F;
+  background: #F3E6D8;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -69,7 +65,7 @@ h1, h2, h3 {
   font-family: var(--font-display);
   font-weight: 600;
   line-height: 1.1;
-  color: var(--brand);
+  color: #3D2B1F;
   margin: 0;
 }
 
@@ -154,15 +150,15 @@ h1, h2, h3 {
 
 /* ---------- Barra de aviso ---------- */
 .announce {
-  background: #3D2B1F;
-  color: #F2EAE2;
+  background: #5C4030;
+  color: #F7EDE3;
   text-align: center;
   font-size: 13.5px;
-  padding: 12px 16px;
+  padding: 11px 16px;
   letter-spacing: 0.02em;
   border-bottom: none;
 }
-.announce strong { color: #E8DDD4; }
+.announce strong { color: #F3E6D8; }
 
 /* ---------- Cabecalho ---------- */
 .topbar {
@@ -174,7 +170,7 @@ h1, h2, h3 {
   align-items: center;
   gap: 24px;
   padding: 0 clamp(20px, 4vw, 40px);
-  background: #E8DDD4;
+  background: #F3E6D8;
   border-bottom: 1px solid rgba(61, 43, 31, 0.12);
 }
 
@@ -300,8 +296,8 @@ h1, h2, h3 {
   position: relative;
   padding: clamp(48px, 8vw, 90px) 0 clamp(56px, 8vw, 96px);
   background:
-    radial-gradient(900px 480px at 88% -8%, color-mix(in srgb, var(--beige) 28%, transparent), transparent 60%),
-    linear-gradient(180deg, var(--white) 0%, var(--cream) 55%, var(--cream-2) 100%);
+    radial-gradient(900px 480px at 88% -8%, rgba(212, 184, 150, 0.45), transparent 60%),
+    linear-gradient(180deg, #FAF3EB 0%, #F3E6D8 55%, #EBD9C8 100%);
   overflow: hidden;
 }
 .hero__inner {
@@ -898,7 +894,16 @@ h1, h2, h3 {
 }
 
 @media (max-width: 560px) {
-  body { font-size: 16px; }
+  body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.7;
+  color: #3D2B1F;
+  background: #F3E6D8;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
   .pains__grid { grid-template-columns: 1fr; }
   .gains__grid { grid-template-columns: 1fr; }
   .how__steps { grid-template-columns: 1fr; }
