@@ -473,11 +473,16 @@ h1, h2, h3 {
   border: 1px solid var(--line);
 }
 .gain-card__icon {
-  display: block;
-  color: var(--muted);
-  font-size: 14px;
-  margin-bottom: 10px;
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--offwhite-2);
+  color: var(--brand);
+  margin-bottom: 14px;
 }
+.gain-card__icon svg { display: block; }
 .gain-card h3 { font-size: 21px; margin-bottom: 8px; }
 .gain-card p { margin: 0; font-size: 15px; color: var(--ink-soft); }
 
