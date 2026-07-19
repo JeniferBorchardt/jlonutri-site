@@ -1,22 +1,36 @@
 /* =========================================================
    JLO Nutri — Design System
-   Dupla: Marrom café #3D2B1F + Bege taupe #B8AEA3
+   Marrom #3D2B1F · Bege #B8AEA3 · Texto claro #E0D8D1
    ========================================================= */
 :root {
-  --cream: #e0d8d1;      /* off-white quente — fundo principal */
-  --cream-2: #ded6ce;    /* off-white variação — seções */
-  --sand: #bcb2a6;       /* bege taupe claro */
-  --ink: #3d2b1f;        /* marrom café — texto */
-  --ink-soft: #443226;   /* marrom variação — texto secundário */
-  --muted: #b8aea3;      /* bege taupe — terciária */
-  --brand: #3d2b1f;      /* marrom café — títulos / marca */
-  --brand-2: #443226;    /* hover / variação */
-  --brand-soft: #bcb2a6; /* bege suave — fundos de detalhe */
-  --gold: #b8aea3;       /* acento greige */
-  --gold-soft: #e0d3cc;  /* texto claro sobre marrom */
-  --rose: #443226;       /* acentos de leitura (sem rosa) */
-  --white: #ede8e3;      /* cards (um tom acima do fundo) */
-  --on-brand: #e0d8d1;   /* texto claro sobre fundo escuro */
+  /* Marrom café / chocolate amargo */
+  --brown: #3D2B1F;
+  --brown-2: #443226;
+
+  /* Bege taupe / greige quente */
+  --beige: #B8AEA3;
+  --beige-2: #BCB2A6;
+
+  /* Off-whites */
+  --offwhite: #E0D8D1;   /* fundo + texto claro principal */
+  --offwhite-warm: #E0D3CC; /* texto claro sobre marrom */
+  --offwhite-2: #DED6CE; /* off-white sobre bege / seções */
+
+  /* Tokens semânticos */
+  --cream: var(--offwhite);
+  --cream-2: var(--offwhite-2);
+  --sand: var(--beige-2);
+  --ink: var(--brown);
+  --ink-soft: var(--brown-2);
+  --muted: var(--beige);         /* acentos / linhas (não corpo de texto) */
+  --brand: var(--brown);
+  --brand-2: var(--brown-2);
+  --brand-soft: var(--beige-2);
+  --gold: var(--beige);
+  --gold-soft: var(--offwhite-warm);
+  --rose: var(--brown-2);
+  --white: #EDE8E3;              /* cards (um tom acima do fundo) */
+  --on-brand: var(--offwhite);
   --line: rgba(61, 43, 31, 0.14);
   --whats: #25d366;
 
@@ -203,7 +217,7 @@ h1, h2, h3 {
 }
 .brand__text { display: flex; flex-direction: column; line-height: 1.2; }
 .brand__name { font-family: var(--font-display); font-size: 19px; font-weight: 600; color: var(--brand); }
-.brand__role { font-size: 11.5px; color: var(--muted); letter-spacing: 0.02em; }
+.brand__role { font-size: 11.5px; color: var(--ink-soft); letter-spacing: 0.02em; }
 
 .desktop-nav {
   display: flex;
@@ -324,7 +338,7 @@ h1, h2, h3 {
 }
 .hero__trust li { display: flex; flex-direction: column; }
 .hero__trust strong { font-family: var(--font-display); font-size: 22px; color: var(--brand); }
-.hero__trust span { font-size: 13px; color: var(--muted); }
+.hero__trust span { font-size: 13px; color: var(--ink-soft); }
 
 .hero__micro {
   margin: 0;
@@ -542,7 +556,7 @@ h1, h2, h3 {
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--ink-soft);
 }
 .plan-card__name { font-size: 26px; margin-bottom: 6px; }
 .plan-card__desc { font-size: 14.5px; color: var(--ink-soft); margin: 0 0 18px; min-height: 42px; }
@@ -555,7 +569,7 @@ h1, h2, h3 {
   line-height: 1;
 }
 .plan-card__price span { font-size: 20px; vertical-align: super; }
-.plan-card__price small { font-size: 15px; font-family: var(--font-body); color: var(--muted); font-weight: 600; }
+.plan-card__price small { font-size: 15px; font-family: var(--font-body); color: var(--ink-soft); font-weight: 600; }
 .plan-card__price-soft {
   font-family: var(--font-display);
   font-size: 32px;
@@ -586,7 +600,7 @@ h1, h2, h3 {
 }
 .plan-card__actions { display: grid; gap: 10px; }
 .plan-card .btn { width: 100%; }
-.plans__note { text-align: center; margin-top: 28px; font-size: 14px; color: var(--muted); }
+.plans__note { text-align: center; margin-top: 28px; font-size: 14px; color: var(--ink-soft); }
 .plans__note code {
   font-size: 12.5px;
   background: var(--brand-soft);
@@ -713,7 +727,7 @@ h1, h2, h3 {
 .faq-item summary::after {
   content: "+";
   font-size: 24px;
-  color: var(--muted);
+  color: var(--ink-soft);
   transition: transform 0.2s;
 }
 .faq-item[open] summary::after { transform: rotate(45deg); }
@@ -766,7 +780,7 @@ h1, h2, h3 {
 }
 .lead-form__title { font-family: var(--font-display); font-size: 24px; color: var(--brand); margin: 0 0 6px; }
 .lead-form__sub { margin: 0 0 20px; font-size: 14.5px; color: var(--ink-soft); }
-.lead-form__field span em { font-style: normal; font-weight: 500; color: var(--muted); }
+.lead-form__field span em { font-style: normal; font-weight: 500; color: var(--ink-soft); }
 .lead-form__field { display: block; margin-bottom: 16px; }
 .lead-form__field span { display: block; font-size: 13px; font-weight: 700; color: var(--ink-soft); margin-bottom: 6px; }
 .lead-form__field input,
@@ -788,7 +802,7 @@ h1, h2, h3 {
   box-shadow: 0 0 0 3px var(--brand-soft);
 }
 .lead-form__field textarea { resize: vertical; }
-.lead-form__note { margin: 14px 0 0; font-size: 12.5px; color: var(--muted); text-align: center; }
+.lead-form__note { margin: 14px 0 0; font-size: 12.5px; color: var(--ink-soft); text-align: center; }
 
 /* ---------- Rodapé ---------- */
 .footer { background: var(--brand); color: rgba(224, 216, 209, 0.9); }
@@ -946,5 +960,5 @@ h1, h2, h3 {
 .thanks__note {
   margin: 0;
   font-size: 13px;
-  color: var(--muted);
+  color: var(--ink-soft);
 }
