@@ -391,12 +391,17 @@ h1, h2, h3 {
 .pain-card__icon {
   display: inline-grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
   background: var(--offwhite-2);
   color: var(--brand);
   margin-bottom: 14px;
+}
+.pain-card__icon svg {
+  display: block;
+  width: 22px;
+  height: 22px;
 }
 .pain-card h3 { font-size: 20px; margin-bottom: 8px; }
 .pain-card p { margin: 0; font-size: 15px; color: var(--ink-soft); }
