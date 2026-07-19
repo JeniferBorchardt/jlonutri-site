@@ -4,8 +4,8 @@
   "description": "Nutrição para mulheres 35+. Consultas 100% online.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#E0D8D1",
-  "theme_color": "#3D2B1F",
+  "background_color": "#E8DDD4",
+  "theme_color": "#E8DDD4",
   "icons": [
     {
       "src": "assets/images/favicon.png",
