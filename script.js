@@ -7,8 +7,8 @@
 /** WhatsApp no formato internacional, só números. Ex.: (53) 98137-8527 → "5553981378527" */
 const WHATSAPP_NUMBER = "5553981378527";
 
-/** Instagram da Jenifer (quando tiver a conta) */
-const INSTAGRAM_URL = "https://www.instagram.com/";
+/** Instagram da Jenifer */
+const INSTAGRAM_URL = "https://www.instagram.com/jlonutri";
 
 /**
  * Agenda online (Cal.com — região Europa)
@@ -152,7 +152,11 @@ function digitsOnly(value) {
   });
 
   const insta = document.querySelector('[data-cta="footer-instagram"]');
-  if (insta) insta.href = INSTAGRAM_URL;
+  if (insta) {
+    insta.href = INSTAGRAM_URL;
+    insta.target = "_blank";
+    insta.rel = "noopener noreferrer";
+  }
 })();
 
 /* Links de agendamento (Cal.com) */
