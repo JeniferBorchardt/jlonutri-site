@@ -894,16 +894,7 @@ h1, h2, h3 {
 }
 
 @media (max-width: 560px) {
-  body {
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: 17px;
-  line-height: 1.7;
-  color: #3D2B1F;
-  background: #F3E6D8;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
+  body { font-size: 16px; }
   .pains__grid { grid-template-columns: 1fr; }
   .gains__grid { grid-template-columns: 1fr; }
   .how__steps { grid-template-columns: 1fr; }
