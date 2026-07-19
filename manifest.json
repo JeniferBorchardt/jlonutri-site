@@ -1,11 +1,11 @@
 {
   "name": "JLO Nutri — Jenifer Lopes Borchardt",
   "short_name": "JLO Nutri",
-  "description": "Nutrição para mulheres 35+. Consultas 100% online.",
+  "description": "Nutrição para mulheres 35+. Atendimento online e presencial.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#E8DDD4",
-  "theme_color": "#E8DDD4",
+  "background_color": "#F5EFEA",
+  "theme_color": "#F5EFEA",
   "icons": [
     {
       "src": "assets/images/favicon.png",
