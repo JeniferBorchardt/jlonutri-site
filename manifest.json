@@ -8,9 +8,9 @@
   "theme_color": "#3e4a3c",
   "icons": [
     {
-      "src": "assets/images/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
+      "src": "assets/images/favicon.png",
+      "sizes": "320x320",
+      "type": "image/png"
     }
   ]
 }

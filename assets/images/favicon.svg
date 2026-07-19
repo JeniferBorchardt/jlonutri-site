@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <rect width="64" height="64" rx="14" fill="#3d2e24"/>
+  <rect width="64" height="64" rx="14" fill="#3D2B1F"/>
   <text x="50%" y="52%" dominant-baseline="central" text-anchor="middle"
         font-family="Georgia, 'Times New Roman', serif" font-size="24" font-weight="700"
-        fill="#f1eee9" letter-spacing="0.5">JLo</text>
+        fill="#E0D8D1" letter-spacing="0.5">JLo</text>
 </svg>
