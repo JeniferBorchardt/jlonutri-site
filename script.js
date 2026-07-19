@@ -157,6 +157,23 @@ function digitsOnly(value) {
     insta.target = "_blank";
     insta.rel = "noopener noreferrer";
   }
+
+  /* E-mail do rodapé: se não houver app de e-mail, copia o endereço */
+  const emailBtn = document.getElementById("footerEmail");
+  if (emailBtn) {
+    emailBtn.addEventListener("click", async (e) => {
+      const address = "contato@jlonutri.com.br";
+      track("email_click", { source: "footer" });
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          // não impede o mailto; só deixa o endereço pronto na área de transferência
+          await navigator.clipboard.writeText(address);
+        }
+      } catch (_) {
+        /* ignore */
+      }
+    });
+  }
 })();
 
 /* Links de agendamento (Cal.com) */
