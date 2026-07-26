@@ -1,26 +1,29 @@
 /* =========================================================
    JLO Nutri — Design System
-   Dark modern · Charcoal #0C0E12 / #181C24 · Bronze #C9B896
+   Fundo marrom #3D2B1F · Letras off-white quente #F5EFEA
    ========================================================= */
 :root {
   color-scheme: dark;
 
-  --brown: #C9B896;
-  --brown-2: #D4C4A4;
-  --offwhite: #0C0E12;
-  --offwhite-2: #12151C;
-  --white: #181C24;
-  --ink: #F0EDE8;
-  --ink-soft: #B0ABA3;
-  --muted: #8A857C;
-  --brand: #C9B896;
-  --brand-2: #D4C4A4;
-  --brand-soft: #22262F;
-  --on-brand: #0C0E12;
-  --line: rgba(240, 237, 232, 0.1);
+  /* Cor padrão de todas as letras (texto + logos) */
+  --warm-offwhite: #F5EFEA;
+
+  --brown: var(--warm-offwhite);
+  --brown-2: var(--warm-offwhite);
+  --offwhite: #3D2B1F;
+  --offwhite-2: #443226;
+  --white: #4A3728;
+  --ink: var(--warm-offwhite);
+  --ink-soft: var(--warm-offwhite);
+  --muted: var(--warm-offwhite);
+  --brand: var(--warm-offwhite);
+  --brand-2: var(--warm-offwhite);
+  --brand-soft: #4A3728;
+  --on-brand: #3D2B1F;
+  --line: rgba(245, 239, 234, 0.2);
   --whats: #25d366;
-  --cream: #0C0E12;
-  --sand: #12151C;
+  --cream: #3D2B1F;
+  --sand: #443226;
 
   --font-body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
@@ -29,8 +32,8 @@
   --radius: 16px;
   --radius-sm: 10px;
   --radius-pill: 999px;
-  --shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
-  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.18);
   --header-h: 88px;
   --sticky-h: 72px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -133,7 +136,7 @@ h1, h2, h3 {
 .btn--ghost {
   background: transparent;
   color: var(--brand);
-  border-color: rgba(201, 184, 150, 0.35);
+  border-color: rgba(245, 239, 234, 0.4);
 }
 .btn--ghost:hover {
   background: var(--brand);
@@ -167,7 +170,7 @@ h1, h2, h3 {
   align-items: center;
   gap: 20px;
   padding: 0 clamp(16px, 4vw, 40px);
-  background: rgba(12, 14, 18, 0.92);
+  background: rgba(61, 43, 31, 0.94);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
@@ -302,7 +305,7 @@ h1, h2, h3 {
   font-size: 16px;
   color: var(--brand);
   text-decoration: none;
-  border-bottom: 1.5px solid rgba(201, 184, 150, 0.35);
+  border-bottom: 1.5px solid rgba(245, 239, 234, 0.4);
   padding-bottom: 2px;
 }
 .text-link:hover { border-color: var(--brand); }
@@ -312,9 +315,9 @@ h1, h2, h3 {
   position: relative;
   padding: clamp(40px, 7vw, 80px) 0 clamp(48px, 7vw, 88px);
   background:
-    radial-gradient(900px 480px at 88% 0%, rgba(201, 184, 150, 0.14), transparent 58%),
-    radial-gradient(700px 380px at 8% 80%, rgba(201, 184, 150, 0.06), transparent 55%),
-    linear-gradient(180deg, #141820 0%, #0C0E12 55%, #0A0C10 100%);
+    radial-gradient(900px 480px at 88% 0%, rgba(245, 239, 234, 0.08), transparent 58%),
+    radial-gradient(700px 380px at 8% 80%, rgba(237, 226, 220, 0.05), transparent 55%),
+    linear-gradient(180deg, #443226 0%, #3D2B1F 55%, #34241A 100%);
 }
 .hero__inner {
   display: grid;
@@ -368,7 +371,12 @@ h1, h2, h3 {
   border: 1px solid var(--line);
   overflow: hidden;
 }
-.hero__photo img,
+.hero__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+}
 .about__photo img {
   width: 100%;
   height: 100%;
@@ -872,14 +880,14 @@ h1, h2, h3 {
 .lead-form__field textarea:focus {
   outline: none;
   border-color: var(--brand);
-  box-shadow: 0 0 0 3px rgba(201, 184, 150, 0.22);
+  box-shadow: 0 0 0 3px rgba(245, 239, 234, 0.22);
 }
 .lead-form__error {
   margin: 0 0 12px;
   padding: 10px 12px;
   border-radius: var(--radius-sm);
-  background: #2A1816;
-  color: #F0B4AC;
+  background: #5A2E28;
+  color: #F5EFEA;
   font-size: 14px;
   font-weight: 600;
 }
@@ -887,8 +895,8 @@ h1, h2, h3 {
   margin: 0 0 12px;
   padding: 10px 12px;
   border-radius: var(--radius-sm);
-  background: #15241C;
-  color: #9ED4B0;
+  background: #2F4A38;
+  color: #F5EFEA;
   font-size: 14px;
   font-weight: 600;
 }
@@ -971,7 +979,7 @@ h1, h2, h3 {
   bottom: 0;
   z-index: 110;
   padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
-  background: rgba(12, 14, 18, 0.94);
+  background: rgba(61, 43, 31, 0.96);
   border-top: 1px solid var(--line);
   backdrop-filter: blur(10px);
 }

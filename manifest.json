@@ -4,8 +4,8 @@
   "description": "Nutrição para mulheres 35+. Atendimento online e presencial.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0C0E12",
-  "theme_color": "#0C0E12",
+  "background_color": "#3D2B1F",
+  "theme_color": "#3D2B1F",
   "icons": [
     {
       "src": "assets/images/favicon.png",
