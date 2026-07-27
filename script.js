@@ -11,11 +11,11 @@ const WHATSAPP_NUMBER = "5553981378527";
 const INSTAGRAM_URL = "https://www.instagram.com/jlonutri";
 
 /**
- * Agenda online (Cal.com — região Europa)
- * Evento: Consulta nutricional
- * https://cal.eu/jlonutri/consulta-nutricional
+ * Agenda online (Cal.com) — DESATIVADA.
+ * Deixe vazio para agendar só pelo WhatsApp.
+ * Para reativar, cole a URL do evento Cal.com.
  */
-const CAL_BOOKING_URL = "https://cal.eu/jlonutri/consulta-nutricional";
+const CAL_BOOKING_URL = "";
 
 /**
  * Catálogo de planos — ÚNICO lugar para preço e link de pagamento.
@@ -176,14 +176,29 @@ function digitsOnly(value) {
   }
 })();
 
-/* Links de agendamento (Cal.com) */
+/* Links de agendamento — Cal.com desativado: redireciona para WhatsApp */
 (function initBookingLinks() {
+  const bookingUrl = (CAL_BOOKING_URL || "").trim();
   document.querySelectorAll("[data-booking]").forEach((el) => {
-    el.href = CAL_BOOKING_URL;
+    if (bookingUrl) {
+      el.href = bookingUrl;
+      el.target = "_blank";
+      el.rel = "noopener noreferrer";
+      el.addEventListener("click", () => {
+        track("agendar_click", { link_url: bookingUrl, cta: el.getAttribute("data-cta") || "booking" });
+      });
+      return;
+    }
+    // Sem agenda online: horário pelo WhatsApp
+    el.removeAttribute("target");
+    el.removeAttribute("rel");
+    el.href = waLink(
+      "Olá, Jenifer! Gostaria de combinar o horário da minha consulta."
+    );
     el.target = "_blank";
     el.rel = "noopener noreferrer";
     el.addEventListener("click", () => {
-      track("agendar_click", { link_url: CAL_BOOKING_URL, cta: el.getAttribute("data-cta") || "booking" });
+      track("whatsapp_click", { source: el.getAttribute("data-cta") || "booking_fallback" });
     });
   });
 })();

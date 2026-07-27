@@ -370,27 +370,32 @@ h1, h2, h3 {
 
 .hero__media { position: relative; }
 .hero__photo,
-.about__photo {
-  position: relative;
+.about__photo,
+.gains__photo {
+  width: min(420px, 100%);
+  margin-inline: auto;
   border-radius: 20px;
   background: var(--offwhite-2);
   border: 1px solid var(--line);
   overflow: hidden;
+  line-height: 0;
 }
-.hero__photo { aspect-ratio: 4 / 5; }
-.about__photo { aspect-ratio: 3 / 4; }
+.hero__photo { width: 100%; }
+.about__photo { width: 100%; }
+.gains__photo { margin: 0 auto clamp(28px, 4vw, 40px); }
 .hero__photo img,
-.about__photo img {
-  position: absolute;
-  inset: 0;
+.about__photo img,
+.gains__photo img {
   width: 100%;
-  height: 100%;
-  max-width: none;
-  object-fit: cover;
+  height: auto;
+  max-width: 100%;
   display: block;
+  object-fit: cover;
+  aspect-ratio: 3 / 4;
 }
-.hero__photo img { object-position: center 22%; }
+.hero__photo img { object-position: center 22%; aspect-ratio: 4 / 5; }
 .about__photo img { object-position: center 28%; }
+.gains__photo img { object-position: center 18%; }
 
 /* ---------- Pains ---------- */
 .pains { background: var(--offwhite); }
@@ -476,26 +481,6 @@ h1, h2, h3 {
 
 /* ---------- Gains ---------- */
 .gains { background: var(--offwhite); }
-.gains__photo {
-  position: relative;
-  width: min(420px, 100%);
-  margin: 0 auto clamp(28px, 4vw, 40px);
-  aspect-ratio: 3 / 4;
-  border-radius: 20px;
-  background: var(--offwhite-2);
-  border: 1px solid var(--line);
-  overflow: hidden;
-}
-.gains__photo img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  object-fit: cover;
-  object-position: center 20%;
-  display: block;
-}
 .gains__grid {
   list-style: none;
   margin: 0;

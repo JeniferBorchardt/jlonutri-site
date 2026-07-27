@@ -6,25 +6,24 @@
   <meta name="theme-color" content="#2E241C" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Pagamento recebido · JLO Nutri</title>
-  <meta name="description" content="Confirmação de pagamento — JLO Nutri. Escolha seu horário na agenda online." />
+  <meta name="description" content="Confirmação de pagamento — JLO Nutri. Combine seu horário pelo WhatsApp." />
   <link rel="icon" href="assets/images/favicon.png?v=7" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=67" />
+  <link rel="stylesheet" href="style.css?v=69" />
 </head>
 <body class="thanks-page">
   <main class="thanks">
     <div class="thanks__card">
       <img class="thanks__logo" src="assets/images/jlo-mark.png?v=7" alt="JLO Nutri" width="350" height="234" />
       <p class="eyebrow">Próximo passo</p>
-      <h1>Agora escolha seu horário</h1>
+      <h1>Pagamento recebido</h1>
       <p class="thanks__lead">
-        Se o pagamento foi concluído, obrigada! Agora escolha o horário na agenda. A confirmação e o link da videochamada (Cal Video) chegam no seu e-mail.
+        Obrigada! Agora vamos combinar o melhor horário pelo WhatsApp. Me chame para alinharmos dia e horário da consulta.
       </p>
       <div class="thanks__actions">
-        <a class="btn btn--primary btn--lg" id="thanksBook" href="https://cal.eu/jlonutri/consulta-nutricional" target="_blank" rel="noopener noreferrer">Escolher meu horário</a>
-        <a class="btn btn--whats btn--lg" id="thanksWhats" href="#" target="_blank" rel="noopener noreferrer">Dúvida no WhatsApp</a>
+        <a class="btn btn--whats btn--lg" id="thanksWhats" href="#" target="_blank" rel="noopener noreferrer">Combinar horário no WhatsApp</a>
       </div>
       <a class="text-link" href="index.html">Voltar ao site</a>
       <p class="thanks__note">Jenifer Lopes Borchardt · CRN-2 · 13894</p>
@@ -32,8 +31,7 @@
   </main>
   <script>
     const WHATSAPP_NUMBER = "5553981378527";
-    const CAL_BOOKING_URL = "https://cal.eu/jlonutri/consulta-nutricional";
-    const msg = "Olá, Jenifer! Acabei de pagar pelo site e vou agendar o horário na agenda online. Qualquer dúvida, te chamo aqui.";
+    const msg = "Olá, Jenifer! Acabei de pagar pelo site e gostaria de combinar o horário da consulta.";
 
     window.dataLayer = window.dataLayer || [];
     function track(eventName, params) {
@@ -43,10 +41,6 @@
 
     track("compra_concluida", { page: "obrigado" });
 
-    document.getElementById("thanksBook").href = CAL_BOOKING_URL;
-    document.getElementById("thanksBook").addEventListener("click", function () {
-      track("agendar_click", { source: "obrigado" });
-    });
     document.getElementById("thanksWhats").href =
       "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg);
     document.getElementById("thanksWhats").addEventListener("click", function () {
