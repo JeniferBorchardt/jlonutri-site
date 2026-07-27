@@ -40,15 +40,15 @@ const PLANS = {
   trimestral: {
     id: "trimestral",
     name: "Trimestral",
-    price: 890,
+    price: 990,
     period: "(ou 3x de R$ 330)",
     paymentUrl: "",
   },
   semestral: {
     id: "semestral",
     name: "Semestral",
-    price: 1590,
-    period: "(ou 6x de R$ 290)",
+    price: 1790,
+    period: "(ou 6x de R$ 298)",
     paymentUrl: "",
   },
 };

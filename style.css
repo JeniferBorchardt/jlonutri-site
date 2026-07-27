@@ -375,8 +375,7 @@ h1, h2, h3 {
 
 .hero__media { position: relative; }
 .hero__photo,
-.about__photo,
-.gains__photo {
+.about__photo {
   width: min(420px, 100%);
   margin-inline: auto;
   border-radius: 20px;
@@ -387,10 +386,8 @@ h1, h2, h3 {
 }
 .hero__photo { width: 100%; }
 .about__photo { width: 100%; }
-.gains__photo { margin: 0 auto clamp(28px, 4vw, 40px); }
 .hero__photo img,
-.about__photo img,
-.gains__photo img {
+.about__photo img {
   width: 100%;
   height: auto;
   max-width: 100%;
@@ -400,7 +397,6 @@ h1, h2, h3 {
 }
 .hero__photo img { object-position: center 22%; aspect-ratio: 4 / 5; }
 .about__photo img { object-position: center 28%; }
-.gains__photo img { object-position: center 18%; }
 
 /* ---------- Pains ---------- */
 .pains { background: var(--offwhite); }
@@ -485,7 +481,25 @@ h1, h2, h3 {
 }
 
 /* ---------- Gains ---------- */
-.gains { background: var(--offwhite); }
+.gains {
+  background: var(--offwhite);
+  padding-top: 0;
+}
+.gains__band {
+  width: 100%;
+  height: clamp(180px, 32vw, 360px);
+  overflow: hidden;
+  margin: 0 0 clamp(36px, 5vw, 56px);
+  background: var(--offwhite-2);
+  border-bottom: 1px solid var(--line);
+}
+.gains__band img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 30%;
+}
 .gains__grid {
   list-style: none;
   margin: 0;
