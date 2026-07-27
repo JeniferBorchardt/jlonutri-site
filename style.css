@@ -1,12 +1,12 @@
 /* =========================================================
    JLO Nutri — Design System
-   Mocha moderno #2E241C · Superfícies suaves · Off-white #F3EBE3
+   Mocha #2E241C · Letras marfim quente #F6E4CF
    ========================================================= */
 :root {
   color-scheme: dark;
 
-  /* Tipografia — off-white quente único */
-  --warm-offwhite: #F3EBE3;
+  /* Tipografia — marfim quente (mais amêndoa / pêssego) */
+  --warm-offwhite: #F6E4CF;
 
   /* Família mocha (um só tom, degraus curtos) */
   --bg: #2E241C;
@@ -19,13 +19,13 @@
   --offwhite-2: var(--surface);
   --white: var(--elevated);
   --ink: var(--warm-offwhite);
-  --ink-soft: rgba(243, 235, 227, 0.86);
-  --muted: rgba(243, 235, 227, 0.68);
+  --ink-soft: rgba(246, 228, 207, 0.88);
+  --muted: rgba(246, 228, 207, 0.7);
   --brand: var(--warm-offwhite);
-  --brand-2: #E8DFD4;
+  --brand-2: #EBD4B8;
   --brand-soft: var(--elevated);
   --on-brand: var(--bg);
-  --line: rgba(243, 235, 227, 0.14);
+  --line: rgba(246, 228, 207, 0.16);
   --whats: #25d366;
   --cream: var(--bg);
   --sand: var(--surface);
@@ -141,7 +141,7 @@ h1, h2, h3 {
 .btn--ghost {
   background: transparent;
   color: var(--brand);
-  border-color: rgba(243, 235, 227, 0.35);
+  border-color: rgba(246, 228, 207, 0.35);
 }
 .btn--ghost:hover {
   background: var(--brand);
@@ -294,12 +294,17 @@ h1, h2, h3 {
   margin: 0 auto clamp(32px, 5vw, 48px);
   text-align: center;
 }
-.section-head h2 { font-size: clamp(28px, 4.8vw, 44px); }
+.section-head h2 {
+  font-size: clamp(28px, 4.8vw, 42px);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
 .section-sub {
-  margin: 16px auto 0;
+  margin: 14px auto 0;
   color: var(--ink-soft);
-  font-size: 17px;
-  max-width: 52ch;
+  font-size: 16.5px;
+  line-height: 1.6;
+  max-width: 40ch;
 }
 
 .text-link {
@@ -310,7 +315,7 @@ h1, h2, h3 {
   font-size: 16px;
   color: var(--brand);
   text-decoration: none;
-  border-bottom: 1.5px solid rgba(243, 235, 227, 0.35);
+  border-bottom: 1.5px solid rgba(246, 228, 207, 0.35);
   padding-bottom: 2px;
 }
 .text-link:hover { border-color: var(--brand); }
@@ -320,8 +325,8 @@ h1, h2, h3 {
   position: relative;
   padding: clamp(40px, 7vw, 80px) 0 clamp(48px, 7vw, 88px);
   background:
-    radial-gradient(900px 480px at 88% 0%, rgba(243, 235, 227, 0.06), transparent 58%),
-    radial-gradient(700px 380px at 8% 80%, rgba(243, 235, 227, 0.03), transparent 55%),
+    radial-gradient(900px 480px at 88% 0%, rgba(246, 228, 207, 0.06), transparent 58%),
+    radial-gradient(700px 380px at 8% 80%, rgba(246, 228, 207, 0.03), transparent 55%),
     linear-gradient(180deg, #342920 0%, #2E241C 55%, #281F18 100%);
 }
 .hero__inner {
@@ -541,7 +546,7 @@ h1, h2, h3 {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  gap: 20px;
   align-items: stretch;
 }
 .plan-card {
@@ -551,11 +556,12 @@ h1, h2, h3 {
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 30px 24px;
+  padding: 32px 26px 28px;
 }
 .plan-card--featured {
   border-color: var(--brand);
   box-shadow: var(--shadow);
+  padding-top: 40px;
 }
 .plan-card__tag {
   position: absolute;
@@ -580,40 +586,61 @@ h1, h2, h3 {
   text-transform: uppercase;
   color: var(--muted);
 }
-.plan-card__name { font-size: 26px; margin-bottom: 6px; }
-.plan-card__desc { font-size: 14.5px; color: var(--ink-soft); margin: 0 0 16px; }
+.plan-card__name {
+  font-size: clamp(24px, 2.4vw, 28px);
+  margin: 0 0 10px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.plan-card__desc {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0 0 20px;
+  max-width: 28ch;
+}
 .plan-card__prices {
   display: grid;
-  gap: 10px;
-  margin: 0 0 18px;
+  gap: 14px;
+  margin: 0 0 22px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 .plan-card__price {
   font-family: var(--font-display);
-  font-size: 34px;
+  font-size: clamp(30px, 3vw, 36px);
   font-weight: 700;
   color: var(--brand);
-  margin: 0;
-  line-height: 1.15;
+  margin: 0 0 20px;
+  line-height: 1.2;
 }
-.plan-card__prices .plan-card__price { font-size: 32px; }
+.plan-card__prices .plan-card__price {
+  font-size: clamp(28px, 2.8vw, 32px);
+  margin: 0;
+}
 .plan-card__modality {
   display: block;
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-bottom: 4px;
+  color: var(--muted);
+  margin-bottom: 6px;
   vertical-align: baseline;
 }
-.plan-card__price span { font-size: 18px; vertical-align: super; }
-.plan-card__price .plan-card__modality { font-size: 12px; vertical-align: baseline; }
+.plan-card__price span { font-size: 0.45em; vertical-align: super; }
+.plan-card__price .plan-card__modality { font-size: 11px; vertical-align: baseline; }
 .plan-card__price small {
-  font-size: 14px;
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
   font-family: var(--font-body);
   color: var(--ink-soft);
   font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0;
 }
 .plan-card__price-soft {
   font-family: var(--font-display);
@@ -623,16 +650,17 @@ h1, h2, h3 {
 }
 .plan-card__feats {
   list-style: none;
-  margin: 0 0 22px;
+  margin: 0 0 24px;
   padding: 0;
   display: grid;
-  gap: 10px;
+  gap: 12px;
   flex: 1;
 }
 .plan-card__feats li {
   position: relative;
   padding-left: 26px;
   font-size: 14.5px;
+  line-height: 1.5;
   color: var(--ink-soft);
 }
 .plan-card__feats li::before {
@@ -643,8 +671,8 @@ h1, h2, h3 {
   color: var(--brand);
   font-weight: 700;
 }
-.plan-card__actions { display: grid; gap: 10px; }
-.plan-card .btn { width: 100%; }
+.plan-card__actions { display: grid; gap: 10px; margin-top: auto; }
+.plan-card .btn { width: 100%; min-height: 48px; }
 
 .plans__legal {
   display: flex;
@@ -662,8 +690,8 @@ h1, h2, h3 {
 }
 
 .plans__flow {
-  margin-top: clamp(32px, 5vw, 48px);
-  padding: clamp(22px, 4vw, 32px);
+  margin-top: clamp(36px, 5vw, 52px);
+  padding: clamp(24px, 4vw, 36px);
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -673,7 +701,8 @@ h1, h2, h3 {
 .plans__flow-title {
   font-size: clamp(22px, 3vw, 28px);
   text-align: center;
-  margin-bottom: 16px;
+  margin: 0 0 18px;
+  line-height: 1.25;
 }
 .plans__flow-steps {
   list-style: none;
@@ -684,14 +713,21 @@ h1, h2, h3 {
 }
 .plans__flow-steps li {
   font-size: 15px;
+  line-height: 1.5;
   color: var(--ink-soft);
-  padding: 12px 14px;
+  padding: 12px 16px;
   border-radius: var(--radius-sm);
   background: var(--offwhite);
 }
 .plans__flow-steps strong { color: var(--brand); }
 .plans__flow-steps em { font-style: normal; font-weight: 700; color: var(--brand); }
-.plans__note { margin: 8px 0 0; font-size: 14px; color: var(--ink-soft); }
+.plans__note {
+  margin: 12px 0 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  text-align: center;
+}
 
 /* ---------- Trust block (sem depoimentos falsos) ---------- */
 .trust-block { background: var(--white); }
@@ -844,7 +880,7 @@ h1, h2, h3 {
 .lead-form__field textarea:focus {
   outline: none;
   border-color: var(--brand);
-  box-shadow: 0 0 0 3px rgba(243, 235, 227, 0.18);
+  box-shadow: 0 0 0 3px rgba(246, 228, 207, 0.18);
 }
 .lead-form__error {
   margin: 0 0 12px;

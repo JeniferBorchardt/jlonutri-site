@@ -49,16 +49,16 @@ const PLANS = {
   },
   trimestral: {
     id: "trimestral",
-    name: "Programa Trimestral",
-    price: 790,
-    period: "/ trimestre",
+    name: "Trimestral",
+    price: 890,
+    period: "(ou 3x de R$ 330)",
     paymentUrl: "",
   },
-  anual: {
-    id: "anual",
-    name: "Programa Anual",
-    price: 3000,
-    period: "/ ano",
+  semestral: {
+    id: "semestral",
+    name: "Semestral",
+    price: 1590,
+    period: "(ou 6x de R$ 290)",
     paymentUrl: "",
   },
 };
