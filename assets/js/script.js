@@ -9,7 +9,7 @@
 const WHATSAPP_NUMBER = "5553981378527";
 
 /** Instagram da Jenifer */
-const INSTAGRAM_URL = "https://www.instagram.com/jlonutri";
+const INSTAGRAM_URL = "https://www.instagram.com/nutrijeniferlopes";
 
 /**
  * Agenda online (Cal.com) — DESATIVADA.
