@@ -229,6 +229,7 @@ function getPlan(planId) {
       const url = (plan.paymentUrl || "").trim();
       if (url) {
         payBtn.href = url;
+        payBtn.textContent = "Começar agora";
         payBtn.setAttribute("data-pay-ready", "true");
         payBtn.addEventListener("click", () => {
           track("selecao_plano", { plan_id: plan.id, plan_name: plan.name });
@@ -242,6 +243,7 @@ function getPlan(planId) {
         payBtn.href = waLink(
           `Olá, Jenifer! Quero fechar o formato "${plan.name}". Pode me enviar o link de pagamento e os horários disponíveis?`
         );
+        payBtn.textContent = "Quero no WhatsApp";
         payBtn.setAttribute("data-pay-ready", "false");
         payBtn.addEventListener("click", () => {
           track("selecao_plano", { plan_id: plan.id, plan_name: plan.name });
@@ -291,6 +293,30 @@ function getPlan(planId) {
       });
     });
   });
+})();
+
+/* ---------- 11. Analytics (carrega após interação) ---------- */
+
+(function initAnalytics() {
+  function loadGtag() {
+    if (window.__gtagLoaded) return;
+    window.__gtagLoaded = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function gtag() { window.dataLayer.push(arguments); };
+    window.gtag("js", new Date());
+    window.gtag("config", "G-QKJYT0FB50");
+
+    const s = document.createElement("script");
+    s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=G-QKJYT0FB50";
+    document.head.appendChild(s);
+  }
+
+  if ("requestIdleCallback" in window) {
+    requestIdleCallback(loadGtag, { timeout: 3000 });
+  } else {
+    window.addEventListener("load", () => setTimeout(loadGtag, 1200), { once: true });
+  }
 })();
 
 /* ---------- 10. Animação ao rolar ---------- */

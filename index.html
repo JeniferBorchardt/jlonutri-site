@@ -8,9 +8,12 @@
   <title>Nutricionista para Mulheres 35+ | Jenifer Lopes Borchardt · JLO Nutri</title>
   <meta name="description" content="Nutricionista para mulheres 35+ em Pelotas e online. Emagrecimento saudável, menopausa, climatério e mais energia com a nutricionista Jenifer Lopes Borchardt (CRN-2 13894) — mestre e doutoranda em Nutrição e Alimentos." />
   <meta name="author" content="Jenifer Lopes Borchardt" />
-  <meta name="robots" content="index, follow" />
-  <meta name="keywords" content="nutricionista para mulheres 35+, nutricionista online emagrecimento, nutricionista menopausa, nutricionista climatério, nutricionista feminina online, nutricionista em Pelotas, acompanhamento nutricional mulheres" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta name="geo.region" content="BR-RS" />
+  <meta name="geo.placename" content="Pelotas" />
+  <meta name="format-detection" content="telephone=no" />
   <link rel="canonical" href="https://www.jlonutri.com.br/" />
+  <link rel="alternate" hreflang="pt-BR" href="https://www.jlonutri.com.br/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -18,6 +21,8 @@
   <meta property="og:title" content="Nutricionista para Mulheres 35+ | Jenifer Lopes Borchardt" />
   <meta property="og:description" content="Acompanhamento nutricional individualizado para emagrecer com saúde, recuperar energia e lidar com mudanças hormonais. Online e presencial." />
   <meta property="og:image" content="https://www.jlonutri.com.br/assets/images/og-share.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:url" content="https://www.jlonutri.com.br/" />
   <meta property="og:site_name" content="JLO Nutri — Jenifer Lopes Borchardt" />
 
@@ -30,7 +35,8 @@
   <link rel="icon" href="assets/images/favicon.png?v=8" type="image/png" />
   <link rel="apple-touch-icon" href="assets/images/favicon.png?v=8" />
   <link rel="manifest" href="manifest.json" />
-
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="https://wa.me" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Manrope:wght@400;600;700&display=swap" />
@@ -44,17 +50,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
   </noscript>
 
-  <link rel="preload" as="image" href="assets/images/jenifer-hero.webp" type="image/webp" imagesrcset="assets/images/jenifer-hero-480.webp 480w, assets/images/jenifer-hero.webp 768w" imagesizes="(max-width: 768px) 92vw, 420px" />
-  <link rel="stylesheet" href="assets/css/style.css?v=78" />
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QKJYT0FB50"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag("js", new Date());
-    gtag("config", "G-QKJYT0FB50");
-  </script>
+  <link rel="preload" as="image" href="assets/images/jenifer-hero.webp" type="image/webp" fetchpriority="high" imagesrcset="assets/images/jenifer-hero-480.webp 480w, assets/images/jenifer-hero.webp 768w" imagesizes="(max-width: 768px) 92vw, 420px" />
+  <link rel="preload" as="style" href="assets/css/style.css?v=80" />
+  <link rel="stylesheet" href="assets/css/style.css?v=80" />
 
   <script type="application/ld+json">
   {
@@ -65,12 +63,20 @@
     "description": "Nutrição clínica com foco na saúde da mulher 35+. Atendimento online e presencial.",
     "url": "https://www.jlonutri.com.br/",
     "image": "https://www.jlonutri.com.br/assets/images/og-share.png",
+    "telephone": "+5553981378527",
+    "email": "contato@jlonutri.com.br",
     "medicalSpecialty": "Nutrition",
     "priceRange": "$$",
-    "areaServed": ["BR", "Pelotas"],
+    "areaServed": [
+      { "@type": "City", "name": "Pelotas" },
+      { "@type": "Country", "name": "BR" }
+    ],
     "availableService": [
       { "@type": "MedicalTherapy", "name": "Consulta nutricional online" },
       { "@type": "MedicalTherapy", "name": "Consulta nutricional presencial" }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/nutrijeniferlopes"
     ],
     "founder": { "@id": "https://www.jlonutri.com.br/#jenifer" }
   }
@@ -84,7 +90,13 @@
     "jobTitle": "Nutricionista",
     "gender": "Female",
     "url": "https://www.jlonutri.com.br/",
+    "image": "https://www.jlonutri.com.br/assets/images/jenifer-hero.webp",
+    "telephone": "+5553981378527",
+    "email": "contato@jlonutri.com.br",
     "worksFor": { "@id": "https://www.jlonutri.com.br/#business" },
+    "sameAs": [
+      "https://www.instagram.com/nutrijeniferlopes"
+    ],
     "knowsAbout": [
       "Nutrição da mulher 35+",
       "Emagrecimento saudável",
@@ -93,6 +105,52 @@
       "Acompanhamento nutricional individualizado"
     ],
     "alumniOf": "Graduação em Nutrição (2015), Mestrado e Doutorado em andamento em Nutrição e Alimentos"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.jlonutri.com.br/#webpage",
+    "url": "https://www.jlonutri.com.br/",
+    "name": "Nutricionista para Mulheres 35+ | Jenifer Lopes Borchardt",
+    "description": "Acompanhamento nutricional individualizado para mulheres 35+ em Pelotas e online.",
+    "inLanguage": "pt-BR",
+    "isPartOf": { "@id": "https://www.jlonutri.com.br/#business" },
+    "about": { "@id": "https://www.jlonutri.com.br/#jenifer" },
+    "primaryImageOfPage": "https://www.jlonutri.com.br/assets/images/jenifer-hero.webp"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Para quem é o acompanhamento nutricional da Jenifer Lopes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Para mulheres 35+ que sentem mudanças no corpo, dificuldade para emagrecer, cansaço, alterações hormonais ou dietas que não funcionam mais."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "O atendimento é online ou presencial?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ambos. Consultas presenciais em Pelotas (RS) e acompanhamento online para todo o Brasil."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quais formatos de consulta estão disponíveis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Consulta avulsa (R$ 350), plano trimestral (R$ 990) e plano semestral (R$ 1.790), com bioimpedância e medidas corporais no atendimento presencial."
+        }
+      }
+    ]
   }
   </script>
 </head>
@@ -105,7 +163,7 @@
 
   <header class="topbar" id="topbar">
     <a class="brand" href="#topo" aria-label="JLO Nutri — Jenifer Lopes Borchardt, página inicial">
-      <img class="brand__mark-img" src="assets/images/jlo-mark.png?v=8" alt="JLO Nutri" width="350" height="234" />
+      <img class="brand__mark-img" src="assets/images/jlo-mark.png?v=8" alt="JLO Nutri" width="350" height="234" decoding="async" />
       <span class="brand__aside" aria-hidden="true">
         <span class="brand__aside-line"></span>
         <span class="brand__aside-label">Nutricionista</span>
@@ -137,12 +195,12 @@
     <span id="topo" aria-hidden="true"></span>
 
     <!-- 1. HERO -->
-    <section class="hero" id="inicio">
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
       <div class="hero__bg" aria-hidden="true"></div>
       <div class="container hero__inner">
         <div class="hero__copy">
           <p class="eyebrow">Nutrição para mulheres 35+</p>
-          <h1 class="hero__title">Te ajudo a entender seu corpo nessa nova fase.</h1>
+          <h1 class="hero__title" id="hero-title">Te ajudo a entender seu corpo nessa nova fase.</h1>
           <p class="hero__lead">Um acompanhamento nutricional pensado para as mudanças no corpo, na energia e no metabolismo da mulher 35+.</p>
           <div class="hero__actions">
             <a class="btn btn--primary btn--lg" data-cta="hero" href="#consultas">Quero agendar minha consulta</a>
@@ -179,11 +237,11 @@
     </section>
 
     <!-- 2. IDENTIFICAÇÃO -->
-    <section class="section pains" id="para-quem">
+    <section class="section pains" id="para-quem" aria-labelledby="pains-title">
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">Para quem é</p>
-          <h2>Você sente que seu corpo mudou depois dos 35?</h2>
+          <h2 id="pains-title">Você sente que seu corpo mudou depois dos 35?</h2>
           <p class="section-sub">Se alguma dessas situações parece familiar, este acompanhamento foi pensado para você.</p>
         </div>
         <ul class="pains__grid">
@@ -238,12 +296,16 @@
     </section>
 
     <!-- 3. SOBRE / DIFERENCIAL -->
-    <section class="section about" id="sobre">
+    <section class="section about" id="sobre" aria-labelledby="about-title">
       <div class="container about__inner">
         <div class="about__media">
           <div class="about__photo">
             <picture>
-              <source type="image/webp" srcset="assets/images/jenifer-about.webp?v=5" />
+              <source
+                type="image/webp"
+                srcset="assets/images/jenifer-about.webp?v=5"
+                sizes="(max-width: 768px) 92vw, 400px"
+              />
               <img
                 src="assets/images/jenifer-about.jpg?v=5"
                 alt="Jenifer Lopes Borchardt, nutricionista, em atendimento no consultório"
@@ -251,13 +313,14 @@
                 height="1024"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </picture>
           </div>
         </div>
         <div class="about__copy">
           <p class="eyebrow">Uma nova fase merece um novo cuidado</p>
-          <h2>Ciência, escuta e cuidado individualizado.</h2>
+          <h2 id="about-title">Ciência, escuta e cuidado individualizado.</h2>
           <p>Acompanho mulheres 35+ que desejam compreender as mudanças do corpo, equilibrar a saúde hormonal e metabólica e construir hábitos sustentáveis, com uma estratégia personalizada, baseada em evidências e adaptada à realidade de cada paciente.</p>
           <ul class="about__creds">
             <li><span aria-hidden="true">✓</span> Mais de 10 anos de atuação em Nutrição</li>
@@ -272,26 +335,31 @@
     </section>
 
     <!-- 4. BENEFÍCIOS -->
-    <section class="section gains" id="resultados">
+    <section class="section gains" id="resultados" aria-labelledby="gains-title">
       <div class="container">
         <div class="gains__media">
           <div class="gains__photo">
             <picture>
-              <source type="image/webp" srcset="assets/images/jenifer-gains.webp?v=5" />
+              <source
+                type="image/webp"
+                srcset="assets/images/jenifer-gains.webp?v=5"
+                sizes="(max-width: 768px) 92vw, 420px"
+              />
               <img
                 src="assets/images/jenifer-gains.jpg?v=5"
                 alt="Jenifer Lopes Borchardt, nutricionista, no consultório"
                 width="768"
                 height="1024"
-                loading="eager"
+                loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </picture>
           </div>
         </div>
         <div class="section-head">
           <p class="eyebrow">Sua transformação começa aqui</p>
-          <h2>Seu corpo. Sua história. Sua saúde. Nosso plano, juntas.</h2>
+          <h2 id="gains-title">Seu corpo. Sua história. Sua saúde. Nosso plano, juntas.</h2>
           <p class="section-sub">Mais do que um plano alimentar: um cuidado personalizado para a mulher que você é hoje.</p>
         </div>
         <ul class="gains__grid">
@@ -332,20 +400,6 @@
           </li>
           <li class="gain-card">
             <span class="gain-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
-            </span>
-            <h3>Plano alimentar personalizado</h3>
-            <p>Adaptado à sua rotina e preferências.</p>
-          </li>
-          <li class="gain-card">
-            <span class="gain-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></svg>
-            </span>
-            <h3>Acompanhamento contínuo</h3>
-            <p>Ajustes conforme sua evolução.</p>
-          </li>
-          <li class="gain-card">
-            <span class="gain-card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
             </span>
             <h3>Clareza sobre o que funciona</h3>
@@ -356,11 +410,11 @@
     </section>
 
     <!-- 5. PLANOS -->
-    <section class="section plans" id="consultas">
+    <section class="section plans" id="consultas" aria-labelledby="plans-title">
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">Meus Serviços</p>
-          <h2>Cada mulher tem um momento diferente.</h2>
+          <h2 id="plans-title">Cada mulher tem um momento diferente.</h2>
           <p class="section-sub">Escolha o acompanhamento que faz sentido para você.</p>
         </div>
 
@@ -378,7 +432,7 @@
               <li>Definição de metas e estratégias iniciais</li>
             </ul>
             <div class="plan-card__actions">
-              <a class="btn btn--primary" data-cta="pagar-avulsa" href="#" data-pay>Começar agora</a>
+              <a class="btn btn--primary" data-cta="pagar-avulsa" href="#" data-pay>Quero no WhatsApp</a>
               <a class="btn btn--ghost" data-cta="plano-avulsa" href="#" data-plan>Tirar dúvida no WhatsApp</a>
             </div>
           </li>
@@ -397,7 +451,7 @@
               <li>Suporte entre consultas</li>
             </ul>
             <div class="plan-card__actions">
-              <a class="btn btn--primary" data-cta="pagar-trimestral" href="#" data-pay>Começar agora</a>
+              <a class="btn btn--primary" data-cta="pagar-trimestral" href="#" data-pay>Quero no WhatsApp</a>
               <a class="btn btn--ghost" data-cta="plano-trimestral" href="#" data-plan>Tirar dúvida no WhatsApp</a>
             </div>
           </li>
@@ -414,16 +468,16 @@
               <li>Planejamento para manutenção dos resultados</li>
             </ul>
             <div class="plan-card__actions">
-              <a class="btn btn--primary" data-cta="pagar-semestral" href="#" data-pay>Começar agora</a>
+              <a class="btn btn--primary" data-cta="pagar-semestral" href="#" data-pay>Quero no WhatsApp</a>
               <a class="btn btn--ghost" data-cta="plano-semestral" href="#" data-plan>Tirar dúvida no WhatsApp</a>
             </div>
           </li>
         </ul>
 
         <div class="plans__legal">
-          <a href="privacidade.html">Política de privacidade</a>
-          <a href="termos.html">Termos de atendimento</a>
-          <a href="cancelamento.html">Cancelamento e reagendamento</a>
+          <a href="/privacidade">Política de privacidade</a>
+          <a href="/termos">Termos de atendimento</a>
+          <a href="/cancelamento">Cancelamento e reagendamento</a>
         </div>
       </div>
     </section>
@@ -432,15 +486,15 @@
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__brand">
-        <span class="footer__logo-chip"><img src="assets/images/jlo-mark.png?v=8" alt="JLO Nutri" width="350" height="234" /></span>
+        <span class="footer__logo-chip"><img src="assets/images/jlo-mark.png?v=8" alt="JLO Nutri" width="350" height="234" loading="lazy" decoding="async" /></span>
         <p><strong>Jenifer Lopes Borchardt</strong><br>Nutricionista · Saúde da Mulher 35+</p>
       </div>
       <nav class="footer__nav" aria-label="Rodapé">
         <a href="#sobre">Sobre</a>
         <a href="#consultas">Meus Serviços</a>
-        <a href="privacidade.html">Privacidade</a>
-        <a href="termos.html">Termos</a>
-        <a href="cancelamento.html">Cancelamento</a>
+        <a href="/privacidade">Privacidade</a>
+        <a href="/termos">Termos</a>
+        <a href="/cancelamento">Cancelamento</a>
       </nav>
       <div class="footer__social">
         <a class="footer__social-link" href="#" aria-label="WhatsApp" data-cta="footer-whats" target="_blank" rel="noopener noreferrer">
@@ -474,6 +528,6 @@
     <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 2C6.5 2 2 6.5 2 12.05c0 1.77.463 3.5 1.343 5.023L2 22l5.05-1.32A10 10 0 0 0 12.05 22c5.55 0 10.05-4.5 10.05-9.95C22.1 6.5 17.6 2 12.05 2"/></svg>
   </a>
 
-  <script src="assets/js/script.js?v=62" defer></script>
+  <script src="assets/js/script.js?v=64" defer></script>
 </body>
 </html>

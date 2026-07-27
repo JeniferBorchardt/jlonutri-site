@@ -1,0 +1,5 @@
+# Cloudflare Pages redirects
+/privacidade.html  /privacidade  301
+/termos.html       /termos       301
+/cancelamento.html /cancelamento 301
+/obrigado.html     /obrigado     301
