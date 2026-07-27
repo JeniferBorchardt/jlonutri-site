@@ -33,9 +33,19 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Manrope:wght@400;600;700&display=swap" />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Manrope:wght@400;600;700&display=swap"
+    media="print"
+    onload="this.media='all'"
+  />
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
+  </noscript>
 
-  <link rel="stylesheet" href="assets/css/style.css?v=76" />
+  <link rel="preload" as="image" href="/assets/images/jenifer-hero.webp" type="image/webp" imagesrcset="/assets/images/jenifer-hero-480.webp 480w, /assets/images/jenifer-hero.webp 768w" imagesizes="(max-width: 768px) 92vw, 420px" />
+  <link rel="stylesheet" href="assets/css/style.css?v=77" />
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QKJYT0FB50"></script>
@@ -90,7 +100,7 @@
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
   <div class="announce" role="note">
-    Atendimento <strong>online e presencial</strong> · Nutricionista para mulheres 35+
+    Atendimento <strong>online e presencial</strong><span class="announce__extra"> · Nutricionista para mulheres 35+</span>
   </div>
 
   <header class="topbar" id="topbar">
@@ -113,6 +123,7 @@
     </button>
   </header>
 
+  <button class="menu-backdrop" id="menuBackdrop" type="button" hidden aria-label="Fechar menu"></button>
   <div class="mobile-menu" id="mobileMenu" hidden>
     <nav aria-label="Menu">
       <a href="#sobre">Sobre</a>
@@ -146,14 +157,22 @@
         </div>
         <div class="hero__media">
           <div class="hero__photo">
-            <img
-              src="/assets/images/jenifer-hero.jpg?v=2"
-              alt="Jenifer Lopes Borchardt, nutricionista para mulheres 35+"
-              width="768"
-              height="1024"
-              loading="eager"
-              fetchpriority="high"
-            />
+            <picture>
+              <source
+                type="image/webp"
+                srcset="/assets/images/jenifer-hero-480.webp 480w, /assets/images/jenifer-hero.webp 768w"
+                sizes="(max-width: 768px) 92vw, 420px"
+              />
+              <img
+                src="/assets/images/jenifer-hero.jpg?v=2"
+                alt="Jenifer Lopes Borchardt, nutricionista para mulheres 35+"
+                width="768"
+                height="1024"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              />
+            </picture>
           </div>
         </div>
       </div>
@@ -223,13 +242,17 @@
       <div class="container about__inner">
         <div class="about__media">
           <div class="about__photo">
-            <img
-              src="/assets/images/jenifer-about.jpg?v=2"
-              alt="Jenifer Lopes Borchardt, nutricionista, em atendimento no consultório"
-              width="768"
-              height="1024"
-              loading="lazy"
-            />
+            <picture>
+              <source type="image/webp" srcset="/assets/images/jenifer-about.webp" />
+              <img
+                src="/assets/images/jenifer-about.jpg?v=2"
+                alt="Jenifer Lopes Borchardt, nutricionista, em atendimento no consultório"
+                width="768"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
           </div>
         </div>
         <div class="about__copy">
@@ -253,14 +276,17 @@
       <div class="container">
         <div class="gains__media">
           <div class="gains__photo">
-            <img
-              src="/assets/images/jenifer-gains.jpg?v=4"
-              alt="Jenifer Lopes Borchardt, nutricionista, no consultório"
-              width="768"
-              height="1024"
-              loading="lazy"
-              decoding="async"
-            />
+            <picture>
+              <source type="image/webp" srcset="/assets/images/jenifer-gains.webp" />
+              <img
+                src="/assets/images/jenifer-gains.jpg?v=4"
+                alt="Jenifer Lopes Borchardt, nutricionista, no consultório"
+                width="768"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
           </div>
         </div>
         <div class="section-head">
@@ -449,6 +475,6 @@
     <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 2C6.5 2 2 6.5 2 12.05c0 1.77.463 3.5 1.343 5.023L2 22l5.05-1.32A10 10 0 0 0 12.05 22c5.55 0 10.05-4.5 10.05-9.95C22.1 6.5 17.6 2 12.05 2"/></svg>
   </a>
 
-  <script src="assets/js/script.js?v=60" defer></script>
+  <script src="assets/js/script.js?v=61" defer></script>
 </body>
 </html>

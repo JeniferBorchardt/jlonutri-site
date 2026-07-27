@@ -294,6 +294,18 @@ h1, h2, h3 {
   color: var(--on-brand);
 }
 
+.menu-backdrop {
+  position: fixed;
+  inset: 0;
+  top: var(--header-h);
+  z-index: 80;
+  background: rgba(0, 0, 0, 0.45);
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.menu-backdrop[hidden] { display: none; }
+
 /* ---------- Sections ---------- */
 .section { padding: clamp(56px, 8vw, 100px) 0; }
 
@@ -402,6 +414,12 @@ h1, h2, h3 {
   display: block;
   object-fit: cover;
   aspect-ratio: 4 / 5;
+}
+.hero__photo picture,
+.about__photo picture,
+.gains__photo picture {
+  display: block;
+  width: 100%;
 }
 .hero__photo img { object-position: center 22%; }
 .about__photo img { object-position: center 28%; }
@@ -825,8 +843,6 @@ h1, h2, h3 {
   .hero__media { max-width: 420px; margin: 0 auto; width: 100%; }
   .about__inner { grid-template-columns: 1fr; }
   .about__media { max-width: 400px; margin: 0 auto; width: 100%; }
-  .pains__grid { grid-template-columns: repeat(2, 1fr); }
-  .gains__grid { grid-template-columns: repeat(2, 1fr); }
   .plans__grid { grid-template-columns: 1fr; max-width: 440px; margin-inline: auto; }
   .footer__inner { grid-template-columns: 1fr 1fr; }
 }
@@ -834,39 +850,91 @@ h1, h2, h3 {
 @media (max-width: 768px) {
   .desktop-nav, .nav-cta { display: none; }
   .menu-btn { display: inline-flex; }
-  :root { --header-h: 74px; }
+  :root {
+    --header-h: 70px;
+    --sticky-h: 64px;
+  }
   .brand__mark-img { height: 34px; }
   .brand__aside-label { font-size: 8px; letter-spacing: 0.14em; }
 
-  .mobile-sticky { display: block; }
-  .wa-float { bottom: calc(var(--sticky-h) + 12px); }
-  /* Espaço para sticky + WhatsApp flutuante não cobrirem ícones do rodapé */
-  body { padding-bottom: calc(var(--sticky-h) + env(safe-area-inset-bottom)); }
-  .footer {
-    padding-bottom: calc(var(--sticky-h) + 88px + env(safe-area-inset-bottom));
-  }
-  .footer__bottom {
-    padding-bottom: 8px;
-  }
-}
-
-@media (max-width: 430px) {
   body { font-size: 16px; }
-  .pains__grid,
-  .gains__grid { grid-template-columns: 1fr; }
-  .footer__inner { grid-template-columns: 1fr; gap: 28px; }
+
+  .announce {
+    font-size: 12.5px;
+    padding: 8px 12px;
+    line-height: 1.35;
+  }
+  .announce .announce__extra { display: none; }
+
+  .hero { padding: clamp(28px, 5vw, 48px) 0 clamp(36px, 6vw, 64px); }
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
   .hero__actions .btn { width: 100%; }
   .hero__trust { grid-template-columns: 1fr; }
-  .hero__title { font-size: clamp(30px, 9vw, 36px); }
+  .hero__title { font-size: clamp(28px, 8vw, 36px); }
+  .hero__lead { font-size: 16px; }
+
+  .pains__grid,
+  .gains__grid { grid-template-columns: 1fr; }
+
+  .pain-card p,
+  .gain-card p,
+  .plan-card__desc,
+  .plan-card__feats li { font-size: 16px; }
+
+  .btn,
+  .btn--lg,
+  .plan-card .btn { font-size: 16px; min-height: 48px; }
+
+  .mobile-sticky {
+    display: block;
+    padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+    transition: transform 0.28s var(--ease);
+  }
+  .mobile-sticky.is-deferred { transform: translateY(110%); pointer-events: none; }
+  .mobile-sticky.is-visible { transform: translateY(0); pointer-events: auto; }
+  .wa-float {
+    bottom: calc(16px + env(safe-area-inset-bottom));
+    right: 14px;
+    width: 52px;
+    height: 52px;
+    transition: bottom 0.28s var(--ease), transform 0.2s;
+  }
+  body.sticky-cta-on .wa-float {
+    bottom: calc(var(--sticky-h) + 16px);
+  }
+
+  body { padding-bottom: env(safe-area-inset-bottom); }
+  body.sticky-cta-on {
+    padding-bottom: calc(var(--sticky-h) + env(safe-area-inset-bottom));
+  }
+  .footer {
+    padding-bottom: calc(40px + env(safe-area-inset-bottom));
+  }
+  body.sticky-cta-on .footer {
+    padding-bottom: calc(var(--sticky-h) + 96px + env(safe-area-inset-bottom));
+  }
+  .footer__bottom { padding-bottom: 8px; }
+  .footer__inner { grid-template-columns: 1fr; gap: 28px; }
 }
 
-@media (max-width: 320px) {
-  .container { width: calc(100% - 24px); }
-  .btn--lg { padding: 0 18px; font-size: 15px; }
+@media (max-width: 380px) {
+  .container { width: calc(100% - 28px); }
   .plan-card { padding: 24px 18px; }
+  .hero__photo,
+  .about__photo,
+  .gains__photo { border-radius: 16px; }
+}
+
+@media (max-height: 700px) and (max-width: 768px) {
+  .announce { display: none; }
+  .hero__trust { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
+  .mobile-sticky { transition: none; }
 }

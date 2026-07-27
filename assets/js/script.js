@@ -98,23 +98,46 @@ function getPlan(planId) {
 (function initMenu() {
   const btn = document.getElementById("menuBtn");
   const menu = document.getElementById("mobileMenu");
+  const backdrop = document.getElementById("menuBackdrop");
   if (!btn || !menu) return;
 
   function toggle(open) {
-    const willOpen = open ?? menu.hidden;
+    const willOpen = typeof open === "boolean" ? open : menu.hidden;
     menu.hidden = !willOpen;
+    if (backdrop) backdrop.hidden = !willOpen;
     btn.setAttribute("aria-expanded", String(willOpen));
     btn.setAttribute("aria-label", willOpen ? "Fechar menu" : "Abrir menu");
     document.body.style.overflow = willOpen ? "hidden" : "";
   }
 
   btn.addEventListener("click", () => toggle());
+  if (backdrop) backdrop.addEventListener("click", () => toggle(false));
   menu.querySelectorAll("a").forEach((a) =>
     a.addEventListener("click", () => toggle(false))
   );
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && !menu.hidden) toggle(false);
   });
+})();
+
+/* ---------- 5b. Sticky CTA: só após scroll curto (não cobrir hero) ---------- */
+
+(function initMobileSticky() {
+  const sticky = document.getElementById("mobileSticky");
+  if (!sticky || !window.matchMedia("(max-width: 768px)").matches) return;
+
+  sticky.classList.add("is-deferred");
+  const revealAt = Math.min(280, Math.round(window.innerHeight * 0.35));
+
+  function onScroll() {
+    const show = window.scrollY > revealAt;
+    sticky.classList.toggle("is-visible", show);
+    sticky.classList.toggle("is-deferred", !show);
+    document.body.classList.toggle("sticky-cta-on", show);
+  }
+
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
 })();
 
 /* ---------- 6. WhatsApp, Instagram e e-mail ---------- */
