@@ -33,19 +33,9 @@ const PLANS = {
   avulsa: {
     id: "avulsa",
     name: "Individual",
+    price: 350,
     period: "/ consulta",
-    modalities: {
-      online: {
-        label: "Online",
-        price: 300,
-        paymentUrl: "", // link Mercado Pago da consulta online
-      },
-      presencial: {
-        label: "Presencial",
-        price: 350,
-        paymentUrl: "", // link Mercado Pago da consulta presencial
-      },
-    },
+    paymentUrl: "",
   },
   trimestral: {
     id: "trimestral",
