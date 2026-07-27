@@ -348,7 +348,7 @@ function digitsOnly(value) {
 /* Animação de entrada ao rolar */
 (function initReveal() {
   const els = document.querySelectorAll(
-    ".section-head, .pain-card, .gain-card, .plan-card, .how-step, .about__copy, .lead-form, .cta-final__copy, .trust-block__inner, .how__details"
+    ".section-head, .pain-card, .gain-card, .plan-card, .about__copy, .lead-form, .cta-final__copy, .trust-block__inner"
   );
   els.forEach((el) => el.classList.add("reveal"));
 
