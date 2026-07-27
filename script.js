@@ -32,10 +32,20 @@ const CAL_BOOKING_URL = "";
 const PLANS = {
   avulsa: {
     id: "avulsa",
-    name: "Consulta Avulsa",
-    price: 400,
+    name: "Individual",
     period: "/ consulta",
-    paymentUrl: "", // cole o link Mercado Pago
+    modalities: {
+      online: {
+        label: "Online",
+        price: 300,
+        paymentUrl: "", // link Mercado Pago da consulta online
+      },
+      presencial: {
+        label: "Presencial",
+        price: 350,
+        paymentUrl: "", // link Mercado Pago da consulta presencial
+      },
+    },
   },
   trimestral: {
     id: "trimestral",
@@ -213,38 +223,82 @@ function digitsOnly(value) {
     const plan = getPlan(planId);
     if (!plan) return;
 
-    const priceEl = card.querySelector("[data-plan-price]");
-    if (priceEl) {
-      const formatted = formatPrice(plan.price);
-      if (formatted) {
-        priceEl.innerHTML = `<span>R$</span> ${formatted} <small>${plan.period}</small>`;
-      } else {
-        priceEl.innerHTML = `<span class="plan-card__price-soft">Sob consulta</span>`;
-      }
-    }
+    const period = plan.period || "";
 
-    const payBtn = card.querySelector("[data-pay]");
-    if (payBtn) {
-      const url = (plan.paymentUrl || "").trim();
-      if (url) {
-        payBtn.href = url;
-        payBtn.setAttribute("data-pay-ready", "true");
-        payBtn.addEventListener("click", () => {
-          track("selecao_plano", { plan_id: plan.id, plan_name: plan.name });
-          track("checkout_open", { plan_id: plan.id, plan_name: plan.name, value: plan.price });
-        });
-      } else {
-        payBtn.href = waLink(
-          `Olá, Jenifer! Quero fechar o formato "${plan.name}". Pode me enviar o link de pagamento e os horários disponíveis?`
-        );
-        payBtn.setAttribute("data-pay-ready", "false");
-        payBtn.addEventListener("click", () => {
-          track("selecao_plano", { plan_id: plan.id, plan_name: plan.name });
-          track("whatsapp_click", { source: "pay_fallback", plan_id: plan.id });
-        });
+    // Plano com modalidades (ex.: online + presencial)
+    if (plan.modalities) {
+      Object.keys(plan.modalities).forEach((key) => {
+        const mod = plan.modalities[key];
+        const priceEl = card.querySelector(`[data-plan-price="${key}"]`);
+        if (priceEl) {
+          const formatted = formatPrice(mod.price);
+          priceEl.innerHTML = formatted
+            ? `<span class="plan-card__modality">${mod.label}</span> <span>R$</span> ${formatted} <small>${period}</small>`
+            : `<span class="plan-card__price-soft">Sob consulta</span>`;
+        }
+
+        const payBtn = card.querySelector(`[data-pay][data-modality="${key}"]`);
+        if (!payBtn) return;
+        const url = (mod.paymentUrl || "").trim();
+        if (url) {
+          payBtn.href = url;
+          payBtn.setAttribute("data-pay-ready", "true");
+          payBtn.addEventListener("click", () => {
+            track("selecao_plano", { plan_id: plan.id, plan_name: plan.name, modality: key });
+            track("checkout_open", {
+              plan_id: plan.id,
+              plan_name: plan.name,
+              modality: key,
+              value: mod.price,
+            });
+          });
+        } else {
+          payBtn.href = waLink(
+            `Olá, Jenifer! Quero a "${plan.name}" na modalidade ${mod.label} (R$ ${formatPrice(mod.price)}). Pode me enviar o link de pagamento e os horários?`
+          );
+          payBtn.setAttribute("data-pay-ready", "false");
+          payBtn.addEventListener("click", () => {
+            track("selecao_plano", { plan_id: plan.id, plan_name: plan.name, modality: key });
+            track("whatsapp_click", { source: "pay_fallback", plan_id: plan.id, modality: key });
+          });
+        }
+        payBtn.target = "_blank";
+        payBtn.rel = "noopener noreferrer";
+      });
+    } else {
+      const priceEl = card.querySelector("[data-plan-price]");
+      if (priceEl) {
+        const formatted = formatPrice(plan.price);
+        if (formatted) {
+          priceEl.innerHTML = `<span>R$</span> ${formatted} <small>${period}</small>`;
+        } else {
+          priceEl.innerHTML = `<span class="plan-card__price-soft">Sob consulta</span>`;
+        }
       }
-      payBtn.target = "_blank";
-      payBtn.rel = "noopener noreferrer";
+
+      const payBtn = card.querySelector("[data-pay]");
+      if (payBtn) {
+        const url = (plan.paymentUrl || "").trim();
+        if (url) {
+          payBtn.href = url;
+          payBtn.setAttribute("data-pay-ready", "true");
+          payBtn.addEventListener("click", () => {
+            track("selecao_plano", { plan_id: plan.id, plan_name: plan.name });
+            track("checkout_open", { plan_id: plan.id, plan_name: plan.name, value: plan.price });
+          });
+        } else {
+          payBtn.href = waLink(
+            `Olá, Jenifer! Quero fechar o formato "${plan.name}". Pode me enviar o link de pagamento e os horários disponíveis?`
+          );
+          payBtn.setAttribute("data-pay-ready", "false");
+          payBtn.addEventListener("click", () => {
+            track("selecao_plano", { plan_id: plan.id, plan_name: plan.name });
+            track("whatsapp_click", { source: "pay_fallback", plan_id: plan.id });
+          });
+        }
+        payBtn.target = "_blank";
+        payBtn.rel = "noopener noreferrer";
+      }
     }
 
     const waBtn = card.querySelector("[data-plan]");
