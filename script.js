@@ -348,9 +348,14 @@ function digitsOnly(value) {
 /* Animação de entrada ao rolar */
 (function initReveal() {
   const els = document.querySelectorAll(
-    ".section-head, .pain-card, .gain-card, .plan-card, .how-step, .about__copy, .about__media, .hero__copy, .hero__media, .lead-form, .cta-final__copy, .trust-block__inner, .how__details"
+    ".section-head, .pain-card, .gain-card, .plan-card, .how-step, .about__copy, .lead-form, .cta-final__copy, .trust-block__inner, .how__details"
   );
   els.forEach((el) => el.classList.add("reveal"));
+
+  // Hero e foto Sobre ficam visíveis de imediato (acima da dobra / mídia crítica)
+  document.querySelectorAll(".hero__copy, .hero__media, .about__media").forEach((el) => {
+    el.classList.add("reveal", "is-visible");
+  });
 
   if (!("IntersectionObserver" in window)) {
     els.forEach((el) => el.classList.add("is-visible"));
