@@ -8,5 +8,8 @@
 /obrigado.html
   Cache-Control: no-cache, no-store, must-revalidate
 
-/style.css
+/assets/css/style.css
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/js/script.js
   Cache-Control: public, max-age=0, must-revalidate

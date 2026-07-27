@@ -1,88 +1,77 @@
 # JLO Nutri — Site da Nutricionista Jenifer Lopes Borchardt
 
-Site premium (estático, mobile-first) para apresentação profissional e **venda de consultas nutricionais online**, com foco em **mulheres 35+**.
+Site estático (mobile-first) para apresentação profissional e conversão de consultas nutricionais, com foco em **mulheres 35+**.
 
-- **Domínio:** www.jlonutri.com.br (registrado no Registro.br)
+- **Domínio:** https://www.jlonutri.com.br
 - **Stack:** HTML + CSS + JavaScript puro (sem build, sem dependências)
-- **Fontes:** Cormorant Garamond (títulos) + Nunito Sans (texto), via Google Fonts
+- **Fontes:** Cormorant Garamond (títulos) + Manrope (texto), via Google Fonts
+- **Analytics:** Google Analytics 4 (`G-QKJYT0FB50`)
 
 ## Estrutura
 
 ```
 jlonutri/
-├── index.html              Página principal
-├── obrigado.html           Página pós-envio do formulário
-├── style.css               Design system + responsivo
-├── script.js               Menu, WhatsApp, formulário, animações
-├── manifest.json           PWA / ícone
+├── index.html                 Página principal
+├── obrigado.html              Pós-pagamento → WhatsApp
+├── privacidade.html           Política de privacidade (LGPD)
+├── termos.html                Termos de atendimento
+├── cancelamento.html          Cancelamento e reagendamento
+├── manifest.json              PWA / ícone
 ├── robots.txt / sitemap.xml
-├── _headers                Cache (Cloudflare Pages)
-└── assets/images/
-    ├── jlo-mark.png        Logo do site
-    ├── favicon.png
-    ├── jenifer-formatura.jpg
-    ├── og-share.png        Preview de compartilhamento
-    └── social-logo-*.png   Versões para redes sociais
+├── _headers                   Cache (Cloudflare Pages)
+├── README.md
+└── assets/
+    ├── css/style.css          Design system + seções + responsivo
+    ├── js/script.js           Config, menu, WhatsApp, planos, GA
+    └── images/
+        ├── jlo-mark.png       Logo do site
+        ├── favicon.png
+        ├── jenifer-hero.jpg
+        ├── jenifer-about.jpg
+        ├── jenifer-gains.jpg
+        ├── og-share.png       Preview de compartilhamento
+        └── social-logo-*.png  Versões para redes sociais
 ```
 
-## Seções do site
+## Seções do site (`index.html`)
 
-1. Hero (chamada principal + credenciais)
-2. "Você se reconhece?" — dores do público 35+
-3. Sobre a Jenifer (bio + credenciais)
-4. Consultas (3 planos com preço e CTA)
-5. Como funciona (4 passos)
-6. Depoimentos
-7. Dúvidas (FAQ)
-8. Contato (formulário + WhatsApp)
-9. Rodapé (CRN, redes sociais, LGPD)
+1. Hero — chamada + credenciais + foto
+2. Para quem é — dores do público 35+
+3. Sobre — bio e diferenciais
+4. Benefícios — foto + resultados
+5. Meus Serviços — Individual, Trimestral e Semestral
+6. Rodapé — CRN, redes, documentos legais
 
-## Pagamentos pelo site
+Agendamento e pagamento: **WhatsApp** (Mercado Pago opcional via `paymentUrl`).
 
-Tudo fica no `script.js`, no objeto `PLANS`:
+## Configuração (`assets/js/script.js`)
 
-```js
-avulsa: {
-  price: 250,              // número ou null (= "Sob consulta")
-  period: "/ consulta",
-  paymentUrl: "https://mpago.la/xxxxx",
-},
-```
-
-### Ativar Mercado Pago (recomendado)
-1. [Mercado Pago](https://www.mercadopago.com.br/) → **Seu negócio** → **Link de pagamento**
-2. Crie **1 link por plano** (valor, descrição, parcelamento)
-3. Cole a URL em `paymentUrl` de cada plano
-4. URL de retorno / sucesso: `https://www.jlonutri.com.br/obrigado.html` (ou o `.pages.dev` enquanto testa)
-
-Fluxo: **Pagar no site → checkout MP → página obrigado → WhatsApp para agendar horário**.
-
-Enquanto `paymentUrl` estiver vazio, o botão abre o WhatsApp pedindo o link.
-
-## ⚙️ O que você precisa preencher (placeholders)
+Tudo que muda com frequência fica no topo do arquivo:
 
 | Onde | O quê |
 |------|-------|
-| `script.js` → `WHATSAPP_NUMBER` | Número do WhatsApp |
-| `script.js` → `PLANS.*.price` | Valores das consultas |
-| `script.js` → `PLANS.*.paymentUrl` | Links Mercado Pago / PagBank |
-| `script.js` → `INSTAGRAM_URL` | Link do Instagram |
-| `index.html` | Fotos e depoimentos reais |
-| `assets/images/og-share.jpg` | Imagem de compartilhamento (1200×630) |
+| `WHATSAPP_NUMBER` | Número no formato internacional |
+| `INSTAGRAM_URL` | Link do Instagram |
+| `CAL_BOOKING_URL` | Agenda online (vazio = só WhatsApp) |
+| `PLANS.*.price` | Valores das consultas |
+| `PLANS.*.paymentUrl` | Links Mercado Pago |
+
+### Ativar Mercado Pago
+1. Mercado Pago → Seu negócio → Link de pagamento
+2. Crie 1 link por plano
+3. Cole a URL em `paymentUrl`
+4. URL de retorno: `https://www.jlonutri.com.br/obrigado.html`
+
+Enquanto `paymentUrl` estiver vazio, o botão “Começar agora” abre o WhatsApp.
 
 ## Como visualizar localmente
-
-Abra o `index.html` no navegador, ou rode um servidor simples:
 
 ```
 npx serve .
 ```
 
+Ou abra o `index.html` no navegador.
+
 ## Publicação
 
-O domínio está no Registro.br. Opções de hospedagem (gratuitas/simples):
-- **Netlify** ou **Vercel** — arraste a pasta ou conecte um repositório; depois aponte o DNS do Registro.br.
-- **GitHub Pages** — hospedagem via repositório.
-- **Hostinger / hosts tradicionais** — envie os arquivos por FTP.
-
-Em qualquer opção, configure no Registro.br os registros DNS (A / CNAME) que o serviço de hospedagem indicar.
+Hospedagem atual: **Cloudflare Pages** a partir do repositório GitHub. DNS no Registro.br apontando para o Cloudflare.
