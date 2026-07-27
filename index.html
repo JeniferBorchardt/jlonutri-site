@@ -37,10 +37,20 @@
 
   <link rel="stylesheet" href="style.css?v=69" />
 
-  <!--
-    Analytics: cole o snippet do Google Analytics (gtag) aqui quando tiver o ID.
-    Os eventos já são enviados via dataLayer / gtag no script.js.
-  -->
+  <!-- Google Analytics 4 -->
+  <script>
+    window.GA_MEASUREMENT_ID = "G-QKJYT0FB50";
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    (function () {
+      var s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=" + window.GA_MEASUREMENT_ID;
+      document.head.appendChild(s);
+      gtag("js", new Date());
+      gtag("config", window.GA_MEASUREMENT_ID, { anonymize_ip: true });
+    })();
+  </script>
 
   <script type="application/ld+json">
   {
