@@ -488,7 +488,7 @@ h1, h2, h3 {
   height: 100%;
   max-width: none;
   object-fit: cover;
-  object-position: center 18%;
+  object-position: center 20%;
   display: block;
 }
 .gains__grid {
