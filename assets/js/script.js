@@ -164,7 +164,6 @@ function getPlan(planId) {
 
   [
     document.getElementById("whatsFloat"),
-    document.getElementById("heroWhats"),
     document.getElementById("plansDoubt"),
     document.querySelector('[data-cta="footer-whats"]'),
   ].forEach((el) => {
@@ -324,7 +323,7 @@ function getPlan(planId) {
 /* ---------- 9. Tracking de CTAs ---------- */
 
 (function initCtaTracking() {
-  ["whatsFloat", "heroWhats", "plansDoubt"].forEach((id) => {
+  ["whatsFloat", "plansDoubt"].forEach((id) => {
     const el = document.getElementById(id);
     if (!el) return;
     el.addEventListener("click", () => track("whatsapp_click", { source: id }));
