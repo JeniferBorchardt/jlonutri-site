@@ -389,7 +389,7 @@ function getPlan(planId) {
 (function initReveal() {
   // Planos NÃO entram no reveal: preço/CTA devem aparecer na hora (conversão)
   const els = document.querySelectorAll(
-    ".section-head, .pain-card, .gain-card, .about__copy, .flow__step, .faq__item, .method__item, .first-visit__steps li"
+    ".section-head, .pain-card, .gain-card, .about__copy, .faq__item, .first-visit__steps li"
   );
   els.forEach((el) => el.classList.add("reveal"));
 
