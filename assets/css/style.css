@@ -838,8 +838,12 @@ h1, h2, h3 {
   counter-reset: first;
 }
 .first-visit__steps li {
-  position: relative;
-  padding: 24px 22px 24px 64px;
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  column-gap: 14px;
+  row-gap: 6px;
+  align-items: start;
+  padding: 22px 20px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--offwhite);
@@ -847,26 +851,32 @@ h1, h2, h3 {
 }
 .first-visit__steps li::before {
   content: counter(first);
-  position: absolute;
-  left: 18px;
-  top: 24px;
-  width: 32px;
-  height: 32px;
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  display: grid;
-  place-items: center;
-  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
   background: var(--brand);
   color: var(--on-brand);
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-weight: 700;
-  font-size: 16px;
+  font-size: 15px;
+  line-height: 1;
+  text-align: center;
+  flex-shrink: 0;
 }
 .first-visit__steps h3 {
+  grid-column: 2;
   font-size: 20px;
-  margin: 0 0 8px;
+  margin: 0;
+  padding-top: 6px;
 }
 .first-visit__steps p {
+  grid-column: 2;
   margin: 0;
   font-size: 15px;
   color: var(--ink-soft);
@@ -1254,21 +1264,17 @@ h1, h2, h3 {
     border: 0;
     border-bottom: 1px solid var(--line);
     border-radius: 0;
-    padding: 18px 0 18px 48px;
+    padding: 18px 0;
+    grid-template-columns: 36px minmax(0, 1fr);
+    column-gap: 14px;
   }
   .first-visit__steps li:last-child { border-bottom: 0; }
   .first-visit__steps li::before {
-    position: absolute;
-    left: 0;
-    top: 18px;
-    width: 32px;
-    height: 32px;
-    margin: 0;
-    display: grid;
-    place-items: center;
-    line-height: 1;
-    font-size: 15px;
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
   }
+  .first-visit__steps h3 { padding-top: 7px; }
 
   .cta-band__actions { flex-direction: column; align-items: stretch; }
   .cta-band__actions .btn { width: 100%; }
