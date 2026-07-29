@@ -246,7 +246,7 @@ function getPlan(planId) {
       const url = (plan.paymentUrl || "").trim();
       if (url) {
         payBtn.href = url;
-        payBtn.textContent = "Pagar e agendar";
+        payBtn.textContent = "Pagar com segurança";
         payBtn.setAttribute("data-pay-ready", "true");
         payBtn.removeAttribute("target");
         payBtn.rel = "noopener noreferrer";
@@ -347,7 +347,7 @@ function getPlan(planId) {
     el.addEventListener("click", () => track("whatsapp_click", { source: id }));
   });
 
-  document.querySelectorAll('[data-cta="footer-whats"]').forEach((el) => {
+  document.querySelectorAll('[data-cta="footer-whats"], [data-cta="footer-whats-text"]').forEach((el) => {
     el.addEventListener("click", () => track("whatsapp_click", { source: "footer" }));
   });
 

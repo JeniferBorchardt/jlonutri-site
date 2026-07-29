@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css?v=85" />
+  <link rel="stylesheet" href="assets/css/style.css?v=86" />
 </head>
 <body class="thanks-page">
   <main class="thanks">
@@ -21,12 +21,13 @@
       <p class="eyebrow">Pagamento confirmado</p>
       <h1>Obrigada! Próximo passo: combinar seu horário</h1>
       <p class="thanks__lead" id="thanksLead">
-        Recebi seu pagamento. Me chame no WhatsApp para alinharmos o melhor dia e horário da sua consulta.
+        Recebi seu pagamento. O próximo passo é combinar o horário no WhatsApp — respondo em horário comercial.
       </p>
       <div class="thanks__actions">
         <a class="btn btn--whats btn--lg" id="thanksWhats" href="#" target="_blank" rel="noopener noreferrer">Combinar horário no WhatsApp</a>
       </div>
-      <p class="thanks__note">Respondo em horário comercial · Jenifer Lopes Borchardt · CRN-2 · 13894</p>
+      <p class="thanks__note">Jenifer Lopes Borchardt · CRN-2 · 13894 · WhatsApp (53) 98137-8527</p>
+      <p class="thanks__note"><a href="/cancelamento">Cancelamento e reagendamento</a></p>
       <a class="text-link" href="/">Voltar ao site</a>
     </div>
   </main>
@@ -76,12 +77,14 @@
         lead.textContent =
           "Recebi o pagamento do plano " +
           planName +
-          ". Me chame no WhatsApp para alinharmos o melhor dia e horário da sua consulta.";
+          ". O próximo passo é combinar o horário no WhatsApp — respondo em horário comercial.";
         msg =
           "Olá, Jenifer! Acabei de pagar o plano " +
           planName +
           " pelo site e gostaria de combinar o horário da consulta.";
       } else {
+        lead.textContent =
+          "Recebi seu pagamento. O próximo passo é combinar o horário no WhatsApp — respondo em horário comercial.";
         msg =
           "Olá, Jenifer! Acabei de pagar pelo site e gostaria de combinar o horário da consulta.";
       }
