@@ -42,7 +42,7 @@ jlonutri/
 5. Meus Serviços — Individual, Trimestral e Semestral
 6. Rodapé — CRN, redes, documentos legais
 
-Agendamento e pagamento: **WhatsApp** (Mercado Pago opcional via `paymentUrl`).
+Agendamento e pagamento: **Mercado Pago** (Pix/cartão) + WhatsApp para horário.
 
 ## Configuração (`assets/js/script.js`)
 
@@ -55,22 +55,36 @@ Tudo que muda com frequência fica no topo do arquivo:
 | `CAL_BOOKING_URL` | Agenda online (vazio = só WhatsApp) |
 | `PLANS.*.price` | Valores das consultas |
 | `PLANS.*.paymentUrl` | Links Mercado Pago |
+| `TESTIMONIALS` | Depoimentos reais (vazio = seção oculta) |
 
-### Ativar Mercado Pago
-1. Mercado Pago → Seu negócio → Link de pagamento
-2. Crie 1 link por plano
-3. Cole a URL em `paymentUrl`
-4. URL de retorno: `https://www.jlonutri.com.br/obrigado.html`
+### Mercado Pago — URL de retorno (cole em cada link)
 
-Enquanto `paymentUrl` estiver vazio, o botão “Começar agora” abre o WhatsApp.
+| Plano | URL de retorno no Mercado Pago |
+|-------|--------------------------------|
+| Individual | `https://www.jlonutri.com.br/obrigado?plano=avulsa` |
+| Trimestral | `https://www.jlonutri.com.br/obrigado?plano=trimestral` |
+| Semestral | `https://www.jlonutri.com.br/obrigado?plano=semestral` |
+
+Assim a página “obrigado” já abre o WhatsApp com o nome do plano pago.
+
+### Redirect `jlonutri.com.br` → `www`
+
+Não dá para fazer só pelo arquivo `_redirects` do Pages. No Cloudflare:
+
+1. **Rules → Redirect Rules** (ou template “Redirect from root to WWW”)
+2. De: `https://jlonutri.com.br/*`
+3. Para: `https://www.jlonutri.com.br/${1}` · status **301**
+4. Garantir que só o `www` está ligado ao projeto Pages (evita loop)
+
+### Depoimentos
+
+Em `TESTIMONIALS`, adicione objetos `{ quote, name, detail }` com autorização da paciente. Enquanto a lista estiver vazia, a seção não aparece no site.
 
 ## Como visualizar localmente
 
 ```
 npx serve .
 ```
-
-Ou abra o `index.html` no navegador.
 
 ## Publicação
 

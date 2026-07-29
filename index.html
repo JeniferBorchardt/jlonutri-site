@@ -23,6 +23,7 @@
   <meta property="og:image" content="https://www.jlonutri.com.br/assets/images/og-share.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="JLO Nutri — Jenifer Lopes Borchardt, nutricionista para mulheres 35+" />
   <meta property="og:url" content="https://www.jlonutri.com.br/" />
   <meta property="og:site_name" content="JLO Nutri — Jenifer Lopes Borchardt" />
 
@@ -31,9 +32,10 @@
   <meta name="twitter:title" content="Nutricionista para Mulheres 35+ | Jenifer Lopes Borchardt" />
   <meta name="twitter:description" content="Consultas nutricionais online e presenciais para mulheres 35+: emagrecimento saudável, energia e mudanças hormonais." />
   <meta name="twitter:image" content="https://www.jlonutri.com.br/assets/images/og-share.png" />
+  <meta name="twitter:image:alt" content="JLO Nutri — Jenifer Lopes Borchardt, nutricionista para mulheres 35+" />
 
-  <link rel="icon" href="assets/images/favicon.png?v=8" type="image/png" />
-  <link rel="apple-touch-icon" href="assets/images/favicon.png?v=8" />
+  <link rel="icon" href="assets/images/favicon.png?v=9" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="assets/images/favicon.png?v=9" sizes="180x180" />
   <link rel="manifest" href="manifest.json" />
   <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
   <link rel="dns-prefetch" href="https://wa.me" />
@@ -51,8 +53,8 @@
   </noscript>
 
   <link rel="preload" as="image" href="assets/images/jenifer-hero.webp" type="image/webp" fetchpriority="high" imagesrcset="assets/images/jenifer-hero-480.webp 480w, assets/images/jenifer-hero.webp 768w" imagesizes="(max-width: 768px) 92vw, 420px" />
-  <link rel="preload" as="style" href="assets/css/style.css?v=81" />
-  <link rel="stylesheet" href="assets/css/style.css?v=81" />
+  <link rel="preload" as="style" href="assets/css/style.css?v=85" />
+  <link rel="stylesheet" href="assets/css/style.css?v=85" />
 
   <script type="application/ld+json">
   {
@@ -67,6 +69,12 @@
     "email": "contato@jlonutri.com.br",
     "medicalSpecialty": "Nutrition",
     "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Pelotas",
+      "addressRegion": "RS",
+      "addressCountry": "BR"
+    },
     "areaServed": [
       { "@type": "City", "name": "Pelotas" },
       { "@type": "Country", "name": "BR" }
@@ -75,6 +83,33 @@
       { "@type": "MedicalTherapy", "name": "Consulta nutricional online" },
       { "@type": "MedicalTherapy", "name": "Consulta nutricional presencial" }
     ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Planos de acompanhamento nutricional",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "Consulta Individual",
+          "price": "350",
+          "priceCurrency": "BRL",
+          "url": "https://www.jlonutri.com.br/#consultas"
+        },
+        {
+          "@type": "Offer",
+          "name": "Plano Trimestral",
+          "price": "990",
+          "priceCurrency": "BRL",
+          "url": "https://www.jlonutri.com.br/#consultas"
+        },
+        {
+          "@type": "Offer",
+          "name": "Plano Semestral",
+          "price": "1790",
+          "priceCurrency": "BRL",
+          "url": "https://www.jlonutri.com.br/#consultas"
+        }
+      ]
+    },
     "sameAs": [
       "https://www.instagram.com/nutrijeniferlopes"
     ],
@@ -93,6 +128,11 @@
     "image": "https://www.jlonutri.com.br/assets/images/jenifer-hero.webp",
     "telephone": "+5553981378527",
     "email": "contato@jlonutri.com.br",
+    "hasCredential": {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "Professional license",
+      "name": "CRN-2 13894"
+    },
     "worksFor": { "@id": "https://www.jlonutri.com.br/#business" },
     "sameAs": [
       "https://www.instagram.com/nutrijeniferlopes"
@@ -147,7 +187,23 @@
         "name": "Quais formatos de consulta estão disponíveis?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Consulta avulsa (R$ 350), plano trimestral (R$ 990) e plano semestral (R$ 1.790), com bioimpedância e medidas corporais no atendimento presencial."
+          "text": "Consulta Individual (R$ 350), plano Trimestral (R$ 990) e plano Semestral (R$ 1.790), com bioimpedância e medidas corporais no atendimento presencial."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "O atendimento é particular ou por convênio?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "O atendimento é particular. O pagamento é feito pelo Mercado Pago (Pix ou cartão), com transparência de valores nos planos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Como funciona o pagamento e o agendamento?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Você escolhe o plano, paga com segurança no Mercado Pago (Pix ou cartão) e, em seguida, combina o horário pelo WhatsApp."
         }
       }
     ]
@@ -158,7 +214,7 @@
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
   <div class="announce" role="note">
-    Atendimento <strong>online e presencial</strong><span class="announce__extra"> · Nutricionista para mulheres 35+</span>
+    Atendimento <strong>particular</strong> · <strong>online e presencial</strong><span class="announce__extra"> · Mulheres 35+</span>
   </div>
 
   <header class="topbar" id="topbar">
@@ -173,9 +229,9 @@
     <nav class="desktop-nav" aria-label="Menu principal">
       <a href="#sobre">Sobre</a>
       <a href="#para-quem">Para quem é</a>
-      <a href="#consultas">Meus Serviços</a>
+      <a href="#consultas">Planos</a>
     </nav>
-    <a class="btn btn--primary nav-cta" data-cta="nav" href="#consultas">Agendar consulta</a>
+    <a class="btn btn--primary nav-cta" data-cta="nav" href="#consultas">Ver planos</a>
     <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span><span></span>
     </button>
@@ -186,8 +242,8 @@
     <nav aria-label="Menu">
       <a href="#sobre">Sobre</a>
       <a href="#para-quem">Para quem é</a>
-      <a href="#consultas">Meus Serviços</a>
-      <a class="btn btn--primary" href="#consultas">Agendar consulta</a>
+      <a href="#consultas">Planos</a>
+      <a class="btn btn--primary" href="#consultas">Ver planos</a>
     </nav>
   </div>
 
@@ -199,12 +255,13 @@
       <div class="hero__bg" aria-hidden="true"></div>
       <div class="container hero__inner">
         <div class="hero__copy">
+          <p class="hero__brand">JLO Nutri</p>
           <p class="eyebrow">Nutrição para mulheres 35+</p>
           <h1 class="hero__title" id="hero-title">Te ajudo a entender seu corpo nessa nova fase.</h1>
-          <p class="hero__lead">Um acompanhamento nutricional pensado para as mudanças no corpo, na energia e no metabolismo da mulher 35+.</p>
+          <p class="hero__lead">Acompanhamento nutricional para as mudanças no corpo, na energia e no metabolismo depois dos 35 — com ciência e cuidado individualizado.</p>
           <div class="hero__actions">
-            <a class="btn btn--primary btn--lg" data-cta="hero" href="#consultas">Quero agendar minha consulta</a>
-            <a class="btn btn--ghost btn--lg" data-cta="hero-whats" href="#" id="heroWhats">Falar com a nutricionista</a>
+            <a class="btn btn--primary btn--lg" data-cta="hero" href="#consultas">Ver planos e valores</a>
+            <a class="btn btn--ghost btn--lg" data-cta="hero-whats" href="#" id="heroWhats">Tirar dúvida no WhatsApp</a>
           </div>
           <ul class="hero__trust" aria-label="Informações de confiança">
             <li><strong>Pelotas e Online</strong><span>Atendimento</span></li>
@@ -235,6 +292,17 @@
         </div>
       </div>
     </section>
+
+    <!-- SELA DE CONFIANÇA (padrão dos melhores sites de nutri no BR) -->
+    <div class="trust-bar" role="region" aria-label="Credenciais e garantias">
+      <div class="container trust-bar__inner">
+        <p><strong>CRN-2 · 13894</strong><span>Registro ativo</span></p>
+        <p><strong>Particular</strong><span>Sem convênio</span></p>
+        <p><strong>Mercado Pago</strong><span>Pix ou cartão</span></p>
+        <p><strong>Online e presencial</strong><span>Pelotas e Brasil</span></p>
+        <p><strong>Mestre e doutoranda</strong><span>Nutrição e Alimentos</span></p>
+      </div>
+    </div>
 
     <!-- 2. IDENTIFICAÇÃO -->
     <section class="section pains" id="para-quem" aria-labelledby="pains-title">
@@ -290,7 +358,7 @@
         </ul>
         <p class="pains__closing">Você não precisa de mais uma dieta restritiva. Precisa de uma estratégia feita para a sua fase de vida.</p>
         <div class="pains__cta">
-          <a class="btn btn--primary" data-cta="pains" href="#consultas">Quero começar meu acompanhamento</a>
+          <a class="btn btn--primary" data-cta="pains" href="#consultas">Ver planos e valores</a>
         </div>
       </div>
     </section>
@@ -321,7 +389,8 @@
         <div class="about__copy">
           <p class="eyebrow">Uma nova fase merece um novo cuidado</p>
           <h2 id="about-title">Ciência, escuta e cuidado individualizado.</h2>
-          <p>Acompanho mulheres 35+ que desejam compreender as mudanças do corpo, equilibrar a saúde hormonal e metabólica e construir hábitos sustentáveis, com uma estratégia personalizada, baseada em evidências e adaptada à realidade de cada paciente.</p>
+          <p>Acompanho mulheres 35+ que desejam compreender as mudanças do corpo, equilibrar a saúde hormonal e metabólica e construir hábitos sustentáveis.</p>
+          <p>Cada estratégia é personalizada, baseada em evidências e adaptada à realidade da sua rotina — sem dieta genérica.</p>
           <ul class="about__creds">
             <li><span aria-hidden="true">✓</span> Mais de 10 anos de atuação em Nutrição</li>
             <li><span aria-hidden="true">✓</span> Mestre e doutoranda em Nutrição e Alimentos</li>
@@ -329,8 +398,33 @@
             <li><span aria-hidden="true">✓</span> Atendimento online e presencial</li>
             <li><span aria-hidden="true">✓</span> Acompanhamento nutricional individualizado</li>
           </ul>
-          <a class="text-link" data-cta="about" href="#consultas">Ver meus serviços →</a>
+          <a class="text-link" data-cta="about" href="#consultas">Ver planos e valores →</a>
         </div>
+      </div>
+    </section>
+
+    <!-- ABORDAGEM (equivalente ao “método” dos sites top) -->
+    <section class="section method" id="abordagem" aria-labelledby="method-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Abordagem JLO</p>
+          <h2 id="method-title">Ciência, escuta e plano feito para a sua rotina.</h2>
+          <p class="section-sub">O diferencial não é uma dieta pronta. É um acompanhamento que entende a mulher 35+.</p>
+        </div>
+        <ul class="method__grid">
+          <li class="method__item">
+            <h3>Base científica</h3>
+            <p>Estratégias alinhadas à evidência, com olhar para hormônios, metabolismo e longevidade.</p>
+          </li>
+          <li class="method__item">
+            <h3>Escuta real</h3>
+            <p>História, rotina, preferências e limitações entram no plano — não o contrário.</p>
+          </li>
+          <li class="method__item">
+            <h3>Ajustes contínuos</h3>
+            <p>O corpo muda. O acompanhamento acompanha, com reavaliações e suporte entre consultas.</p>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -406,16 +500,95 @@
             <p>Você entende o motivo de cada estratégia e ganha autonomia para cuidar da sua saúde.</p>
           </li>
         </ul>
+        <div class="gains__cta">
+          <a class="btn btn--primary" data-cta="gains" href="#consultas">Escolher meu plano</a>
+        </div>
       </div>
     </section>
 
-    <!-- 5. PLANOS -->
+    <!-- 5. COMO FUNCIONA -->
+    <section class="section flow" id="como-funciona" aria-labelledby="flow-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Simples e seguro</p>
+          <h2 id="flow-title">Como funciona o atendimento</h2>
+          <p class="section-sub">Do pagamento à consulta, em três passos claros.</p>
+        </div>
+        <ol class="flow__steps">
+          <li class="flow__step">
+            <span class="flow__num" aria-hidden="true">1</span>
+            <h3>Escolha o formato</h3>
+            <p>Individual, Trimestral ou Semestral — o que fizer sentido para o seu momento.</p>
+          </li>
+          <li class="flow__step">
+            <span class="flow__num" aria-hidden="true">2</span>
+            <h3>Pague com segurança</h3>
+            <p>Checkout no Mercado Pago, com Pix ou cartão, nas condições do app.</p>
+          </li>
+          <li class="flow__step">
+            <span class="flow__num" aria-hidden="true">3</span>
+            <h3>Combine o horário</h3>
+            <p>Após o pagamento, falamos no WhatsApp para marcar dia e horário da consulta.</p>
+          </li>
+        </ol>
+        <ul class="flow__trust" aria-label="Sinais de confiança">
+          <li>CRN-2 · 13894</li>
+          <li>Pagamento via Mercado Pago</li>
+          <li>Online e presencial em Pelotas</li>
+          <li>+10 anos de atuação</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- O QUE ACONTECE NA 1ª CONSULTA (reduz ansiedade — padrão top BR) -->
+    <section class="section first-visit" id="primeira-consulta" aria-labelledby="first-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Na prática</p>
+          <h2 id="first-title">O que acontece na primeira consulta</h2>
+          <p class="section-sub">Clareza do início: você sabe exatamente o que esperar.</p>
+        </div>
+        <ol class="first-visit__steps">
+          <li>
+            <h3>Conversa e escuta</h3>
+            <p>Histórico de saúde, rotina, sintomas, objetivos e o que já tentou antes.</p>
+          </li>
+          <li>
+            <h3>Avaliação do momento atual</h3>
+            <p>Alimentação, energia, sono, hormônios e, no presencial, bioimpedância e medidas.</p>
+          </li>
+          <li>
+            <h3>Direção do plano</h3>
+            <p>Metas realistas e as primeiras estratégias personalizadas para a sua fase.</p>
+          </li>
+          <li>
+            <h3>Próximos passos</h3>
+            <p>Organização do acompanhamento e alinhamento do que vem nas próximas consultas.</p>
+          </li>
+        </ol>
+        <div class="first-visit__cta">
+          <a class="btn btn--primary" data-cta="primeira-consulta" href="#consultas">Ver planos e valores</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section quotes" id="depoimentos" aria-labelledby="quotes-title" hidden>
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Quem já passou por aqui</p>
+          <h2 id="quotes-title">Depoimentos</h2>
+        </div>
+        <ul class="quotes__grid" id="quotesGrid"></ul>
+      </div>
+    </section>
+
+    <!-- 6. PLANOS -->
     <section class="section plans" id="consultas" aria-labelledby="plans-title">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">Meus Serviços</p>
+          <p class="eyebrow">Planos</p>
           <h2 id="plans-title">Cada mulher tem um momento diferente.</h2>
-          <p class="section-sub">Escolha o acompanhamento que faz sentido para você.</p>
+          <p class="section-sub">Escolha o acompanhamento, pague com segurança e combine o horário no WhatsApp.</p>
         </div>
 
         <ul class="plans__grid">
@@ -442,6 +615,7 @@
             <h3 class="plan-card__name">Trimestral</h3>
             <p class="plan-card__desc">Construa hábitos e conquiste seus primeiros resultados.</p>
             <p class="plan-card__price" data-plan-price><span>R$</span> 990 <small>/ 3 meses</small></p>
+            <p class="plan-card__value">Em relação a 3 individuais (R$&nbsp;1.050)</p>
             <ul class="plan-card__feats">
               <li>1 consulta inicial completa</li>
               <li>2 consultas de acompanhamento</li>
@@ -451,7 +625,7 @@
               <li>Suporte entre consultas</li>
             </ul>
             <div class="plan-card__actions">
-              <a class="btn btn--primary" data-cta="pagar-trimestral" href="#" data-pay>Pagar e agendar</a>
+              <a class="btn btn--primary btn--lg" data-cta="pagar-trimestral" href="#" data-pay>Pagar e agendar</a>
               <a class="btn btn--ghost" data-cta="plano-trimestral" href="#" data-plan>Tirar dúvida no WhatsApp</a>
             </div>
           </li>
@@ -460,6 +634,7 @@
             <h3 class="plan-card__name">Semestral</h3>
             <p class="plan-card__desc">Um acompanhamento completo para transformar sua saúde de forma duradoura.</p>
             <p class="plan-card__price" data-plan-price><span>R$</span> 1.790 <small>/ 6 meses</small></p>
+            <p class="plan-card__value">Em relação a 6 individuais (R$&nbsp;2.100)</p>
             <ul class="plan-card__feats">
               <li>Tudo do plano de 3 meses</li>
               <li>6 meses de acompanhamento contínuo</li>
@@ -483,6 +658,54 @@
         </div>
       </div>
     </section>
+
+    <!-- 7. FAQ (visível — alinhado ao schema FAQPage) -->
+    <section class="section faq" id="duvidas" aria-labelledby="faq-title">
+      <div class="container container--narrow">
+        <div class="section-head">
+          <p class="eyebrow">Dúvidas frequentes</p>
+          <h2 id="faq-title">Perguntas que chegam todo dia</h2>
+        </div>
+        <div class="faq__list">
+          <details class="faq__item">
+            <summary>Para quem é o acompanhamento?</summary>
+            <p>Para mulheres 35+ que sentem mudanças no corpo, dificuldade para emagrecer, cansaço, alterações hormonais ou dietas que não funcionam mais.</p>
+          </details>
+          <details class="faq__item">
+            <summary>O atendimento é online ou presencial?</summary>
+            <p>Ambos. Consultas presenciais em Pelotas (RS) e acompanhamento online para todo o Brasil.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Quais formatos estão disponíveis?</summary>
+            <p>Consulta Individual (R$ 350), plano Trimestral (R$ 990) e plano Semestral (R$ 1.790). Bioimpedância e medidas corporais no atendimento presencial.</p>
+          </details>
+          <details class="faq__item">
+            <summary>O atendimento é particular ou por convênio?</summary>
+            <p>O atendimento é particular. O pagamento é feito pelo Mercado Pago (Pix ou cartão), com transparência de valores nos planos.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Como funciona o pagamento e o agendamento?</summary>
+            <p>Você escolhe o plano, paga com segurança no Mercado Pago (Pix ou cartão) e, em seguida, combinamos o horário pelo WhatsApp.</p>
+          </details>
+        </div>
+        <div class="faq__cta">
+          <a class="btn btn--primary" data-cta="faq" href="#consultas">Ver planos e valores</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL (padrão dos melhores sites de conversão) -->
+    <section class="cta-band" aria-labelledby="cta-band-title">
+      <div class="container cta-band__inner">
+        <p class="eyebrow">Pronta para começar?</p>
+        <h2 id="cta-band-title">Sua nova fase merece um cuidado à altura.</h2>
+        <p>Escolha o plano, pague com segurança e vamos combinar o melhor horário juntas.</p>
+        <div class="cta-band__actions">
+          <a class="btn btn--primary btn--lg" data-cta="cta-band" href="#consultas">Ver planos e valores</a>
+          <a class="btn btn--ghost btn--lg" data-cta="cta-band-whats" href="#" id="ctaBandWhats">Falar no WhatsApp</a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
@@ -493,7 +716,8 @@
       </div>
       <nav class="footer__nav" aria-label="Rodapé">
         <a href="#sobre">Sobre</a>
-        <a href="#consultas">Meus Serviços</a>
+        <a href="#consultas">Planos</a>
+        <a href="#duvidas">Dúvidas</a>
         <a href="/privacidade">Privacidade</a>
         <a href="/termos">Termos</a>
         <a href="/cancelamento">Cancelamento</a>
@@ -523,13 +747,13 @@
 
   <!-- CTA fixo mobile (não compete com WA: WA fica discreto) -->
   <div class="mobile-sticky" id="mobileSticky" role="region" aria-label="Ação rápida">
-    <a class="btn btn--primary mobile-sticky__btn" data-cta="sticky-agendar" href="#consultas">Agendar consulta</a>
+    <a class="btn btn--primary mobile-sticky__btn" data-cta="sticky-agendar" href="#consultas">Ver planos</a>
   </div>
 
   <a class="wa-float" id="whatsFloat" href="#" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
     <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 2C6.5 2 2 6.5 2 12.05c0 1.77.463 3.5 1.343 5.023L2 22l5.05-1.32A10 10 0 0 0 12.05 22c5.55 0 10.05-4.5 10.05-9.95C22.1 6.5 17.6 2 12.05 2"/></svg>
   </a>
 
-  <script src="assets/js/script.js?v=69" defer></script>
+  <script src="assets/js/script.js?v=73" defer></script>
 </body>
 </html>

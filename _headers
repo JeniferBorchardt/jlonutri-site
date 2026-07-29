@@ -1,14 +1,39 @@
-# Cloudflare Pages — avoid stale HTML/CSS in browsers
-/
+# Cloudflare Pages — avoid stale HTML; cache images
+
+/*
   Cache-Control: public, max-age=0, must-revalidate
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+*/
 
 /index.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/obrigado
   Cache-Control: no-cache, no-store, must-revalidate
 
 /obrigado.html
   Cache-Control: no-cache, no-store, must-revalidate
 
-/obrigado
+/privacidade
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/privacidade.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/termos
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/termos.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/cancelamento
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/cancelamento.html
   Cache-Control: no-cache, no-store, must-revalidate
 
 /assets/css/style.css
@@ -18,4 +43,4 @@
   Cache-Control: public, max-age=0, must-revalidate
 
 /assets/images/*
-  Cache-Control: public, max-age=604800
+  Cache-Control: public, max-age=604800, immutable

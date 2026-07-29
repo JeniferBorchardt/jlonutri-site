@@ -25,7 +25,10 @@ const CAL_BOOKING_URL = "";
  * 1. Seu negócio → Link de pagamento
  * 2. 1 link por plano
  * 3. Cole em paymentUrl
- * 4. Retorno: https://www.jlonutri.com.br/obrigado
+ * 4. URL de retorno (cole exatamente assim em cada link):
+ *    Individual → https://www.jlonutri.com.br/obrigado?plano=avulsa
+ *    Trimestral → https://www.jlonutri.com.br/obrigado?plano=trimestral
+ *    Semestral  → https://www.jlonutri.com.br/obrigado?plano=semestral
  *
  * paymentUrl vazio → botão abre WhatsApp.
  * price: null → mostra "Sob consulta".
@@ -53,6 +56,13 @@ const PLANS = {
     paymentUrl: "https://mpago.la/1DaXPWN",
   },
 };
+
+/**
+ * Depoimentos reais (só com autorização).
+ * Ex.: { quote: "…", name: "Maria", detail: "Pelotas · plano Trimestral" }
+ * Lista vazia → a seção fica oculta.
+ */
+const TESTIMONIALS = [];
 
 /* ---------- 2. Analytics (GA4 / dataLayer) ---------- */
 
@@ -108,6 +118,12 @@ function getPlan(planId) {
     btn.setAttribute("aria-expanded", String(willOpen));
     btn.setAttribute("aria-label", willOpen ? "Fechar menu" : "Abrir menu");
     document.body.style.overflow = willOpen ? "hidden" : "";
+    if (willOpen) {
+      const first = menu.querySelector("a, button");
+      if (first) first.focus();
+    } else {
+      btn.focus();
+    }
   }
 
   btn.addEventListener("click", () => toggle());
@@ -149,6 +165,7 @@ function getPlan(planId) {
   [
     document.getElementById("whatsFloat"),
     document.getElementById("heroWhats"),
+    document.getElementById("ctaBandWhats"),
     document.querySelector('[data-cta="footer-whats"]'),
   ].forEach((el) => {
     if (!el) return;
@@ -288,10 +305,43 @@ function getPlan(planId) {
   });
 })();
 
+/* ---------- 8b. Depoimentos (só se houver conteúdo real) ---------- */
+
+(function initTestimonials() {
+  const section = document.getElementById("depoimentos");
+  const grid = document.getElementById("quotesGrid");
+  if (!section || !grid) return;
+
+  const items = Array.isArray(TESTIMONIALS)
+    ? TESTIMONIALS.filter((t) => t && String(t.quote || "").trim())
+    : [];
+
+  if (!items.length) {
+    section.hidden = true;
+    return;
+  }
+
+  grid.innerHTML = items
+    .map((t) => {
+      const quote = String(t.quote).trim();
+      const name = String(t.name || "Paciente").trim();
+      const detail = String(t.detail || "").trim();
+      return `<li class="quote-card">
+        <blockquote>${quote.replace(/</g, "&lt;")}</blockquote>
+        <p class="quote-card__who"><strong>${name.replace(/</g, "&lt;")}</strong>${
+          detail ? `<span>${detail.replace(/</g, "&lt;")}</span>` : ""
+        }</p>
+      </li>`;
+    })
+    .join("");
+
+  section.hidden = false;
+})();
+
 /* ---------- 9. Tracking de CTAs ---------- */
 
 (function initCtaTracking() {
-  ["whatsFloat", "heroWhats"].forEach((id) => {
+  ["whatsFloat", "heroWhats", "ctaBandWhats"].forEach((id) => {
     const el = document.getElementById(id);
     if (!el) return;
     el.addEventListener("click", () => track("whatsapp_click", { source: id }));
@@ -337,8 +387,9 @@ function getPlan(planId) {
 /* ---------- 10. Animação ao rolar ---------- */
 
 (function initReveal() {
+  // Planos NÃO entram no reveal: preço/CTA devem aparecer na hora (conversão)
   const els = document.querySelectorAll(
-    ".section-head, .pain-card, .gain-card, .plan-card, .about__copy"
+    ".section-head, .pain-card, .gain-card, .about__copy, .flow__step, .faq__item, .method__item, .first-visit__steps li"
   );
   els.forEach((el) => el.classList.add("reveal"));
 
@@ -360,7 +411,7 @@ function getPlan(planId) {
         }
       });
     },
-    { threshold: 0.12 }
+    { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
   );
   els.forEach((el) => io.observe(el));
 })();

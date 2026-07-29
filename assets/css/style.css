@@ -27,8 +27,8 @@
   --offwhite-2: var(--surface);
   --white: var(--elevated);
   --ink: var(--warm-offwhite);
-  --ink-soft: rgba(246, 228, 207, 0.88);
-  --muted: rgba(246, 228, 207, 0.7);
+  --ink-soft: rgba(246, 228, 207, 0.9);
+  --muted: rgba(246, 228, 207, 0.78);
   --brand: var(--warm-offwhite);
   --brand-2: #EBD4B8;
   --brand-soft: var(--elevated);
@@ -173,6 +173,36 @@ h1, h2, h3 {
 }
 .announce strong { color: var(--ink); font-weight: 700; }
 
+/* ---------- Trust bar ---------- */
+.trust-bar {
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+  padding: 18px 0;
+}
+.trust-bar__inner {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px 16px;
+  text-align: center;
+}
+.trust-bar p {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.trust-bar strong {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--brand);
+  line-height: 1.25;
+}
+.trust-bar span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
 /* ---------- Header ---------- */
 .topbar {
   position: sticky;
@@ -309,8 +339,16 @@ h1, h2, h3 {
 /* ---------- Sections ---------- */
 .section {
   padding: clamp(56px, 8vw, 100px) 0;
+}
+.pains,
+.about,
+.gains,
+.method,
+.first-visit,
+.quotes,
+.faq {
   content-visibility: auto;
-  contain-intrinsic-size: auto 600px;
+  contain-intrinsic-size: auto 720px;
 }
 .hero {
   content-visibility: visible;
@@ -361,6 +399,15 @@ h1, h2, h3 {
   grid-template-columns: 1.08fr 0.92fr;
   gap: clamp(28px, 5vw, 56px);
   align-items: center;
+}
+.hero__brand {
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--brand);
+  line-height: 1.1;
 }
 .hero__title {
   font-size: clamp(30px, 5vw, 52px);
@@ -567,6 +614,12 @@ h1, h2, h3 {
   border-color: var(--brand);
   box-shadow: var(--shadow);
   padding-top: 40px;
+  background: linear-gradient(180deg, rgba(246, 228, 207, 0.06) 0%, var(--white) 42%);
+}
+@media (min-width: 1025px) {
+  .plan-card--featured {
+    transform: translateY(-6px);
+  }
 }
 .plan-card__tag {
   position: absolute;
@@ -596,12 +649,20 @@ h1, h2, h3 {
   margin: 0 0 20px;
   max-width: 28ch;
 }
+.plan-card__value {
+  margin: -8px 0 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
 .plan-card__price {
   font-family: var(--font-display);
   font-size: clamp(30px, 3vw, 36px);
   font-weight: 700;
   color: var(--brand);
-  margin: 0 0 20px;
+  margin: 0 0 8px;
   line-height: 1.2;
 }
 .plan-card__price span { font-size: 0.45em; vertical-align: super; }
@@ -654,6 +715,243 @@ h1, h2, h3 {
   font-size: 14px;
   line-height: 1.5;
   color: var(--muted);
+}
+
+/* ---------- Como funciona ---------- */
+.flow { background: var(--white); }
+.flow__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.flow__step {
+  padding: 24px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--offwhite);
+}
+.flow__num {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  margin-bottom: 14px;
+  border-radius: 50%;
+  background: var(--brand);
+  color: var(--on-brand);
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+}
+.flow__step h3 {
+  font-size: 22px;
+  margin: 0 0 8px;
+}
+.flow__step p {
+  margin: 0;
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+.flow__trust {
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 12px;
+}
+.flow__trust li {
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brand);
+  background: var(--offwhite);
+}
+
+/* ---------- Depoimentos ---------- */
+.quotes { background: var(--offwhite); }
+.quotes__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.quote-card {
+  padding: 24px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+}
+.quote-card blockquote {
+  margin: 0 0 16px;
+  padding: 0;
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2.2vw, 22px);
+  line-height: 1.35;
+  color: var(--ink);
+  border: 0;
+}
+.quote-card__who {
+  margin: 0;
+  display: grid;
+  gap: 2px;
+  font-size: 14px;
+}
+.quote-card__who strong { color: var(--brand); }
+.quote-card__who span { color: var(--muted); font-size: 13px; }
+
+/* ---------- FAQ ---------- */
+.faq { background: var(--white); }
+.faq .section-head { margin-bottom: clamp(24px, 4vw, 36px); }
+.faq__list {
+  display: grid;
+  gap: 10px;
+}
+.faq__item {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--offwhite);
+  padding: 4px 16px;
+}
+.faq__item summary {
+  cursor: pointer;
+  list-style: none;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 14px 0;
+  color: var(--ink);
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+}
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary::after {
+  content: "+";
+  margin-left: auto;
+  font-weight: 700;
+  color: var(--brand);
+  padding-left: 12px;
+}
+.faq__item[open] summary::after { content: "–"; }
+.faq__item p {
+  margin: 0 0 16px;
+  color: var(--ink-soft);
+  font-size: 15.5px;
+  line-height: 1.6;
+}
+.faq__cta { text-align: center; margin-top: 28px; }
+
+.gains__cta { text-align: center; margin-top: 32px; }
+
+/* ---------- Abordagem JLO ---------- */
+.method { background: var(--offwhite); }
+.method__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.method__item {
+  padding: 26px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+}
+.method__item h3 {
+  font-size: 22px;
+  margin: 0 0 10px;
+}
+.method__item p {
+  margin: 0;
+  font-size: 15.5px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+/* ---------- Primeira consulta ---------- */
+.first-visit { background: var(--white); }
+.first-visit__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  counter-reset: first;
+}
+.first-visit__steps li {
+  position: relative;
+  padding: 24px 22px 24px 64px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--offwhite);
+  counter-increment: first;
+}
+.first-visit__steps li::before {
+  content: counter(first);
+  position: absolute;
+  left: 18px;
+  top: 24px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--brand);
+  color: var(--on-brand);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+}
+.first-visit__steps h3 {
+  font-size: 20px;
+  margin: 0 0 8px;
+}
+.first-visit__steps p {
+  margin: 0;
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.first-visit__cta { text-align: center; margin-top: 28px; }
+
+/* ---------- CTA band final ---------- */
+.cta-band {
+  padding: clamp(56px, 8vw, 88px) 0;
+  background:
+    radial-gradient(700px 320px at 80% 0%, rgba(246, 228, 207, 0.07), transparent 60%),
+    linear-gradient(180deg, #342920 0%, #2E241C 100%);
+  border-top: 1px solid var(--line);
+}
+.cta-band__inner {
+  max-width: 720px;
+  text-align: center;
+}
+.cta-band h2 {
+  font-size: clamp(28px, 4.5vw, 42px);
+  margin: 0 0 14px;
+}
+.cta-band p {
+  margin: 0 auto 24px;
+  max-width: 40ch;
+  color: var(--ink-soft);
+  font-size: 16.5px;
+}
+.cta-band__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
 }
 
 .plans__legal {
@@ -805,8 +1103,8 @@ h1, h2, h3 {
 /* ---------- Reveal ---------- */
 .reveal {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.55s var(--ease), transform 0.55s var(--ease);
+  transform: translateY(12px);
+  transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
 }
 .reveal.is-visible { opacity: 1; transform: none; }
 
@@ -848,7 +1146,11 @@ h1, h2, h3 {
   .about__media { max-width: 400px; margin: 0 auto; width: 100%; }
   .pains__grid,
   .gains__grid { grid-template-columns: repeat(2, 1fr); }
+  .method__grid { grid-template-columns: 1fr; }
+  .first-visit__steps { grid-template-columns: 1fr; }
+  .trust-bar__inner { grid-template-columns: repeat(3, 1fr); }
   .plans__grid { grid-template-columns: 1fr; max-width: 440px; margin-inline: auto; }
+  .flow__steps { grid-template-columns: 1fr; }
   .footer__inner { grid-template-columns: 1fr 1fr; }
 }
 
@@ -877,15 +1179,24 @@ h1, h2, h3 {
     align-items: stretch;
   }
   .hero__actions .btn { width: 100%; }
-  .hero__trust { grid-template-columns: 1fr; }
+  .hero__trust { grid-template-columns: 1fr 1fr; }
   .hero__title { font-size: clamp(28px, 8vw, 36px); }
   .hero__lead { font-size: 16px; }
+  .hero__brand { font-size: 26px; }
 
   .section-head h2 { font-size: clamp(26px, 7vw, 34px); }
   .section-sub { font-size: 16px; max-width: none; }
 
   .pains__grid,
   .gains__grid { grid-template-columns: 1fr; }
+  .flow__steps { grid-template-columns: 1fr; }
+  .quotes__grid { grid-template-columns: 1fr; }
+  .method__grid { grid-template-columns: 1fr; }
+  .first-visit__steps { grid-template-columns: 1fr; }
+  .trust-bar__inner { grid-template-columns: 1fr 1fr; gap: 14px 10px; }
+  .trust-bar__inner p:last-child { grid-column: 1 / -1; }
+  .cta-band__actions { flex-direction: column; align-items: stretch; }
+  .cta-band__actions .btn { width: 100%; }
 
   .pain-card,
   .gain-card { padding: 20px 18px; }
@@ -955,5 +1266,12 @@ h1, h2, h3 {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .mobile-sticky { transition: none; }
-  .section { content-visibility: visible; }
+  .pains,
+  .about,
+  .gains,
+  .method,
+  .first-visit,
+  .quotes,
+  .faq { content-visibility: visible; }
+  .plan-card--featured { transform: none; }
 }
