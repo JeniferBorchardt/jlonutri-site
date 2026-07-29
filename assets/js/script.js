@@ -165,7 +165,7 @@ function getPlan(planId) {
   [
     document.getElementById("whatsFloat"),
     document.getElementById("heroWhats"),
-    document.getElementById("ctaBandWhats"),
+    document.getElementById("plansDoubt"),
     document.querySelector('[data-cta="footer-whats"]'),
   ].forEach((el) => {
     if (!el) return;
@@ -285,23 +285,6 @@ function getPlan(planId) {
         });
       }
     }
-
-    const waBtn = card.querySelector("[data-plan]");
-    if (waBtn) {
-      waBtn.href = waLink(
-        `Olá, Jenifer! Tenho interesse no formato "${plan.name}". Pode me passar os valores e horários disponíveis?`
-      );
-      waBtn.target = "_blank";
-      waBtn.rel = "noopener noreferrer";
-      waBtn.addEventListener("click", () => {
-        track("whatsapp_click", { source: "plan_doubt", plan_id: plan.id });
-        track("selecao_plano", {
-          plan_id: plan.id,
-          plan_name: plan.name,
-          intent: "doubt",
-        });
-      });
-    }
   });
 })();
 
@@ -341,7 +324,7 @@ function getPlan(planId) {
 /* ---------- 9. Tracking de CTAs ---------- */
 
 (function initCtaTracking() {
-  ["whatsFloat", "heroWhats", "ctaBandWhats"].forEach((id) => {
+  ["whatsFloat", "heroWhats", "plansDoubt"].forEach((id) => {
     const el = document.getElementById(id);
     if (!el) return;
     el.addEventListener("click", () => track("whatsapp_click", { source: id }));
