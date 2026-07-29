@@ -647,12 +647,21 @@ h1, h2, h3 {
 .plan-card__actions { display: grid; gap: 10px; margin-top: auto; }
 .plan-card .btn { width: 100%; min-height: 48px; }
 
+.plans__pay-note {
+  margin: 24px auto 0;
+  max-width: 42rem;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
 .plans__legal {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 12px 22px;
-  margin-top: 28px;
+  margin-top: 20px;
   font-size: 14px;
 }
 .plans__legal a {

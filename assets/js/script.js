@@ -25,7 +25,7 @@ const CAL_BOOKING_URL = "";
  * 1. Seu negócio → Link de pagamento
  * 2. 1 link por plano
  * 3. Cole em paymentUrl
- * 4. Retorno: https://www.jlonutri.com.br/obrigado.html
+ * 4. Retorno: https://www.jlonutri.com.br/obrigado
  *
  * paymentUrl vazio → botão abre WhatsApp.
  * price: null → mostra "Sob consulta".
@@ -36,21 +36,21 @@ const PLANS = {
     name: "Individual",
     price: 350,
     period: "/ consulta",
-    paymentUrl: "",
+    paymentUrl: "https://mpago.la/1GF7hCC",
   },
   trimestral: {
     id: "trimestral",
     name: "Trimestral",
     price: 990,
-    period: "(ou 3x de R$ 330)",
-    paymentUrl: "",
+    period: "/ 3 meses",
+    paymentUrl: "https://mpago.li/1ajqCfb",
   },
   semestral: {
     id: "semestral",
     name: "Semestral",
     price: 1790,
-    period: "(ou 6x de R$ 298)",
-    paymentUrl: "",
+    period: "/ 6 meses",
+    paymentUrl: "https://mpago.la/1DaXPWN",
   },
 };
 
@@ -229,9 +229,24 @@ function getPlan(planId) {
       const url = (plan.paymentUrl || "").trim();
       if (url) {
         payBtn.href = url;
-        payBtn.textContent = "Começar agora";
+        payBtn.textContent = "Pagar e agendar";
         payBtn.setAttribute("data-pay-ready", "true");
+        payBtn.removeAttribute("target");
+        payBtn.rel = "noopener noreferrer";
         payBtn.addEventListener("click", () => {
+          try {
+            localStorage.setItem(
+              "jlo_last_plan",
+              JSON.stringify({
+                id: plan.id,
+                name: plan.name,
+                price: plan.price,
+                at: Date.now(),
+              })
+            );
+          } catch (_) {
+            /* ignore */
+          }
           track("selecao_plano", { plan_id: plan.id, plan_name: plan.name });
           track("checkout_open", {
             plan_id: plan.id,
@@ -245,13 +260,13 @@ function getPlan(planId) {
         );
         payBtn.textContent = "Quero no WhatsApp";
         payBtn.setAttribute("data-pay-ready", "false");
+        payBtn.target = "_blank";
+        payBtn.rel = "noopener noreferrer";
         payBtn.addEventListener("click", () => {
           track("selecao_plano", { plan_id: plan.id, plan_name: plan.name });
           track("whatsapp_click", { source: "pay_fallback", plan_id: plan.id });
         });
       }
-      payBtn.target = "_blank";
-      payBtn.rel = "noopener noreferrer";
     }
 
     const waBtn = card.querySelector("[data-plan]");
