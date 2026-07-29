@@ -249,7 +249,7 @@ function getPlan(planId) {
       const url = (plan.paymentUrl || "").trim();
       if (url) {
         payBtn.href = url;
-        payBtn.textContent = "Pagar com segurança";
+        payBtn.textContent = "Agendar consulta";
         payBtn.setAttribute("data-pay-ready", "true");
         payBtn.removeAttribute("target");
         payBtn.rel = "noopener noreferrer";
