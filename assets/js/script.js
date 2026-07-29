@@ -12,13 +12,6 @@ const WHATSAPP_NUMBER = "5553981378527";
 const INSTAGRAM_URL = "https://www.instagram.com/nutrijeniferlopes";
 
 /**
- * Agenda online (Cal.com) — DESATIVADA.
- * Deixe vazio para agendar só pelo WhatsApp.
- * Para reativar: cole a URL e use data-booking nos links.
- */
-const CAL_BOOKING_URL = "";
-
-/**
  * Catálogo de planos — único lugar para preço e link de pagamento.
  *
  * Pagamento: o site NÃO coleta dados de cartão. O botão só redireciona
@@ -218,36 +211,7 @@ function getPlan(planId) {
   }
 })();
 
-/* ---------- 7. Agenda (Cal.com opcional via data-booking) ---------- */
-
-(function initBookingLinks() {
-  const bookingUrl = (CAL_BOOKING_URL || "").trim();
-  document.querySelectorAll("[data-booking]").forEach((el) => {
-    if (bookingUrl) {
-      el.href = bookingUrl;
-      el.target = "_blank";
-      el.rel = "noopener noreferrer";
-      el.addEventListener("click", () => {
-        track("agendar_click", {
-          link_url: bookingUrl,
-          cta: el.getAttribute("data-cta") || "booking",
-        });
-      });
-      return;
-    }
-
-    el.href = waLink("Olá, Jenifer! Gostaria de combinar o horário da minha consulta.");
-    el.target = "_blank";
-    el.rel = "noopener noreferrer";
-    el.addEventListener("click", () => {
-      track("whatsapp_click", {
-        source: el.getAttribute("data-cta") || "booking_fallback",
-      });
-    });
-  });
-})();
-
-/* ---------- 8. Planos (preço + pagamento / WhatsApp) ---------- */
+/* ---------- 7. Planos (preço + pagamento / WhatsApp) ---------- */
 
 (function initPlansCatalog() {
   document.querySelectorAll("[data-plan-id]").forEach((card) => {
@@ -315,7 +279,7 @@ function getPlan(planId) {
   });
 })();
 
-/* ---------- 8b. Depoimentos (só se houver conteúdo real) ---------- */
+/* ---------- 8. Depoimentos (só se houver conteúdo real) ---------- */
 
 (function initTestimonials() {
   const section = document.getElementById("depoimentos");
@@ -370,7 +334,7 @@ function getPlan(planId) {
   });
 })();
 
-/* ---------- 11. Analytics (carrega após interação) ---------- */
+/* ---------- 10. Analytics (carrega após interação) ---------- */
 
 (function initAnalytics() {
   function loadGtag() {
@@ -394,7 +358,7 @@ function getPlan(planId) {
   }
 })();
 
-/* ---------- 10. Animação ao rolar ---------- */
+/* ---------- 11. Animação ao rolar ---------- */
 
 (function initReveal() {
   // Planos NÃO entram no reveal: preço/CTA devem aparecer na hora (conversão)

@@ -18,7 +18,8 @@ jlonutri/
 ├── cancelamento.html          Cancelamento e reagendamento
 ├── manifest.json              PWA / ícone
 ├── robots.txt / sitemap.xml
-├── _headers                   Cache (Cloudflare Pages)
+├── _headers                   Segurança + cache (Cloudflare Pages)
+├── _redirects                 Redirects do Pages
 ├── README.md
 └── assets/
     ├── css/style.css          Design system + seções + responsivo
@@ -26,11 +27,9 @@ jlonutri/
     └── images/
         ├── jlo-mark.png       Logo do site
         ├── favicon.png
-        ├── jenifer-hero.jpg
-        ├── jenifer-about.jpg
-        ├── jenifer-gains.jpg
-        ├── og-share.png       Preview de compartilhamento
-        └── social-logo-*.png  Versões para redes sociais
+        ├── jenifer-hero.jpg / .webp / -480.webp
+        ├── jenifer-about.jpg / .webp
+        └── og-share.png       Preview de compartilhamento
 ```
 
 ## Seções do site (`index.html`)
@@ -38,9 +37,10 @@ jlonutri/
 1. Hero — chamada + credenciais + foto
 2. Para quem é — dores do público 35+
 3. Sobre — bio e diferenciais
-4. Benefícios — foto + resultados
+4. Benefícios — resultados esperados
 5. Meus Serviços — Individual, Trimestral e Semestral
-6. Rodapé — CRN, redes, documentos legais
+6. FAQ + CTA final
+7. Rodapé — CRN, redes, documentos legais
 
 Agendamento e pagamento: **Mercado Pago** (Pix/cartão) + WhatsApp para horário.
 
@@ -52,7 +52,6 @@ Tudo que muda com frequência fica no topo do arquivo:
 |------|-------|
 | `WHATSAPP_NUMBER` | Número no formato internacional |
 | `INSTAGRAM_URL` | Link do Instagram |
-| `CAL_BOOKING_URL` | Agenda online (vazio = só WhatsApp) |
 | `PLANS.*.price` | Valores das consultas |
 | `PLANS.*.paymentUrl` | Links Mercado Pago |
 | `TESTIMONIALS` | Depoimentos reais (vazio = seção oculta) |
