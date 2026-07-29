@@ -21,10 +21,14 @@ const CAL_BOOKING_URL = "";
 /**
  * Catálogo de planos — único lugar para preço e link de pagamento.
  *
+ * Pagamento: o site NÃO coleta dados de cartão. O botão só redireciona
+ * para o checkout hospedado do Mercado Pago (PCI fica com o gateway).
+ * Não use access_token / chave secreta no frontend — só link público.
+ *
  * Mercado Pago:
  * 1. Seu negócio → Link de pagamento
  * 2. 1 link por plano
- * 3. Cole em paymentUrl
+ * 3. Cole em paymentUrl (https://mpago.la/... ou mpago.li/...)
  * 4. URL de retorno (cole exatamente assim em cada link):
  *    Individual → https://www.jlonutri.com.br/obrigado?plano=avulsa
  *    Trimestral → https://www.jlonutri.com.br/obrigado?plano=trimestral
@@ -82,6 +86,25 @@ function track(eventName, params = {}) {
 
 function waLink(message) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+
+/** Aceita só links HTTPS do Mercado Pago (checkout hospedado — sem cartão no nosso site). */
+function isAllowedPaymentUrl(url) {
+  try {
+    const u = new URL(String(url || "").trim());
+    if (u.protocol !== "https:") return false;
+    const host = u.hostname.toLowerCase();
+    return (
+      host === "mpago.la" ||
+      host === "mpago.li" ||
+      host === "www.mercadopago.com.br" ||
+      host === "mercadopago.com.br" ||
+      host.endsWith(".mercadopago.com.br") ||
+      host.endsWith(".mercadopago.com")
+    );
+  } catch (_) {
+    return false;
+  }
 }
 
 function formatPrice(value) {
@@ -247,7 +270,7 @@ function getPlan(planId) {
     const payBtn = card.querySelector("[data-pay]");
     if (payBtn) {
       const url = (plan.paymentUrl || "").trim();
-      if (url) {
+      if (url && isAllowedPaymentUrl(url)) {
         payBtn.href = url;
         payBtn.textContent = "Agendar consulta";
         payBtn.setAttribute("data-pay-ready", "true");
@@ -259,8 +282,6 @@ function getPlan(planId) {
               "jlo_last_plan",
               JSON.stringify({
                 id: plan.id,
-                name: plan.name,
-                price: plan.price,
                 at: Date.now(),
               })
             );
@@ -275,6 +296,9 @@ function getPlan(planId) {
           });
         });
       } else {
+        if (url && !isAllowedPaymentUrl(url)) {
+          console.warn("paymentUrl bloqueada (domínio não permitido):", plan.id);
+        }
         payBtn.href = waLink(
           `Olá, Jenifer! Quero fechar o formato "${plan.name}". Pode me enviar o link de pagamento e os horários disponíveis?`
         );

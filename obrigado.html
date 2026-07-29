@@ -51,7 +51,11 @@
 
       function readPlan() {
         var params = new URLSearchParams(window.location.search);
-        var fromQuery = (params.get("plano") || params.get("plan") || "").toLowerCase().trim();
+        var fromQuery = (params.get("plano") || params.get("plan") || "")
+          .toLowerCase()
+          .trim()
+          .replace(/[^a-z0-9_-]/g, "");
+        if (fromQuery === "individual") fromQuery = "avulsa";
         if (fromQuery && PLAN_LABELS[fromQuery]) {
           return { id: fromQuery, name: PLAN_LABELS[fromQuery] };
         }
@@ -59,10 +63,15 @@
           var raw = localStorage.getItem("jlo_last_plan");
           if (!raw) return null;
           var data = JSON.parse(raw);
-          if (!data || !data.name) return null;
-          // ignora se tiver mais de 7 dias
+          if (!data || !data.id) return null;
+          var id = String(data.id)
+            .toLowerCase()
+            .trim()
+            .replace(/[^a-z0-9_-]/g, "");
+          if (id === "individual") id = "avulsa";
+          if (!PLAN_LABELS[id]) return null;
           if (data.at && Date.now() - data.at > 7 * 24 * 60 * 60 * 1000) return null;
-          return data;
+          return { id: id, name: PLAN_LABELS[id] };
         } catch (_) {
           return null;
         }
