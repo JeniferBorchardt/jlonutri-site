@@ -38,21 +38,21 @@ const PLANS = {
     id: "avulsa",
     name: "Individual",
     price: 350,
-    period: "/ consulta",
+    period: "",
     paymentUrl: "https://mpago.la/1GF7hCC",
   },
   trimestral: {
     id: "trimestral",
     name: "Trimestral",
     price: 990,
-    period: "/ 3 meses",
+    period: "",
     paymentUrl: "https://mpago.li/1ajqCfb",
   },
   semestral: {
     id: "semestral",
     name: "Semestral",
     price: 1790,
-    period: "/ 6 meses",
+    period: "",
     paymentUrl: "https://mpago.la/1DaXPWN",
   },
 };
@@ -231,13 +231,17 @@ function getPlan(planId) {
     const plan = getPlan(card.getAttribute("data-plan-id"));
     if (!plan) return;
 
-    const period = plan.period || "";
+    const period = (plan.period || "").trim();
     const priceEl = card.querySelector("[data-plan-price]");
     if (priceEl) {
       const formatted = formatPrice(plan.price);
-      priceEl.innerHTML = formatted
-        ? `<span>R$</span> ${formatted} <small>${period}</small>`
-        : `<span class="plan-card__price-soft">Sob consulta</span>`;
+      if (!formatted) {
+        priceEl.innerHTML = `<span class="plan-card__price-soft">Sob consulta</span>`;
+      } else if (period) {
+        priceEl.innerHTML = `<span>R$</span> ${formatted} <small>${period}</small>`;
+      } else {
+        priceEl.innerHTML = `<span>R$</span> ${formatted}`;
+      }
     }
 
     const payBtn = card.querySelector("[data-pay]");
