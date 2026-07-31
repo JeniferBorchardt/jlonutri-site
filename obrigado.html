@@ -12,16 +12,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css?v=97" />
+  <link rel="stylesheet" href="assets/css/style.css?v=98" />
 </head>
 <body class="thanks-page">
   <main class="thanks">
     <div class="thanks__card">
       <img class="thanks__logo" src="assets/images/jlo-mark.png?v=8" alt="JLO Nutri" width="350" height="234" decoding="async" />
-      <p class="eyebrow">Pagamento confirmado</p>
-      <h1>Obrigada! Próximo passo: combinar seu horário</h1>
+      <p class="eyebrow">Pagamento recebido</p>
+      <h1>Falta só combinar seu horário</h1>
       <p class="thanks__lead" id="thanksLead">
-        Recebi seu pagamento. O próximo passo é combinar o horário no WhatsApp — respondo em horário comercial.
+        Recebi seu pagamento. Me chame no WhatsApp para marcarmos a consulta — respondo em horário comercial.
+      </p>
+      <p class="thanks__hint" id="thanksHint">
+        No WhatsApp, diga se prefere <strong>manhã</strong> ou <strong>tarde</strong> e, se puder, um dia da semana.
       </p>
       <div class="thanks__actions">
         <a class="btn btn--whats btn--lg" id="thanksWhats" href="#" target="_blank" rel="noopener noreferrer">Combinar horário no WhatsApp</a>
@@ -40,6 +43,8 @@
         trimestral: "Trimestral",
         semestral: "Semestral"
       };
+      var TIME_ASK =
+        " Prefiro manhã ou tarde? Tenho preferência de dia: ___.";
 
       function track(eventName, params) {
         try {
@@ -86,16 +91,18 @@
         lead.textContent =
           "Recebi o pagamento do plano " +
           planName +
-          ". O próximo passo é combinar o horário no WhatsApp — respondo em horário comercial.";
+          ". Me chame no WhatsApp para marcarmos a consulta — respondo em horário comercial.";
         msg =
-          "Olá, Jenifer! Acabei de pagar o plano " +
+          "Olá, Jenifer! Já paguei o plano " +
           planName +
-          " pelo site e gostaria de combinar o horário da consulta.";
+          " pelo site e quero combinar o horário da consulta." +
+          TIME_ASK;
       } else {
         lead.textContent =
-          "Recebi seu pagamento. O próximo passo é combinar o horário no WhatsApp — respondo em horário comercial.";
+          "Recebi seu pagamento. Me chame no WhatsApp para marcarmos a consulta — respondo em horário comercial.";
         msg =
-          "Olá, Jenifer! Acabei de pagar pelo site e gostaria de combinar o horário da consulta.";
+          "Olá, Jenifer! Já paguei pelo site e quero combinar o horário da consulta." +
+          TIME_ASK;
       }
 
       track("compra_concluida", {

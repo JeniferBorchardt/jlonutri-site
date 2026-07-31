@@ -666,8 +666,16 @@ h1, h2, h3 {
   color: var(--brand);
   font-weight: 700;
 }
-.plan-card__actions { display: grid; gap: 10px; margin-top: auto; }
+.plan-card__actions { display: grid; gap: 8px; margin-top: auto; }
 .plan-card .btn { width: 100%; min-height: 48px; }
+.plan-card__next {
+  margin: 0;
+  text-align: center;
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: var(--muted);
+  font-weight: 600;
+}
 
 .plans__assurance {
   max-width: 720px;
@@ -1049,7 +1057,14 @@ h1, h2, h3 {
 }
 .thanks__logo { height: 52px; width: auto; margin: 0 auto 20px; }
 .thanks h1 { font-size: clamp(28px, 5vw, 38px); margin-bottom: 12px; }
-.thanks__lead { margin: 0 0 12px; color: var(--ink-soft); font-size: 16px; }
+.thanks__lead { margin: 0 0 10px; color: var(--ink-soft); font-size: 16px; }
+.thanks__hint {
+  margin: 0 0 20px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.thanks__hint strong { color: var(--brand); font-weight: 700; }
 .thanks__actions {
   display: flex;
   flex-wrap: wrap;
