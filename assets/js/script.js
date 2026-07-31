@@ -36,21 +36,21 @@ const PLANS = {
     name: "Individual",
     price: 350,
     period: "",
-    paymentUrl: "https://mpago.la/1GF7hCC",
+    paymentUrl: "https://mpago.la/2PgHtAZ",
   },
   trimestral: {
     id: "trimestral",
     name: "Trimestral",
     price: 990,
     period: "",
-    paymentUrl: "https://mpago.li/1ajqCfb",
+    paymentUrl: "https://mpago.la/2bTQ7iV",
   },
   semestral: {
     id: "semestral",
     name: "Semestral",
     price: 1790,
     period: "",
-    paymentUrl: "https://mpago.la/1DaXPWN",
+    paymentUrl: "https://mpago.la/1DY7iKd",
   },
 };
 
