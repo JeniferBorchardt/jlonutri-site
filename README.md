@@ -29,7 +29,7 @@ jlonutri/
         ├── favicon.png
         ├── jenifer-hero.jpg / .webp / -480.webp
         ├── jenifer-about.jpg / .webp
-        └── og-share.png       Preview de compartilhamento
+        └── og-share.jpg       Preview de compartilhamento (1200×630)
 ```
 
 ## Seções do site (`index.html`)
