@@ -34,11 +34,11 @@ jlonutri/
 
 ## Seções do site (`index.html`)
 
-1. Hero — chamada + credenciais + foto
+1. Hero — chamada + foto
 2. Para quem é — dores do público 35+
 3. Sobre — bio e diferenciais
 4. Benefícios — resultados esperados
-5. Meus Serviços — Individual, Trimestral e Semestral
+5. Primeira consulta + planos (Individual, Trimestral, Semestral)
 6. FAQ + CTA final
 7. Rodapé — CRN, redes, documentos legais
 
@@ -56,28 +56,34 @@ Tudo que muda com frequência fica no topo do arquivo:
 | `PLANS.*.paymentUrl` | Links Mercado Pago |
 | `TESTIMONIALS` | Depoimentos reais (vazio = seção oculta) |
 
-### Mercado Pago — URL de retorno (cole em cada link)
+### Eventos GA4 úteis
 
-| Plano | URL de retorno no Mercado Pago |
-|-------|--------------------------------|
-| Individual | `https://www.jlonutri.com.br/obrigado?plano=avulsa` |
-| Trimestral | `https://www.jlonutri.com.br/obrigado?plano=trimestral` |
-| Semestral | `https://www.jlonutri.com.br/obrigado?plano=semestral` |
+| Evento | Quando |
+|--------|--------|
+| `checkout_open` | Clique em pagar (Mercado Pago) |
+| `obrigado_view` | Visita à página `/obrigado` |
+| `whatsapp_click` | Clique em WhatsApp |
+| `agendar_click` | Clique em âncoras `#consultas` |
 
-Assim a página “obrigado” já abre o WhatsApp com o nome do plano pago.
+Marque `checkout_open`, `obrigado_view` e `whatsapp_click` como conversões no painel do GA4.
+
+### Mercado Pago — retorno
+
+No painel do MP, o redirecionamento geral pode ser:
+`https://www.jlonutri.com.br/obrigado`
+
+(Opcional por plano, se disponível: `?plano=avulsa|trimestral|semestral`.)
 
 ### Redirect `jlonutri.com.br` → `www`
 
-Não dá para fazer só pelo arquivo `_redirects` do Pages. No Cloudflare:
+No Cloudflare → Rules → Redirect Rules (Dynamic):
 
-1. **Rules → Redirect Rules** (ou template “Redirect from root to WWW”)
-2. De: `https://jlonutri.com.br/*`
-3. Para: `https://www.jlonutri.com.br/${1}` · status **301**
-4. Garantir que só o `www` está ligado ao projeto Pages (evita loop)
+- If: `http.host eq "jlonutri.com.br"`
+- Then: `concat("https://www.jlonutri.com.br", http.request.uri.path)` · 301 · Preserve query string On
 
 ### Depoimentos
 
-Em `TESTIMONIALS`, adicione objetos `{ quote, name, detail }` com autorização da paciente. Enquanto a lista estiver vazia, a seção não aparece no site.
+Em `TESTIMONIALS`, adicione objetos `{ quote, name, detail }` com autorização da paciente. Lista vazia = seção oculta.
 
 ## Como visualizar localmente
 
@@ -85,6 +91,8 @@ Em `TESTIMONIALS`, adicione objetos `{ quote, name, detail }` com autorização 
 npx serve .
 ```
 
+(Se não houver Node: abra um servidor HTTP estático na pasta do projeto.)
+
 ## Publicação
 
-Hospedagem atual: **Cloudflare Pages** a partir do repositório GitHub. DNS no Registro.br apontando para o Cloudflare.
+Hospedagem: **Cloudflare Pages** a partir do GitHub. DNS no Registro.br apontando para o Cloudflare.

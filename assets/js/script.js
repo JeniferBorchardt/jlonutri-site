@@ -108,6 +108,15 @@ function formatPrice(value) {
   });
 }
 
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 function getPlan(planId) {
   return PLANS[planId] || null;
 }
@@ -127,6 +136,14 @@ function getPlan(planId) {
   const backdrop = document.getElementById("menuBackdrop");
   if (!btn || !menu) return;
 
+  let lastFocus = null;
+
+  function focusable() {
+    return Array.from(
+      menu.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')
+    ).filter((el) => !el.hasAttribute("disabled") && el.offsetParent !== null);
+  }
+
   function toggle(open) {
     const willOpen = typeof open === "boolean" ? open : menu.hidden;
     menu.hidden = !willOpen;
@@ -135,8 +152,11 @@ function getPlan(planId) {
     btn.setAttribute("aria-label", willOpen ? "Fechar menu" : "Abrir menu");
     document.body.style.overflow = willOpen ? "hidden" : "";
     if (willOpen) {
-      const first = menu.querySelector("a, button");
+      lastFocus = document.activeElement;
+      const first = focusable()[0];
       if (first) first.focus();
+    } else if (lastFocus && typeof lastFocus.focus === "function") {
+      lastFocus.focus();
     } else {
       btn.focus();
     }
@@ -148,7 +168,23 @@ function getPlan(planId) {
     a.addEventListener("click", () => toggle(false))
   );
   window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !menu.hidden) toggle(false);
+    if (menu.hidden) return;
+    if (e.key === "Escape") {
+      toggle(false);
+      return;
+    }
+    if (e.key !== "Tab") return;
+    const items = focusable();
+    if (!items.length) return;
+    const first = items[0];
+    const last = items[items.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
   });
 })();
 
@@ -297,13 +333,13 @@ function getPlan(planId) {
 
   grid.innerHTML = items
     .map((t) => {
-      const quote = String(t.quote).trim();
-      const name = String(t.name || "Paciente").trim();
-      const detail = String(t.detail || "").trim();
+      const quote = escapeHtml(String(t.quote).trim());
+      const name = escapeHtml(String(t.name || "Paciente").trim());
+      const detail = escapeHtml(String(t.detail || "").trim());
       return `<li class="quote-card">
-        <blockquote>${quote.replace(/</g, "&lt;")}</blockquote>
-        <p class="quote-card__who"><strong>${name.replace(/</g, "&lt;")}</strong>${
-          detail ? `<span>${detail.replace(/</g, "&lt;")}</span>` : ""
+        <blockquote>${quote}</blockquote>
+        <p class="quote-card__who"><strong>${name}</strong>${
+          detail ? `<span>${detail}</span>` : ""
         }</p>
       </li>`;
     })

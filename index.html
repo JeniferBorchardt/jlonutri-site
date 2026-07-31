@@ -41,20 +41,20 @@
   <link rel="dns-prefetch" href="https://wa.me" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Manrope:wght@400;600;700&display=swap" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;600;700&display=swap" />
   <link
     rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Manrope:wght@400;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;600;700&display=swap"
     media="print"
     onload="this.media='all'"
   />
   <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
   </noscript>
 
   <link rel="preload" as="image" href="assets/images/jenifer-hero.webp" type="image/webp" fetchpriority="high" imagesrcset="assets/images/jenifer-hero-480.webp 480w, assets/images/jenifer-hero.webp 768w" imagesizes="(max-width: 768px) 92vw, 420px" />
-  <link rel="preload" as="style" href="assets/css/style.css?v=98" />
-  <link rel="stylesheet" href="assets/css/style.css?v=98" />
+  <link rel="preload" as="style" href="assets/css/style.css?v=99" />
+  <link rel="stylesheet" href="assets/css/style.css?v=99" />
 
   <script type="application/ld+json">
   {
@@ -168,7 +168,15 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Para quem é — e para quem não é o acompanhamento?",
+        "name": "Eu pago antes de marcar o horário?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim: você escolhe o plano, paga no Mercado Pago e, em seguida, combinamos o horário no WhatsApp. Assim a vaga fica reservada com transparência. Remarcações seguem a política de cancelamento do site."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Para quem é — e para quem não é?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "É para mulheres 35+ com mudanças no corpo, dificuldade para emagrecer, cansaço, alterações hormonais ou dietas que não funcionam mais. Não é para quem busca dieta milagrosa, protocolo genérico ou garantia de resultado em poucas semanas."
@@ -179,15 +187,7 @@
         "name": "O atendimento é online ou presencial? Onde fica o consultório?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Ambos. Online por videochamada para todo o Brasil. Presencial em Pelotas (RS); o endereço do consultório é enviado ao combinar o horário."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Eu pago antes de marcar o horário?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sim: você escolhe o plano, paga no Mercado Pago e, em seguida, combina o horário no WhatsApp. Remarcações seguem a política de cancelamento do site."
+          "text": "Ambos. Online por videochamada (link enviado no agendamento) para todo o Brasil. Presencial em Pelotas (RS); o endereço do consultório é enviado quando combinamos o horário."
         }
       },
       {
@@ -195,15 +195,7 @@
         "name": "Quantas consultas tem em cada plano?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Individual: 1 consulta. Trimestral: 3 consultas em cerca de 3 meses. Semestral: inclui a base do Trimestral e estende o acompanhamento por 6 meses, com reavaliações; detalhes extras são alinhados no agendamento."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "O atendimento é particular ou por convênio?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Particular. Pagamento via Mercado Pago (Pix ou cartão)."
+          "text": "Individual: 1 consulta. Trimestral: 3 consultas em cerca de 3 meses (1 inicial + 2 acompanhamentos). Semestral: inclui a base do Trimestral e estende o acompanhamento por 6 meses, com reavaliações e ajustes; o detalhe das consultas extras é alinhado no agendamento."
         }
       },
       {
@@ -211,7 +203,31 @@
         "name": "Bioimpedância entra no online?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Não. Bioimpedância e medidas são no presencial. No online, a avaliação usa histórico, rotina, sintomas e exames disponíveis."
+          "text": "Não. Bioimpedância e medidas corporais são no atendimento presencial. No online, a avaliação usa histórico, rotina, sintomas e exames que você já tiver."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "O atendimento é particular ou por convênio?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Particular. Valores estão nos planos. Pagamento via Mercado Pago (Pix ou cartão)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Em quanto tempo vocês respondem no WhatsApp?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "O retorno é em horário comercial. Se você acabou de pagar, chame pelo botão da página de confirmação — priorizo essas mensagens para marcar o horário."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Como funciona o suporte entre consultas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nos planos Trimestral e Semestral, o suporte entre consultas é pelo WhatsApp, para dúvidas pontuais do plano — sem substituir a consulta."
         }
       }
     ]
@@ -234,6 +250,7 @@
       <a href="#sobre">Sobre</a>
       <a href="#para-quem">Para quem é</a>
       <a href="#consultas">Planos</a>
+      <a href="#duvidas">Dúvidas</a>
     </nav>
     <a class="btn btn--primary nav-cta" data-cta="nav" href="#consultas">Ver planos</a>
     <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -247,6 +264,7 @@
       <a href="#sobre">Sobre</a>
       <a href="#para-quem">Para quem é</a>
       <a href="#consultas">Planos</a>
+      <a href="#duvidas">Dúvidas</a>
       <a class="btn btn--primary" href="#consultas">Ver planos</a>
     </nav>
   </div>
@@ -274,7 +292,7 @@
                 sizes="(max-width: 768px) 92vw, 420px"
               />
               <img
-                src="assets/images/jenifer-hero.jpg?v=2"
+                src="assets/images/jenifer-hero.jpg?v=3"
                 alt="Jenifer Lopes Borchardt, nutricionista para mulheres 35+"
                 width="768"
                 height="1024"
@@ -361,11 +379,11 @@
             <picture>
               <source
                 type="image/webp"
-                srcset="assets/images/jenifer-about.webp?v=5"
+                srcset="assets/images/jenifer-about.webp?v=6"
                 sizes="(max-width: 768px) 92vw, 400px"
               />
               <img
-                src="assets/images/jenifer-about.jpg?v=5"
+                src="assets/images/jenifer-about.jpg?v=6"
                 alt="Jenifer Lopes Borchardt, nutricionista, em atendimento no consultório"
                 width="768"
                 height="1024"
@@ -506,7 +524,7 @@
             <p class="plan-card__desc">Construa hábitos e conquiste seus primeiros resultados.</p>
             <p class="plan-card__price" data-plan-price><span>R$</span> 960</p>
             <ul class="plan-card__feats">
-              <li>Tudo do Pacote Individual</li>
+              <li>Tudo do plano Individual</li>
               <li>2 consultas de acompanhamento</li>
               <li>Reavaliação da composição corporal (presencial)</li>
               <li>Ajustes do plano alimentar quando necessário</li>
@@ -525,8 +543,8 @@
             <p class="plan-card__price" data-plan-price><span>R$</span> 1.790</p>
             <ul class="plan-card__feats">
               <li>Tudo do plano Trimestral</li>
-              <li>Extensão do acompanhamento por 6 meses</li>
-              <li>Reavaliações e ajustes conforme evolução</li>
+              <li>Acompanhamento estendido por cerca de 6 meses</li>
+              <li>Reavaliações e ajustes conforme a evolução</li>
               <li>Suporte por WhatsApp entre consultas</li>
               <li>Planejamento para manutenção dos resultados</li>
             </ul>
@@ -565,16 +583,16 @@
         </div>
         <div class="faq__list">
           <details class="faq__item">
+            <summary>Eu pago antes de marcar o horário?</summary>
+            <p>Sim: você escolhe o plano, paga no Mercado Pago e, em seguida, combinamos o horário no WhatsApp. Assim a vaga fica reservada com transparência. Em caso de remarcação, veja a <a href="/cancelamento">política de cancelamento</a>.</p>
+          </details>
+          <details class="faq__item">
             <summary>Para quem é — e para quem não é?</summary>
             <p>É para mulheres 35+ com mudanças no corpo, dificuldade para emagrecer, cansaço, alterações hormonais ou dietas que não funcionam mais. Não é para quem busca dieta milagrosa, protocolo genérico ou garantia de resultado em poucas semanas.</p>
           </details>
           <details class="faq__item">
             <summary>O atendimento é online ou presencial? Onde fica o consultório?</summary>
             <p>Ambos. Online por videochamada (link enviado no agendamento) para todo o Brasil. Presencial em Pelotas (RS); o endereço do consultório é enviado quando combinamos o horário.</p>
-          </details>
-          <details class="faq__item">
-            <summary>Eu pago antes de marcar o horário?</summary>
-            <p>Sim: você escolhe o plano, paga no Mercado Pago e, em seguida, combinamos o horário no WhatsApp. Assim a vaga fica reservada com transparência. Em caso de remarcação, veja a <a href="/cancelamento">política de cancelamento</a>.</p>
           </details>
           <details class="faq__item">
             <summary>Quantas consultas tem em cada plano?</summary>
@@ -662,6 +680,6 @@
     <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 2C6.5 2 2 6.5 2 12.05c0 1.77.463 3.5 1.343 5.023L2 22l5.05-1.32A10 10 0 0 0 12.05 22c5.55 0 10.05-4.5 10.05-9.95C22.1 6.5 17.6 2 12.05 2"/></svg>
   </a>
 
-  <script src="assets/js/script.js?v=90" defer></script>
+  <script src="assets/js/script.js?v=91" defer></script>
 </body>
 </html>

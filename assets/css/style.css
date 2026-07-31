@@ -27,7 +27,7 @@
   --white: var(--elevated);
   --ink: var(--warm-offwhite);
   --ink-soft: rgba(246, 228, 207, 0.9);
-  --muted: rgba(246, 228, 207, 0.78);
+  --muted: rgba(246, 228, 207, 0.88);
   --brand: var(--warm-offwhite);
   --brand-2: #EBD4B8;
   --on-brand: var(--bg);
@@ -918,7 +918,6 @@ h1, h2, h3 {
   text-decoration: none;
 }
 .footer__phone:hover { text-decoration: underline; }
-.footer__crn { font-size: 13px; color: var(--muted); }
 .footer__nav {
   display: flex;
   flex-direction: column;
