@@ -137,11 +137,45 @@ function buildPixCopiaECola(amount) {
   return payload + pixCrc16(payload);
 }
 
-function pixQrImageUrl(copiaECola) {
-  return (
+function renderPixQr(targetEl, copiaECola, altText) {
+  if (!targetEl) return false;
+  targetEl.innerHTML = "";
+  targetEl.setAttribute("role", "img");
+  targetEl.setAttribute("aria-label", altText || "QR Code PIX");
+
+  try {
+    if (typeof qrcode === "function") {
+      const qr = qrcode(0, "M");
+      qr.addData(copiaECola, "Byte");
+      qr.make();
+      const size = Math.max(2, Math.floor(220 / qr.getModuleCount()));
+      targetEl.innerHTML = qr.createImgTag(size, 8);
+      const img = targetEl.querySelector("img");
+      if (img) {
+        img.alt = altText || "QR Code PIX";
+        img.width = 240;
+        img.height = 240;
+        img.style.width = "240px";
+        img.style.height = "240px";
+        img.style.display = "block";
+        img.style.margin = "0 auto";
+      }
+      return true;
+    }
+  } catch (_) {
+    /* fallback abaixo */
+  }
+
+  // Fallback externo se a lib local falhar
+  const img = document.createElement("img");
+  img.width = 240;
+  img.height = 240;
+  img.alt = altText || "QR Code PIX";
+  img.src =
     "https://api.qrserver.com/v1/create-qr-code/?size=240x240&ecc=M&margin=8&data=" +
-    encodeURIComponent(copiaECola)
-  );
+    encodeURIComponent(copiaECola);
+  targetEl.appendChild(img);
+  return true;
 }
 
 function pixWhatsAppMessage(plan) {
@@ -489,6 +523,8 @@ function getPlan(planId) {
 
   function open(plan) {
     if (!plan || plan.price == null) return;
+    if (!titleEl || !amountEl || !qrEl || !codeEl || !waBtn || !copyBtn) return;
+
     currentPlan = plan;
     lastFocus = document.activeElement;
     const copia = (plan.pixCopiaECola || "").trim() || buildPixCopiaECola(plan.price);
@@ -496,9 +532,8 @@ function getPlan(planId) {
 
     titleEl.textContent = `PIX · ${plan.name}`;
     amountEl.textContent = priceLabel ? `R$ ${priceLabel}` : "";
-    qrEl.src = pixQrImageUrl(copia);
-    qrEl.alt = `QR Code Pix do plano ${plan.name}`;
     codeEl.value = copia;
+    renderPixQr(qrEl, copia, `QR Code Pix do plano ${plan.name}`);
     waBtn.href = waLink(pixWhatsAppMessage(plan));
     waBtn.target = "_blank";
     waBtn.rel = "noopener noreferrer";
@@ -506,7 +541,11 @@ function getPlan(planId) {
 
     modal.hidden = false;
     document.body.style.overflow = "hidden";
-    (closeBtn || dialog).focus();
+    try {
+      (closeBtn || dialog || copyBtn).focus();
+    } catch (_) {
+      /* ignore */
+    }
     track("pix_modal_open", { plan_id: plan.id, plan_name: plan.name, value: plan.price });
   }
 

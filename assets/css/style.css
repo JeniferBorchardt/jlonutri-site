@@ -1145,13 +1145,21 @@ h1, h2, h3 {
   line-height: 1.45;
 }
 .pix-modal__qr {
-  display: block;
-  width: 240px;
-  height: 240px;
+  display: grid;
+  place-items: center;
+  width: 260px;
+  min-height: 260px;
   margin: 0 auto 14px;
   border-radius: 12px;
   background: #fff;
   padding: 10px;
+  box-sizing: border-box;
+}
+.pix-modal__qr img {
+  display: block;
+  width: 240px !important;
+  height: 240px !important;
+  max-width: 100%;
 }
 .pix-modal__meta {
   margin: 0 0 16px;
