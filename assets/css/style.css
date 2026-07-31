@@ -1083,6 +1083,112 @@ h1, h2, h3 {
 }
 .thanks__note { margin: 0; font-size: 13px; color: var(--muted); }
 
+/* ---------- PIX modal ---------- */
+.pix-modal[hidden] { display: none !important; }
+.pix-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+.pix-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(0, 0, 0, 0.55);
+  cursor: pointer;
+}
+.pix-modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(420px, 100%);
+  max-height: min(92vh, 720px);
+  overflow: auto;
+  background: var(--elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 22px 24px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+.pix-modal__close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: 0;
+  background: transparent;
+  color: var(--brand);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+}
+.pix-modal__dialog h2 {
+  margin: 0 0 6px;
+  font-size: clamp(24px, 4vw, 30px);
+}
+.pix-modal__amount {
+  margin: 0 0 12px;
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--brand);
+}
+.pix-modal__hint {
+  margin: 0 auto 18px;
+  max-width: 34ch;
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
+.pix-modal__qr {
+  display: block;
+  width: 240px;
+  height: 240px;
+  margin: 0 auto 14px;
+  border-radius: 12px;
+  background: #fff;
+  padding: 10px;
+}
+.pix-modal__meta {
+  margin: 0 0 16px;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+.pix-modal__label {
+  display: block;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.pix-modal__code {
+  width: 100%;
+  box-sizing: border-box;
+  resize: none;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  line-height: 1.4;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+}
+.pix-modal__actions {
+  display: grid;
+  gap: 10px;
+}
+.pix-modal__actions .btn { width: 100%; }
+
 /* =========================================================
    Responsivo
    ========================================================= */

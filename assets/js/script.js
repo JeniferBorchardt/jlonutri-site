@@ -13,12 +13,17 @@ const INSTAGRAM_URL = "https://www.instagram.com/nutrijeniferlopes";
 
 /**
  * PIX direto (chave e-mail na conta Mercado Pago).
- * O site não confirma o pagamento: a paciente envia o comprovante no WhatsApp.
+ * Copia e cola / QR com valor por plano. Confirmação ainda via comprovante no WhatsApp.
  */
 const PIX = {
   key: "jenifer@jlonutri.com.br",
   name: "Jenifer Lopes Borchardt",
   bank: "Mercado Pago",
+  /** Nome e cidade no BR Code (máx. 25 / 15) */
+  merchantName: "JENIFER LOPES BORCHARDT",
+  merchantCity: "Sao Paulo",
+  /** txid do QR gerado no Mercado Pago */
+  txid: "daqr114768819608510",
 };
 
 /**
@@ -47,6 +52,8 @@ const PLANS = {
     price: 350,
     period: "",
     paymentUrl: "https://mpago.la/2PgHtAZ",
+    pixCopiaECola:
+      "00020126450014br.gov.bcb.pix0123jenifer@jlonutri.com.br5204000053039865406350.005802BR5923JENIFER LOPES BORCHARDT6009Sao Paulo62230519daqr1147688196085106304B31D",
   },
   trimestral: {
     id: "trimestral",
@@ -54,6 +61,8 @@ const PLANS = {
     price: 960,
     period: "",
     paymentUrl: "https://mpago.la/2bTQ7iV",
+    pixCopiaECola:
+      "00020126450014br.gov.bcb.pix0123jenifer@jlonutri.com.br5204000053039865406960.005802BR5923JENIFER LOPES BORCHARDT6009Sao Paulo62230519daqr11476881972864363044DE5",
   },
   semestral: {
     id: "semestral",
@@ -61,6 +70,8 @@ const PLANS = {
     price: 1790,
     period: "",
     paymentUrl: "https://mpago.la/1DY7iKd",
+    pixCopiaECola:
+      "00020126450014br.gov.bcb.pix0123jenifer@jlonutri.com.br52040000530398654071790.005802BR5923JENIFER LOPES BORCHARDT6009Sao Paulo62230519daqr1147688198267096304791B",
   },
 };
 
@@ -91,7 +102,60 @@ function waLink(message) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
+/** CRC16-CCITT (padrão Pix / EMV). */
+function pixCrc16(payload) {
+  let crc = 0xffff;
+  for (let i = 0; i < payload.length; i += 1) {
+    crc ^= payload.charCodeAt(i) << 8;
+    for (let bit = 0; bit < 8; bit += 1) {
+      crc = crc & 0x8000 ? ((crc << 1) ^ 0x1021) & 0xffff : (crc << 1) & 0xffff;
+    }
+  }
+  return crc.toString(16).toUpperCase().padStart(4, "0");
+}
+
+function pixTlv(id, value) {
+  const str = String(value);
+  return id + String(str.length).padStart(2, "0") + str;
+}
+
+/** Gera Pix Copia e Cola com valor (ex.: 350 → R$ 350,00). */
+function buildPixCopiaECola(amount) {
+  const mai = pixTlv("00", "br.gov.bcb.pix") + pixTlv("01", PIX.key);
+  const amountStr = Number(amount).toFixed(2);
+  const payload =
+    pixTlv("00", "01") +
+    pixTlv("26", mai) +
+    pixTlv("52", "0000") +
+    pixTlv("53", "986") +
+    pixTlv("54", amountStr) +
+    pixTlv("58", "BR") +
+    pixTlv("59", PIX.merchantName) +
+    pixTlv("60", PIX.merchantCity) +
+    pixTlv("62", pixTlv("05", PIX.txid)) +
+    "6304";
+  return payload + pixCrc16(payload);
+}
+
+function pixQrImageUrl(copiaECola) {
+  return (
+    "https://api.qrserver.com/v1/create-qr-code/?size=240x240&ecc=M&margin=8&data=" +
+    encodeURIComponent(copiaECola)
+  );
+}
+
 function pixWhatsAppMessage(plan) {
+  const price = formatPrice(plan && plan.price);
+  const planLine = plan
+    ? `Já paguei o plano ${plan.name}${price ? ` (R$ ${price})` : ""} via PIX.`
+    : "Já paguei via PIX.";
+  return [
+    `Olá, Jenifer! ${planLine}`,
+    "Segue o comprovante para combinarmos o horário. Prefiro manhã ou tarde? Tenho preferência de dia: ___.",
+  ].join("\n");
+}
+
+function pixInterestMessage(plan) {
   const price = formatPrice(plan && plan.price);
   const planLine = plan
     ? `Quero o plano ${plan.name}${price ? ` (R$ ${price})` : ""} e vou pagar com PIX.`
@@ -100,7 +164,7 @@ function pixWhatsAppMessage(plan) {
     `Olá, Jenifer! ${planLine}`,
     `Chave: ${PIX.key}`,
     `Nome: ${PIX.name} (${PIX.bank})`,
-    "Assim que pagar, te mando o comprovante para combinarmos o horário. Prefiro manhã ou tarde? Tenho preferência de dia: ___.",
+    "Assim que pagar, te mando o comprovante para combinarmos o horário.",
   ].join("\n");
 }
 
@@ -265,11 +329,12 @@ function getPlan(planId) {
 
   const pixInfo = document.getElementById("pixInfoWhats");
   if (pixInfo) {
-    pixInfo.href = waLink(pixWhatsAppMessage(null));
-    pixInfo.target = "_blank";
-    pixInfo.rel = "noopener noreferrer";
-    pixInfo.addEventListener("click", () => {
-      track("whatsapp_click", { source: "pix_info" });
+    pixInfo.href = "#consultas";
+    pixInfo.addEventListener("click", (e) => {
+      e.preventDefault();
+      const featured = document.querySelector("[data-plan-id='trimestral'] [data-pix]");
+      if (featured) featured.click();
+      else document.getElementById("consultas")?.scrollIntoView({ behavior: "smooth" });
       track("pix_interest", { source: "plans_note" });
     });
   }
@@ -364,10 +429,10 @@ function getPlan(planId) {
 
     const pixBtn = card.querySelector("[data-pix]");
     if (pixBtn) {
-      pixBtn.href = waLink(pixWhatsAppMessage(plan));
-      pixBtn.target = "_blank";
-      pixBtn.rel = "noopener noreferrer";
-      pixBtn.addEventListener("click", () => {
+      pixBtn.href = "#";
+      pixBtn.removeAttribute("target");
+      pixBtn.addEventListener("click", (e) => {
+        e.preventDefault();
         try {
           localStorage.setItem(
             "jlo_last_plan",
@@ -381,8 +446,122 @@ function getPlan(planId) {
         }
         track("selecao_plano", { plan_id: plan.id, plan_name: plan.name });
         track("pix_interest", { plan_id: plan.id, plan_name: plan.name });
-        track("whatsapp_click", { source: "pix_pay", plan_id: plan.id });
+        if ((plan.pixCopiaECola || "").trim() && typeof window.openPixModal === "function") {
+          window.openPixModal(plan);
+        } else {
+          window.open(waLink(pixInterestMessage(plan)), "_blank", "noopener,noreferrer");
+          track("whatsapp_click", { source: "pix_pay_fallback", plan_id: plan.id });
+        }
       });
+    }
+  });
+})();
+
+/* ---------- 7b. Modal PIX (QR + copia e cola) ---------- */
+
+(function initPixModal() {
+  const modal = document.getElementById("pixModal");
+  if (!modal) return;
+
+  const dialog = modal.querySelector(".pix-modal__dialog");
+  const backdrop = modal.querySelector(".pix-modal__backdrop");
+  const closeBtn = modal.querySelector(".pix-modal__close");
+  const titleEl = document.getElementById("pixModalTitle");
+  const amountEl = document.getElementById("pixModalAmount");
+  const qrEl = document.getElementById("pixModalQr");
+  const codeEl = document.getElementById("pixModalCode");
+  const copyBtn = document.getElementById("pixModalCopy");
+  const waBtn = document.getElementById("pixModalWhats");
+  let lastFocus = null;
+  let currentPlan = null;
+
+  function focusable() {
+    return Array.from(
+      modal.querySelectorAll('button, a[href], textarea, [tabindex]:not([tabindex="-1"])')
+    ).filter((el) => !el.disabled && el.offsetParent !== null);
+  }
+
+  function close() {
+    modal.hidden = true;
+    document.body.style.overflow = "";
+    if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
+  }
+
+  function open(plan) {
+    if (!plan || plan.price == null) return;
+    currentPlan = plan;
+    lastFocus = document.activeElement;
+    const copia = (plan.pixCopiaECola || "").trim() || buildPixCopiaECola(plan.price);
+    const priceLabel = formatPrice(plan.price);
+
+    titleEl.textContent = `PIX · ${plan.name}`;
+    amountEl.textContent = priceLabel ? `R$ ${priceLabel}` : "";
+    qrEl.src = pixQrImageUrl(copia);
+    qrEl.alt = `QR Code Pix do plano ${plan.name}`;
+    codeEl.value = copia;
+    waBtn.href = waLink(pixWhatsAppMessage(plan));
+    waBtn.target = "_blank";
+    waBtn.rel = "noopener noreferrer";
+    copyBtn.textContent = "Copiar código Pix";
+
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+    (closeBtn || dialog).focus();
+    track("pix_modal_open", { plan_id: plan.id, plan_name: plan.name, value: plan.price });
+  }
+
+  window.openPixModal = open;
+
+  if (backdrop) backdrop.addEventListener("click", close);
+  if (closeBtn) closeBtn.addEventListener("click", close);
+
+  copyBtn.addEventListener("click", async () => {
+    const text = codeEl.value || "";
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        codeEl.select();
+        document.execCommand("copy");
+      }
+      copyBtn.textContent = "Código copiado!";
+      track("pix_copy", {
+        plan_id: currentPlan && currentPlan.id,
+        plan_name: currentPlan && currentPlan.name,
+      });
+      setTimeout(() => {
+        copyBtn.textContent = "Copiar código Pix";
+      }, 2000);
+    } catch (_) {
+      codeEl.select();
+      copyBtn.textContent = "Selecione e copie (Ctrl+C)";
+    }
+  });
+
+  waBtn.addEventListener("click", () => {
+    track("whatsapp_click", {
+      source: "pix_modal",
+      plan_id: currentPlan && currentPlan.id,
+    });
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (modal.hidden) return;
+    if (e.key === "Escape") {
+      close();
+      return;
+    }
+    if (e.key !== "Tab") return;
+    const items = focusable();
+    if (!items.length) return;
+    const first = items[0];
+    const last = items[items.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
     }
   });
 })();
