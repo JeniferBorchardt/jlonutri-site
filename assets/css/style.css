@@ -145,6 +145,16 @@ h1, h2, h3 {
   color: #063528;
 }
 .btn--whats:hover { filter: brightness(1.03); transform: translateY(-1px); }
+.btn--secondary {
+  background: transparent;
+  color: var(--brand);
+  border: 1px solid var(--line);
+}
+.btn--secondary:hover {
+  border-color: var(--brand);
+  background: rgba(246, 228, 207, 0.06);
+  transform: translateY(-1px);
+}
 
 /* ---------- Trust bar ---------- */
 .trust-bar {

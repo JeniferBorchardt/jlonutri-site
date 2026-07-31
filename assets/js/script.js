@@ -12,6 +12,16 @@ const WHATSAPP_NUMBER = "5553981378527";
 const INSTAGRAM_URL = "https://www.instagram.com/nutrijeniferlopes";
 
 /**
+ * PIX direto (chave e-mail na conta Mercado Pago).
+ * O site não confirma o pagamento: a paciente envia o comprovante no WhatsApp.
+ */
+const PIX = {
+  key: "jenifer@jlonutri.com.br",
+  name: "Jenifer Lopes Borchardt",
+  bank: "Mercado Pago",
+};
+
+/**
  * Catálogo de planos — único lugar para preço e link de pagamento.
  *
  * Pagamento: o site NÃO coleta dados de cartão. O botão só redireciona
@@ -79,6 +89,19 @@ function track(eventName, params = {}) {
 
 function waLink(message) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+
+function pixWhatsAppMessage(plan) {
+  const price = formatPrice(plan && plan.price);
+  const planLine = plan
+    ? `Quero o plano ${plan.name}${price ? ` (R$ ${price})` : ""} e vou pagar com PIX.`
+    : "Quero pagar com PIX.";
+  return [
+    `Olá, Jenifer! ${planLine}`,
+    `Chave: ${PIX.key}`,
+    `Nome: ${PIX.name} (${PIX.bank})`,
+    "Assim que pagar, te mando o comprovante para combinarmos o horário. Prefiro manhã ou tarde? Tenho preferência de dia: ___.",
+  ].join("\n");
 }
 
 /** Aceita só links HTTPS do Mercado Pago (checkout hospedado — sem cartão no nosso site). */
@@ -213,17 +236,43 @@ function getPlan(planId) {
 (function initContactLinks() {
   const defaultMsg =
     "Olá, Jenifer! Vim pelo site e gostaria de saber mais sobre as consultas nutricionais.";
+  const doubtMsg = [
+    "Olá, Jenifer! Tenho uma dúvida antes de pagar pelo site.",
+    `Se preferir PIX direto: ${PIX.key} — ${PIX.name} (${PIX.bank}).`,
+    "Pode me orientar?",
+  ].join("\n");
 
-  [
-    document.getElementById("whatsFloat"),
-    document.getElementById("plansDoubt"),
-    document.querySelector('[data-cta="footer-whats"]'),
-  ].forEach((el) => {
-    if (!el) return;
-    el.href = waLink(defaultMsg);
-    el.target = "_blank";
-    el.rel = "noopener noreferrer";
-  });
+  const floatEl = document.getElementById("whatsFloat");
+  if (floatEl) {
+    floatEl.href = waLink(defaultMsg);
+    floatEl.target = "_blank";
+    floatEl.rel = "noopener noreferrer";
+  }
+
+  const doubtEl = document.getElementById("plansDoubt");
+  if (doubtEl) {
+    doubtEl.href = waLink(doubtMsg);
+    doubtEl.target = "_blank";
+    doubtEl.rel = "noopener noreferrer";
+  }
+
+  const footerWa = document.querySelector('[data-cta="footer-whats"]');
+  if (footerWa) {
+    footerWa.href = waLink(defaultMsg);
+    footerWa.target = "_blank";
+    footerWa.rel = "noopener noreferrer";
+  }
+
+  const pixInfo = document.getElementById("pixInfoWhats");
+  if (pixInfo) {
+    pixInfo.href = waLink(pixWhatsAppMessage(null));
+    pixInfo.target = "_blank";
+    pixInfo.rel = "noopener noreferrer";
+    pixInfo.addEventListener("click", () => {
+      track("whatsapp_click", { source: "pix_info" });
+      track("pix_interest", { source: "plans_note" });
+    });
+  }
 
   const insta = document.querySelector('[data-cta="footer-instagram"]');
   if (insta) {
@@ -311,6 +360,29 @@ function getPlan(planId) {
           track("whatsapp_click", { source: "pay_fallback", plan_id: plan.id });
         });
       }
+    }
+
+    const pixBtn = card.querySelector("[data-pix]");
+    if (pixBtn) {
+      pixBtn.href = waLink(pixWhatsAppMessage(plan));
+      pixBtn.target = "_blank";
+      pixBtn.rel = "noopener noreferrer";
+      pixBtn.addEventListener("click", () => {
+        try {
+          localStorage.setItem(
+            "jlo_last_plan",
+            JSON.stringify({
+              id: plan.id,
+              at: Date.now(),
+            })
+          );
+        } catch (_) {
+          /* ignore */
+        }
+        track("selecao_plano", { plan_id: plan.id, plan_name: plan.name });
+        track("pix_interest", { plan_id: plan.id, plan_name: plan.name });
+        track("whatsapp_click", { source: "pix_pay", plan_id: plan.id });
+      });
     }
   });
 })();

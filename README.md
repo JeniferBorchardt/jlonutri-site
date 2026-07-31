@@ -54,6 +54,7 @@ Tudo que muda com frequência fica no topo do arquivo:
 | `INSTAGRAM_URL` | Link do Instagram |
 | `PLANS.*.price` | Valores das consultas |
 | `PLANS.*.paymentUrl` | Links Mercado Pago |
+| `PIX.key` / `PIX.name` | Chave PIX direta (WhatsApp) |
 | `TESTIMONIALS` | Depoimentos reais (vazio = seção oculta) |
 
 ### Eventos GA4 úteis
