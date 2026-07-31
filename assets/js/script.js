@@ -41,7 +41,7 @@ const PLANS = {
   trimestral: {
     id: "trimestral",
     name: "Trimestral",
-    price: 990,
+    price: 960,
     period: "",
     paymentUrl: "https://mpago.la/2bTQ7iV",
   },
