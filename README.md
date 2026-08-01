@@ -59,14 +59,25 @@ Tudo que muda com frequência fica no topo do arquivo:
 
 ### Eventos GA4 úteis
 
-| Evento | Quando |
-|--------|--------|
-| `checkout_open` | Clique em pagar (Mercado Pago) |
-| `obrigado_view` | Visita à página `/obrigado` |
-| `whatsapp_click` | Clique em WhatsApp |
-| `agendar_click` | Clique em âncoras `#consultas` |
+| Evento | Quando | Marcar conversão? |
+|--------|--------|-------------------|
+| `checkout_open` | Continuar com cartão → Mercado Pago | **Sim** (alta) |
+| `pix_modal_open` | Abriu o modal PIX (QR) | **Sim** (alta) |
+| `obrigado_view` | Visitou `/obrigado` após pagamento | **Sim** (alta) |
+| `whatsapp_click` | Clique em WhatsApp | **Sim** (média) |
+| `pix_copy` | Copiou o código PIX | Opcional |
+| `pay_method_select` | Escolheu PIX ou cartão | Não |
+| `agendar_click` | Clique em âncoras `#consultas` | Não |
 
-Marque `checkout_open`, `obrigado_view` e `whatsapp_click` como conversões no painel do GA4.
+#### Como marcar conversões (painel GA4)
+
+1. Abra [analytics.google.com](https://analytics.google.com) → propriedade **G-QKJYT0FB50**
+2. **Admin** (engrenagem) → **Exibição de dados** → **Eventos**
+3. Se o evento ainda não aparecer: use o site (pague teste / abra PIX / WhatsApp) e aguarde alguns minutos (ou veja em **Relatórios** → **Tempo real**)
+4. Em cada evento da tabela acima marcado **Sim**, ative **Marcar como evento-chave** / **converter como conversão**
+5. Em **Admin** → **Eventos-chave** (ou Conversões), confira a lista
+
+Sugestão mínima: `checkout_open` + `pix_modal_open` + `obrigado_view`.
 
 ### Mercado Pago — retorno
 

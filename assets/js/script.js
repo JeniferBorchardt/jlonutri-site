@@ -432,12 +432,13 @@ function getPlan(planId) {
     track("selecao_plano", { plan_id: plan.id, plan_name: plan.name });
 
     if (url && isAllowedPaymentUrl(url)) {
-      track("checkout_open", {
-        plan_id: plan.id,
-        plan_name: plan.name,
-        value: plan.price,
-        method: "card",
-      });
+          track("checkout_open", {
+            plan_id: plan.id,
+            plan_name: plan.name,
+            value: plan.price,
+            currency: "BRL",
+            method: "card",
+          });
       window.location.assign(url);
       return;
     }
@@ -561,7 +562,12 @@ function getPlan(planId) {
     } catch (_) {
       /* ignore */
     }
-    track("pix_modal_open", { plan_id: plan.id, plan_name: plan.name, value: plan.price });
+    track("pix_modal_open", {
+      plan_id: plan.id,
+      plan_name: plan.name,
+      value: plan.price,
+      currency: "BRL",
+    });
   }
 
   window.openPixModal = open;
