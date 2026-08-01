@@ -366,9 +366,12 @@ function getPlan(planId) {
     pixInfo.href = "#consultas";
     pixInfo.addEventListener("click", (e) => {
       e.preventDefault();
-      const featured = document.querySelector("[data-plan-id='trimestral'] [data-pix]");
-      if (featured) featured.click();
-      else document.getElementById("consultas")?.scrollIntoView({ behavior: "smooth" });
+      const plan = getPlan("trimestral");
+      if (plan && typeof window.openPixModal === "function") {
+        window.openPixModal(plan);
+      } else {
+        document.getElementById("consultas")?.scrollIntoView({ behavior: "smooth" });
+      }
       track("pix_interest", { source: "plans_note" });
     });
   }
@@ -398,6 +401,72 @@ function getPlan(planId) {
 /* ---------- 7. Planos (preço + pagamento / WhatsApp) ---------- */
 
 (function initPlansCatalog() {
+  function rememberPlan(plan) {
+    try {
+      localStorage.setItem(
+        "jlo_last_plan",
+        JSON.stringify({
+          id: plan.id,
+          at: Date.now(),
+        })
+      );
+    } catch (_) {
+      /* ignore */
+    }
+  }
+
+  function selectedMethod(card) {
+    const checked = card.querySelector("[data-pay-method]:checked");
+    return checked ? checked.value : "pix";
+  }
+
+  function syncPayLabel(card, goBtn) {
+    if (!goBtn) return;
+    const method = selectedMethod(card);
+    goBtn.textContent = method === "card" ? "Continuar com cartão" : "Continuar com PIX";
+  }
+
+  function startCardCheckout(plan) {
+    const url = (plan.paymentUrl || "").trim();
+    rememberPlan(plan);
+    track("selecao_plano", { plan_id: plan.id, plan_name: plan.name });
+
+    if (url && isAllowedPaymentUrl(url)) {
+      track("checkout_open", {
+        plan_id: plan.id,
+        plan_name: plan.name,
+        value: plan.price,
+        method: "card",
+      });
+      window.location.assign(url);
+      return;
+    }
+
+    if (url && !isAllowedPaymentUrl(url)) {
+      console.warn("paymentUrl bloqueada (domínio não permitido):", plan.id);
+    }
+    track("whatsapp_click", { source: "pay_fallback", plan_id: plan.id });
+    window.open(
+      waLink(
+        `Olá, Jenifer! Quero fechar o formato "${plan.name}". Pode me enviar o link de pagamento e os horários disponíveis?`
+      ),
+      "_blank",
+      "noopener,noreferrer"
+    );
+  }
+
+  function startPixCheckout(plan) {
+    rememberPlan(plan);
+    track("selecao_plano", { plan_id: plan.id, plan_name: plan.name });
+    track("pix_interest", { plan_id: plan.id, plan_name: plan.name });
+    if ((plan.pixCopiaECola || "").trim() && typeof window.openPixModal === "function") {
+      window.openPixModal(plan);
+      return;
+    }
+    window.open(waLink(pixInterestMessage(plan)), "_blank", "noopener,noreferrer");
+    track("whatsapp_click", { source: "pix_pay_fallback", plan_id: plan.id });
+  }
+
   document.querySelectorAll("[data-plan-id]").forEach((card) => {
     const plan = getPlan(card.getAttribute("data-plan-id"));
     if (!plan) return;
@@ -415,77 +484,23 @@ function getPlan(planId) {
       }
     }
 
-    const payBtn = card.querySelector("[data-pay]");
-    if (payBtn) {
-      const url = (plan.paymentUrl || "").trim();
-      if (url && isAllowedPaymentUrl(url)) {
-        payBtn.href = url;
-        payBtn.textContent = "Pagar com cartão";
-        payBtn.setAttribute("data-pay-ready", "true");
-        payBtn.removeAttribute("target");
-        payBtn.rel = "noopener noreferrer";
-        payBtn.addEventListener("click", () => {
-          try {
-            localStorage.setItem(
-              "jlo_last_plan",
-              JSON.stringify({
-                id: plan.id,
-                at: Date.now(),
-              })
-            );
-          } catch (_) {
-            /* ignore */
-          }
-          track("selecao_plano", { plan_id: plan.id, plan_name: plan.name });
-          track("checkout_open", {
-            plan_id: plan.id,
-            plan_name: plan.name,
-            value: plan.price,
-          });
-        });
-      } else {
-        if (url && !isAllowedPaymentUrl(url)) {
-          console.warn("paymentUrl bloqueada (domínio não permitido):", plan.id);
-        }
-        payBtn.href = waLink(
-          `Olá, Jenifer! Quero fechar o formato "${plan.name}". Pode me enviar o link de pagamento e os horários disponíveis?`
-        );
-        payBtn.textContent = "Quero no WhatsApp";
-        payBtn.setAttribute("data-pay-ready", "false");
-        payBtn.target = "_blank";
-        payBtn.rel = "noopener noreferrer";
-        payBtn.addEventListener("click", () => {
-          track("selecao_plano", { plan_id: plan.id, plan_name: plan.name });
-          track("whatsapp_click", { source: "pay_fallback", plan_id: plan.id });
-        });
-      }
-    }
+    const goBtn = card.querySelector("[data-pay-go]");
+    const methods = card.querySelectorAll("[data-pay-method]");
+    methods.forEach((input) => {
+      input.addEventListener("change", () => syncPayLabel(card, goBtn));
+    });
+    syncPayLabel(card, goBtn);
 
-    const pixBtn = card.querySelector("[data-pix]");
-    if (pixBtn) {
-      pixBtn.href = "#";
-      pixBtn.removeAttribute("target");
-      pixBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        try {
-          localStorage.setItem(
-            "jlo_last_plan",
-            JSON.stringify({
-              id: plan.id,
-              at: Date.now(),
-            })
-          );
-        } catch (_) {
-          /* ignore */
-        }
-        track("selecao_plano", { plan_id: plan.id, plan_name: plan.name });
-        track("pix_interest", { plan_id: plan.id, plan_name: plan.name });
-        if ((plan.pixCopiaECola || "").trim() && typeof window.openPixModal === "function") {
-          window.openPixModal(plan);
-        } else {
-          window.open(waLink(pixInterestMessage(plan)), "_blank", "noopener,noreferrer");
-          track("whatsapp_click", { source: "pix_pay_fallback", plan_id: plan.id });
-        }
+    if (goBtn) {
+      goBtn.addEventListener("click", () => {
+        const method = selectedMethod(card);
+        track("pay_method_select", {
+          plan_id: plan.id,
+          plan_name: plan.name,
+          method,
+        });
+        if (method === "card") startCardCheckout(plan);
+        else startPixCheckout(plan);
       });
     }
   });

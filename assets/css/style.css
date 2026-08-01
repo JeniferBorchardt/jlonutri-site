@@ -676,7 +676,7 @@ h1, h2, h3 {
   color: var(--brand);
   font-weight: 700;
 }
-.plan-card__actions { display: grid; gap: 8px; margin-top: auto; }
+.plan-card__actions { display: grid; gap: 10px; margin-top: auto; }
 .plan-card .btn { width: 100%; min-height: 48px; }
 .plan-card__next {
   margin: 0;
@@ -685,6 +685,77 @@ h1, h2, h3 {
   line-height: 1.35;
   color: var(--muted);
   font-weight: 600;
+}
+
+.pay-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: 0;
+  min-width: 0;
+}
+.pay-check__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  cursor: pointer;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--muted);
+  user-select: none;
+}
+.pay-check__item input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+.pay-check__box {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  border: 1.5px solid rgba(246, 228, 207, 0.35);
+  border-radius: 4px;
+  background: transparent;
+  position: relative;
+  transition: border-color 0.15s var(--ease), background 0.15s var(--ease);
+}
+.pay-check__box::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 5px;
+  height: 9px;
+  border: solid var(--on-brand);
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg) scale(0);
+  transition: transform 0.15s var(--ease);
+}
+.pay-check__item:hover {
+  color: var(--ink);
+}
+.pay-check__item:hover .pay-check__box {
+  border-color: rgba(246, 228, 207, 0.55);
+}
+.pay-check__item input:checked ~ .pay-check__box,
+.pay-check__item input:checked + .pay-check__box {
+  background: var(--brand);
+  border-color: var(--brand);
+}
+.pay-check__item input:checked ~ .pay-check__box::after,
+.pay-check__item input:checked + .pay-check__box::after {
+  transform: rotate(45deg) scale(1);
+}
+.pay-check__item input:checked ~ span:last-child {
+  color: var(--ink);
+}
+.pay-check__item input:focus-visible + .pay-check__box {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
 }
 
 .plans__assurance {
