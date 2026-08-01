@@ -54,9 +54,6 @@
         trimestral: "Trimestral",
         semestral: "Semestral"
       };
-      var TIME_ASK =
-        " Prefiro manhã ou tarde? Tenho preferência de dia: ___.";
-
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         window.dataLayer.push(arguments);
@@ -120,14 +117,12 @@
         msg =
           "Olá, Jenifer! Já paguei o plano " +
           planName +
-          " pelo site e quero combinar o horário da consulta." +
-          TIME_ASK;
+          " pelo site e quero combinar o horário da consulta.";
       } else {
         lead.textContent =
           "Se você acabou de pagar pelo Mercado Pago, me chame no WhatsApp para marcarmos a consulta — respondo em horário comercial.";
         msg =
-          "Olá, Jenifer! Já paguei pelo site e quero combinar o horário da consulta." +
-          TIME_ASK;
+          "Olá, Jenifer! Já paguei pelo site e quero combinar o horário da consulta.";
       }
 
       /* obrigado_view: visita à página pós-checkout (sem verificação de pagamento no servidor) */

@@ -185,7 +185,7 @@ function pixWhatsAppMessage(plan) {
     : "Já paguei via PIX.";
   return [
     `Olá, Jenifer! ${planLine}`,
-    "Segue o comprovante para combinarmos o horário. Prefiro manhã ou tarde? Tenho preferência de dia: ___.",
+    "Segue o comprovante para combinarmos o horário.",
   ].join("\n");
 }
 
