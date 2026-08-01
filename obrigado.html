@@ -95,21 +95,58 @@
         window.dataLayer.push(arguments);
       }
       window.gtag = gtag;
-      gtag("js", new Date());
-      gtag("config", GA_ID);
 
-      var gaScript = document.createElement("script");
-      gaScript.async = true;
-      gaScript.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
-      document.head.appendChild(gaScript);
+      function cleanParams(params) {
+        var out = {};
+        if (!params) return out;
+        Object.keys(params).forEach(function (key) {
+          var val = params[key];
+          if (val !== undefined && val !== null && val !== "") out[key] = val;
+        });
+        return out;
+      }
 
       function track(eventName, params) {
         try {
-          window.dataLayer.push(Object.assign({ event: eventName }, params || {}));
+          var payload = cleanParams(params);
           if (typeof window.gtag === "function") {
-            window.gtag("event", eventName, params || {});
+            window.gtag("event", eventName, payload);
           }
         } catch (_) {}
+      }
+
+      function bootAnalytics(onReady) {
+        gtag("js", new Date());
+        gtag("config", GA_ID, { send_page_view: true });
+
+        var gaScript = document.createElement("script");
+        gaScript.async = true;
+        gaScript.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+        gaScript.onload = function () {
+          if (typeof onReady === "function") onReady();
+        };
+        gaScript.onerror = function () {
+          if (typeof onReady === "function") onReady();
+        };
+        document.head.appendChild(gaScript);
+
+        // Fallback se onload atrasar/bloquear
+        setTimeout(function () {
+          if (typeof onReady === "function") onReady();
+        }, 1500);
+      }
+
+      var analyticsReady = false;
+      function whenAnalyticsReady(fn) {
+        if (analyticsReady) {
+          fn();
+          return;
+        }
+        bootAnalytics(function () {
+          if (analyticsReady) return;
+          analyticsReady = true;
+          fn();
+        });
       }
 
       function readPlan() {
@@ -155,11 +192,12 @@
           "Se você acabou de pagar pelo Mercado Pago, me chame no WhatsApp para marcarmos a consulta — respondo em horário comercial.";
       }
 
-      /* obrigado_view: visita à página pós-checkout (sem verificação de pagamento no servidor) */
-      track("obrigado_view", {
-        page: "obrigado",
-        plan_id: plan && plan.id ? plan.id : undefined,
-        plan_name: planName || undefined
+      whenAnalyticsReady(function () {
+        track("obrigado_view", {
+          page: "obrigado",
+          plan_id: plan && plan.id ? plan.id : undefined,
+          plan_name: planName || undefined
+        });
       });
 
       var btn = document.getElementById("thanksWhats");
