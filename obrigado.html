@@ -34,7 +34,7 @@
         Se você acabou de pagar pelo Mercado Pago, me chame no WhatsApp para marcarmos a consulta — respondo em horário comercial.
       </p>
       <p class="thanks__hint" id="thanksHint">
-        No WhatsApp, diga se prefere <strong>manhã</strong> ou <strong>tarde</strong> e, se puder, um dia da semana.
+        No WhatsApp, envie o comprovante para combinarmos o horário.
       </p>
       <div class="thanks__actions">
         <a class="btn btn--whats btn--lg" id="thanksWhats" href="#" target="_blank" rel="noopener noreferrer">Combinar horário no WhatsApp</a>
@@ -54,6 +54,42 @@
         trimestral: "Trimestral",
         semestral: "Semestral"
       };
+      var PLAN_PRICES = {
+        avulsa: 350,
+        individual: 350,
+        trimestral: 960,
+        semestral: 1790
+      };
+
+      function formatPrice(value) {
+        if (value == null || value === "") return "";
+        var n = Number(value);
+        if (!isFinite(n)) return "";
+        return n.toLocaleString("pt-BR", {
+          minimumFractionDigits: n % 1 === 0 ? 0 : 2,
+          maximumFractionDigits: 2
+        });
+      }
+
+      function cardWhatsAppMessage(plan) {
+        if (plan && plan.name) {
+          var price = formatPrice(PLAN_PRICES[plan.id]);
+          var planLine =
+            "Já paguei o plano " +
+            plan.name +
+            (price ? " (R$ " + price + ")" : "") +
+            " via cartão.";
+          return (
+            "Olá, Jenifer! " +
+            planLine +
+            "\nSegue o comprovante para combinarmos o horário."
+          );
+        }
+        return (
+          "Olá, Jenifer! Já paguei via cartão.\nSegue o comprovante para combinarmos o horário."
+        );
+      }
+
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         window.dataLayer.push(arguments);
@@ -107,22 +143,16 @@
       var plan = readPlan();
       var planName = plan && plan.name ? plan.name : "";
       var lead = document.getElementById("thanksLead");
-      var msg;
+      var msg = cardWhatsAppMessage(plan);
 
       if (planName) {
         lead.textContent =
           "Você escolheu o plano " +
           planName +
           ". Me chame no WhatsApp para marcarmos a consulta — respondo em horário comercial.";
-        msg =
-          "Olá, Jenifer! Já paguei o plano " +
-          planName +
-          " pelo site e quero combinar o horário da consulta.";
       } else {
         lead.textContent =
           "Se você acabou de pagar pelo Mercado Pago, me chame no WhatsApp para marcarmos a consulta — respondo em horário comercial.";
-        msg =
-          "Olá, Jenifer! Já paguei pelo site e quero combinar o horário da consulta.";
       }
 
       /* obrigado_view: visita à página pós-checkout (sem verificação de pagamento no servidor) */
